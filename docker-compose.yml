@@ -10,8 +10,8 @@ services:
       - ./test-app/:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-    #   - ${SERVER_PORT}:${SERVER_PORT}
-      - 3000:3000
+      - ${TEST_APP_PORT}:${TEST_APP_PORT}
+    #   - 3000:3000
     command: npm run start:dev
     env_file:
-      - ./test-app/.env
+      - .env

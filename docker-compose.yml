@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  main:
-    container_name: main
+  test:
+    container_name: test
     build:
       context: ./test-app/
       target: development
@@ -15,3 +15,14 @@ services:
     command: npm run start:dev
     env_file:
       - .env
+
+  db:
+    image: "postgres:13-alpine"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/postgresql/data
+    environment:
+      - POSTGRES_USER=wpm
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=wpm

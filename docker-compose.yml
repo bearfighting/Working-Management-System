@@ -21,8 +21,9 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./pgdata:/postgresql/data
+      # - ./pgdata:/postgresql/data
+      - ./pg-init-scripts:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_USER=wpm
       - POSTGRES_PASSWORD=12345
-      - POSTGRES_DB=wpm
+      - POSTGRES_MULTIPLE_DATABASES=wpm_user, wpm_test

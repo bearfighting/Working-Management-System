@@ -2,7 +2,7 @@ import * as React from "react";
 import { Container, Button, Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Hello from './components/hello';
-import logo from './logo.png';
+import logo from './Logo.png';
 
 export default function App() {
   let [res, setRes] = React.useState(0);
@@ -18,7 +18,7 @@ export default function App() {
     <>
       <header>
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home"><img style={{ height: 50, width: 50 }} src={logo} alt="Logo" /></Navbar.Brand>
+          <Navbar.Brand href="#home"><img style={{ height: 50, width: 50 }} src={logo} alt="WSM" /></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">

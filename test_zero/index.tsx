@@ -25,7 +25,6 @@ export default function App() {
       <main style={{ height: "90%" }}>
         <h1 style={{ fontSize: 200, textAlign: "center", marginTop: 300 }}>Bienvenue</h1>
       </main>
-
     </>
   )
 }

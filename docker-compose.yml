@@ -1,17 +1,17 @@
 version: '3.7'
 
 services:
-  test:
-    container_name: test
+  wsm:
+    container_name: wsm
     build:
-      context: ./test-app/
+      context: ./wsm/
       target: development
     volumes:
-      - ./test-app/:/usr/src/app
+      - ./wsm/:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - ${TEST_APP_PORT}:${TEST_APP_PORT}
-    command: npm run start:dev
+    command: zero
     env_file:
       - .env
 

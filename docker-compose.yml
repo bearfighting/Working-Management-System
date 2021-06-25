@@ -10,7 +10,7 @@ services:
       - ./wsm/:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - ${TEST_APP_PORT}:${TEST_APP_PORT}
+      - ${WSM_PORT}:${WSM_PORT}
     command: zero
     env_file:
       - .env

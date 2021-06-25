@@ -14,6 +14,8 @@ services:
     command: zero
     env_file:
       - .env
+    depends_on:
+      db
 
   db:
     image: "postgres:13-alpine"

@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  db:
+    image: "postgres:13-alpine"
+    ports:
+      - "5432:5432"
+    volumes:
+      # - ./pgdata:/postgresql/data
+      - ./pg-init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=wpm
+      - POSTGRES_PASSWORD=12345

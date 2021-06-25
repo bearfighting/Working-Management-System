@@ -2,9 +2,9 @@
 set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
-    create database wpm_user;
+    create database wsm_user;
 
-    \connect wpm_user;
+    \connect wsm_user;
 
     CREATE TABLE accounts (
         user_id serial PRIMARY KEY,

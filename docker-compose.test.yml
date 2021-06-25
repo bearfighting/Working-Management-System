@@ -9,5 +9,5 @@ services:
       # - ./pgdata:/postgresql/data
       - ./pg-init-scripts:/docker-entrypoint-initdb.d
     environment:
-      - POSTGRES_USER=wpm
+      - POSTGRES_USER=wsm
       - POSTGRES_PASSWORD=12345

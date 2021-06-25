@@ -5,7 +5,7 @@ services:
     container_name: wsm
     build:
       context: ./wsm/
-      target: development
+      # target: development
     volumes:
       - ./wsm/:/usr/src/app
       - /usr/src/app/node_modules
@@ -25,4 +25,3 @@ services:
     environment:
       - POSTGRES_USER=wpm
       - POSTGRES_PASSWORD=12345
-      - POSTGRES_MULTIPLE_DATABASES=wpm_user, wpm_test

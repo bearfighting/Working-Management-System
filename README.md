@@ -7,4 +7,4 @@
 
 ## Pour démarrer l'application en production
 
-- "docker-compose up -d" dans le dossier de INM_5151
+- "docker-compose up --build -d" dans le dossier de INM_5151

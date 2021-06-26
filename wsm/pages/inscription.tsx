@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navi from '../components/navi';
 import Inscription from '../components/inscription';
 
-export default function InscriptionPage() {
+export default function LoginPage() {
   return (
     <>
       <header>

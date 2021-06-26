@@ -1,4 +1,4 @@
-import { Button, Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../static/logo.png';
 
@@ -16,7 +16,7 @@ export default function Navi() {
           <Nav.Link href="/pages/tache">Tâche</Nav.Link>
           <Nav.Link href="/pages/budget">Budget</Nav.Link>
         </Nav>
-        <Nav.Link style={{ marginRight: 10 }} href="/pages/login" className="btn btn-primary">Inscrire</Nav.Link>
+        <Nav.Link style={{ marginRight: 10 }} href="/pages/inscription" className="btn btn-primary">Inscrire</Nav.Link>
         <Nav.Link style={{ marginRight: 10 }} href="/pages/login" className="btn btn-primary">Connecter</Nav.Link>
       </Navbar.Collapse>
     </Navbar>

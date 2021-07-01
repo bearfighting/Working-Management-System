@@ -44,7 +44,7 @@ export default function Inscription() {
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">
-          <Form.Label>Mots de passe</Form.Label>
+          <Form.Label>Mot de passe</Form.Label>
           <Form.Control
             type="password"
             value={password}
@@ -52,7 +52,7 @@ export default function Inscription() {
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">
-          <Form.Label>confirmer mots de passe</Form.Label>
+          <Form.Label>Confirmer mot de passe</Form.Label>
           <Form.Control
             type="password"
             value={password}

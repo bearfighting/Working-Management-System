@@ -11,11 +11,6 @@ class ContactService {
         return contact.format_instance();
     }
 
-    select_all_from_tool(id_outil){
-        const resultat = this.#contact_repo.get_condition(id_outil);
-        return resultat.map((contact) => contact.format_liste());
-    }
-    
     creation(body){
         const contact_id = this.#contact_repo.creer(body);
         return this.select_instance(contact_id);

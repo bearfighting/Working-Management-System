@@ -36,7 +36,8 @@ class ContactRepo {
     };
 
     get_by_id(id) {
-        return [];
+        const [contact] = [{id: id, prenom: "Seb", nom: "Steb"}];
+        return new this.modele(contact);
     }
 
     get_condition(where) {
@@ -49,6 +50,23 @@ class ContactRepo {
         } 
 
         return resultat;
+    }
+
+    creer(body){
+
+        const { nom, prenom, courriel, adresse, telephone  } = body;
+
+        const data = {
+            ctc_nom: nom,
+            ctc_prenom: prenom,
+            ctc_courriel: courriel,
+            ctc_adresse: adresse,
+            ctc_telephone: telephone,
+        }
+
+        const [resultat] = [{ctc_id: 999999}];
+
+        return resultat.ctc_id;
     }
 }
 

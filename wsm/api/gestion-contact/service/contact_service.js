@@ -7,7 +7,8 @@ class ContactService {
     }
 
     select_instance(contact_id) {
-        return[]
+        const contact = this.#contact_repo.get_by_id(contact_id);
+        return contact.format_instance();
     }
 
     select_all_from_tool(id_outil){
@@ -15,6 +16,10 @@ class ContactService {
         return resultat.map((contact) => contact.format_liste());
     }
     
+    creation(body){
+        const contact_id = this.#contact_repo.creer(body);
+        return this.select_instance(contact_id);
+    }
 
 }
 

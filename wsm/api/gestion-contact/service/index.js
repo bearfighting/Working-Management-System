@@ -8,5 +8,5 @@ const TableauService = require("./tableau_service");
 
 module.exports = {
     contact_service : new ContactService(contact),
-    tableau_service : new TableauService(tableau),
+    tableau_service : new TableauService(tableau, contact),
 }

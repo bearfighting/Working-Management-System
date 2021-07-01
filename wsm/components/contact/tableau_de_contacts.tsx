@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Table from "react-bootstrap/Table/";
 import Button from "react-bootstrap/Button";
 import { BsFillPersonPlusFill, BsFileEarmarkArrowDown, BsFileEarmarkArrowUp, BsFileEarmarkText, BsPencilSquare, BsFillTrashFill } from "react-icons/bs";
 import "./contact.css";
-import axios from "axios";
 
 export default function TableauDeContacts() {
 

@@ -1,7 +1,6 @@
 import gestion_erreur from "../../../gestion_erreur/erreurs";
 
 const { tableau_service } = require("../../service");
-const { contact_service } = require("../../service");
 const { tableau_validateur } = require("../../validateur");
 
 function method_get({req, res}){
@@ -13,7 +12,7 @@ function method_get({req, res}){
       return;
   }
 
-  const liste_contact = contact_service.select_all_from_tool(req.params.id_tableau);
+  const liste_contact = tableau_service.get_all_contacts(req.params.id_tableau);
 
   res.send({ contacts : liste_contact });
 

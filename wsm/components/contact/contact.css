@@ -1,0 +1,45 @@
+@media all and (min-width: 480px) {
+  .contact {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .header {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .bouton-espacement {
+    margin-right: 10px;
+  }
+
+  .bouton-groupe {
+    display: flex;
+  }
+
+  .bouton-ajouter {
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+
+  .bouton-importer {
+    margin-left: auto;
+    margin-bottom: 10px;
+  }
+
+  .bouton-exporter {
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .icon-espacement-avec-texte {
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  .icon-espacement-sans-texte {
+    margin-bottom: 5px;
+  }
+}

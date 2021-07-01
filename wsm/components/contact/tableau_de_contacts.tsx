@@ -1,37 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table/";
 import Button from "react-bootstrap/Button";
 import { BsFillPersonPlusFill, BsFileEarmarkArrowDown, BsFileEarmarkArrowUp, BsFileEarmarkText, BsPencilSquare, BsFillTrashFill } from "react-icons/bs";
 import "./contact.css";
+import axios from "axios";
 
 export default function TableauDeContacts() {
 
-    const listeDeContacts = [
-        {
-            id: 1,
-            nomDeFamille: "Richer Stebenne",
-            prenom: "Sébastien",
-            courriel: "richer_stebenne.sebastien@uqam.ca",
-            adresse:"123 Ave. Mordor",
-            numeroTelephone:"555-555-5555",
-        },
-        {
-            id: 2,
-            nomDeFamille: "Xing",
-            prenom: "Wenfeng",
-            courriel: "xing.wenfeng@uqam.ca",
-            adresse:"456 Rue. Hogwarts",
-            numeroTelephone:"555-555-5555",
-        },
-        {
-            id: 3,
-            nomDeFamille: "Patel",
-            prenom: "Miteshbai",
-            courriel: "patel.miteshbai@uqam.com",
-            adresse:"789 Boul. Westeros",
-            numeroTelephone:"555-555-5555",
-        },
-    ];
+    let listeDeContacts = [{}];
+
+    useEffect(() => {
+
+        const fetchContact = async () => {
+            const response = await axios.get("http://localhost:3000/api/gestion-contact/tableau/1");
+            setContacts(response.data.contacts);
+        };
+        fetchContact();
+    }, []);
 
     const [contacts, setContacts] = useState(listeDeContacts);
 
@@ -55,13 +40,13 @@ export default function TableauDeContacts() {
                         </tr>
                     </thead>
                     <tbody>
-                        {contacts.map((contact) => (
-                            <tr key={contact.id}>
-                                <td>{contact.nomDeFamille}</td>
+                        {contacts.map((contact, i) => (
+                            <tr key={i}>
+                                <td>{contact.nom}</td>
                                 <td>{contact.prenom}</td>
                                 <td>{contact.courriel}</td>
                                 <td>{contact.adresse}</td>
-                                <td>{contact.numeroTelephone}</td>
+                                <td>{contact.telephone}</td>
                                 <td>
                                     <Button className="bouton-espacement" variant="outline-primary"><BsFileEarmarkText className="icon-espacement-sans-texte"/></Button>
                                     <Button className="bouton-espacement" variant="outline-primary"><BsPencilSquare className="icon-espacement-sans-texte"/></Button>

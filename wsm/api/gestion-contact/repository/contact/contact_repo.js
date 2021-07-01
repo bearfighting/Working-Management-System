@@ -1,24 +1,28 @@
 
 const temp = [
     {
-        id: "123",
-        nom: "Jacques",
-        prenom: "Bergi",
-    },
-    {
         id: "321",
         nom: "Xing",
         prenom: "Wenfeng",
+        courriel: "xing.wenfeng@uqam.ca	",
+        adresse: "123 Ave. Mordor",
+        telephone: ""
     },
     {
         id: "213",
         nom: "Patel",
         prenom: "Mitesh",
+        courriel: "patel.miteshbai@uqam.com",
+        adresse: "456 Rue. Hogwarts",
+        telephone: "111-111-1111"
     },
     {
         id: "312",
         nom: "Stebenne",
         prenom: "Sebastien",
+        courriel: "richer_stebenne.sebastien@uqam.ca",
+        adresse: "789 Boul. Westeros",
+        telephone: ""
     }
 ]
 

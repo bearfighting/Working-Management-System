@@ -3,16 +3,19 @@ const _ = require("lodash");
 class ContactValidateur {
 
     valider_requete(req) {
-        const {body, method} = req;
+        const {body, method, params} = req;
 
         let erreur = "";
 
-        if (method === "GET") {
-            erreur = this.#valider_get(body);
-        }
-
-        if (method === "POST") {
+        if (method === "GET" && params.id_contact) {
+            erreur = this.#valider_get_by_id(params.id_contact);
+        }else if (method === "POST") {
             erreur = this.#valider_post(body);
+        }else if(method === "PATCH"){
+            erreur = "bla";
+        }
+        else if(method === "DELETE"){
+            erreur = "bla";
         }
 
         return [_.isEmpty(erreur), erreur];
@@ -29,11 +32,10 @@ class ContactValidateur {
         return "";
     }
 
-    #valider_get(){
+    #valider_get_by_id(contact_id){
         return "";
         //return "errClefNonTrouvee";
     }
-
 }
 
 module.exports = ContactValidateur;

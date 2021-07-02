@@ -2,15 +2,15 @@ const _ = require("lodash");
 
 class ContactValidateur {
 
-    valider_requete(req) {
+    async valider_requete(req) {
         const {body, method, params} = req;
 
         let erreur = "";
 
         if (method === "GET" && params.id_contact) {
-            erreur = this.#valider_get_by_id(params.id_contact);
+            erreur = await this.#valider_get_by_id(params.id_contact);
         }else if (method === "POST") {
-            erreur = this.#valider_post(body);
+            erreur = await this.#valider_post(body);
         }else if(method === "PATCH"){
             erreur = "bla";
         }
@@ -21,7 +21,7 @@ class ContactValidateur {
         return [_.isEmpty(erreur), erreur];
     }
 
-    #valider_post(body){
+    async #valider_post(body){
 
         const { nom, prenom, courriel, adresse, telephone  } = body;
 
@@ -32,7 +32,7 @@ class ContactValidateur {
         return "";
     }
 
-    #valider_get_by_id(contact_id){
+    async #valider_get_by_id(contact_id){
         return "";
         //return "errClefNonTrouvee";
     }

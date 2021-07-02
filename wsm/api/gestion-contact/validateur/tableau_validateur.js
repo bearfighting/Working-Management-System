@@ -2,19 +2,19 @@ const _ = require("lodash");
 
 class TableauValidateur {
 
-    valider_requete(req) {
+    async valider_requete(req) {
         const {body, method, params} = req;
 
         let erreur = "";
 
         if (method === "GET" && params.id_contact) {
-            erreur = this.#valider_get_by_id(params.id_tableau);
+            erreur = await this.#valider_get_by_id(params.id_tableau);
         }
 
         return [_.isEmpty(erreur), erreur];
     }
 
-    #valider_get_by_id(id_tableau){
+    async #valider_get_by_id(id_tableau){
         return "";
         //return "errClefNonTrouvee";
     }

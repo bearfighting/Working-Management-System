@@ -1,3 +1,4 @@
+import query from "../../../query";
 
 const temp = [
     {
@@ -39,12 +40,14 @@ class ContactRepo {
         nom: "ctc_nom",
     };
 
-    get_by_id(id) {
-        const [contact] = [{id: id, prenom: "Seb", nom: "Steb"}];
+    async get_by_id(id) {
+
+        let [contact] = await query('SELECT * FROM test.accounts');
+
         return new this.modele(contact);
     }
 
-    get_condition(where) {
+    async get_condition(where) {
 
         const liste_resultat = temp;
         const resultat = [];
@@ -56,7 +59,7 @@ class ContactRepo {
         return resultat;
     }
 
-    creer(body){
+    async creer(body){
 
         const { nom, prenom, courriel, adresse, telephone  } = body;
 

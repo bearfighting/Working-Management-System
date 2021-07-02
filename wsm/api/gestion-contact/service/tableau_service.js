@@ -8,13 +8,13 @@ class TableauService {
         this.#contact_repo = contact_repo;
     }
 
-    select_instance(tableau_id) {
-        const tableau = this.#tableau_repo.get_by_id(tableau_id);
+    async select_instance(tableau_id) {
+        const tableau = await this.#tableau_repo.get_by_id(tableau_id);
         return tableau.format_instance();
     }
 
-    get_all_contacts(tableau_id){
-        const resultat = this.#contact_repo.get_condition(tableau_id);
+    async get_all_contacts(tableau_id){
+        const resultat = await this.#contact_repo.get_condition(tableau_id);
         return resultat.map((contact) => contact.format_liste());
     }
 }

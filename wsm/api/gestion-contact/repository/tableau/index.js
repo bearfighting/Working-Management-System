@@ -1,4 +1,4 @@
-const TableauRepo = require("./tablea_repo");
+const TableauRepo = require("./tableau_repo");
 const Tableau = require("./tableau");
 
-module.exports = new ContactRepo(Contact, "gct_tableau");
+module.exports = new TableauRepo(Tableau, "gct_tableau");

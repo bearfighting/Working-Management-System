@@ -22,3 +22,10 @@
 
 ### détruire les tables
 - "knex migrate:rollback --all"
+
+### Créer un fichier pour populer les tables
+- "knex seed:make [seed_name]"
+
+### Rouler les scripts seed
+- "knex seed:run"
+

@@ -1,3 +1,4 @@
+const Repository = require("../repository");
 
 const temp = [
     {
@@ -14,9 +15,10 @@ const temp = [
     }
 ]
 
-class TableauRepo {
+class TableauRepo extends Repository{
 
     constructor(modele, nom_table) {
+        super();
         this.modele = modele;
         this.nom_table = nom_table
     }

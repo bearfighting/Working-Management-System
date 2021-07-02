@@ -7,7 +7,7 @@ export default function SupprimerContact(props) {
     const { contact, onHide } = props;
 
     function onSupprimer() {
-        console.log(contact);
+        //console.log(contact);
     }
 
     return (

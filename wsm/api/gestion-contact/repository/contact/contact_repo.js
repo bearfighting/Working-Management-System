@@ -28,13 +28,19 @@ class ContactRepo extends Repository {
             .innerJoin("gtc_gestion_contact as gtc", (query_builder) => {
                 query_builder.on("ctc.gtc_id", "=", "gtc.gtc_id")
             })
-            .where("gtc.user_id", "=", user_id);
+            .where("gtc.user_id", "=", user_id)
+            .orderBy("ctc.ctc_id");
 
         return resultats.map((contact) => new this.modele(contact));
     }
 
+    async get_by_tableau(tableau_id){
+        const resultats = await this.#get_condition({gtc_id: tableau_id});
+        return resultats.map((contact) => new this.modele(contact));
+    }
+
     async #get_condition(where) {
-        const resultats = await this.trx(this.nom_table).select(this.#champs_reponse).where(where);
+        const resultats = await this.trx(this.nom_table).select(this.#champs_reponse).where(where).orderBy("ctc_id");
         return resultats.map((contact) => new this.modele(contact));
     }
 
@@ -57,10 +63,9 @@ class ContactRepo extends Repository {
 
     async modifier(body, id_contact){
 
-        const { id_tableau, nom, prenom, courriel, adresse, telephone  } = body;
+        const { nom, prenom, courriel, adresse, telephone  } = body;
 
         const data = {
-            gtc_id: id_tableau,
             ctc_nom: nom,
             ctc_prenom: prenom,
             ctc_courriel: courriel,

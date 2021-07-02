@@ -5,7 +5,6 @@ import "./contact.css";
 
 export default function DetailContact(props) {
     const { contact, onHide } = props;
-
     return (
         <div>
             <Modal

@@ -14,7 +14,7 @@ class TableauService {
     }
 
     async get_all_contacts(tableau_id){
-        const resultats = await this.#contact_repo.get_condition({gtc_id: tableau_id});
+        const resultats = await this.#contact_repo.get_by_tableau(tableau_id);
         return resultats.map((contact) => contact.format_liste());
     }
 }

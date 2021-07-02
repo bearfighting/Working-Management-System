@@ -1,4 +1,4 @@
-module.exports = function gestion_erreur(res, erreur){
+module.exports = async function gestion_erreur(res, erreur){
 
     let message = "";
 

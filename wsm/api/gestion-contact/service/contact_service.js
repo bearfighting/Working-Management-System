@@ -6,8 +6,8 @@ class ContactService {
         this.#contact_repo = contact_repo;
     }
 
-    select_instance(contact_id) {
-        const contact = this.#contact_repo.get_by_id(contact_id);
+    async select_instance(contact_id) {
+        const contact = await this.#contact_repo.get_by_id(contact_id);
         return contact.format_instance();
     }
 

@@ -26,7 +26,7 @@ class TableauRepo {
         user_id: "user_id"
     };
 
-    get_by_id(id) {
+    async get_by_id(id) {
         const [tableau] = [{id: id, user_id: 1}];
         return new this.modele(tableau);
     }

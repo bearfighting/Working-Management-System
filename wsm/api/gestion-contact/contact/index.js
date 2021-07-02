@@ -17,31 +17,9 @@ async function method_post({req, res}){
     res.send(contact);
 }
 
-const temp = [
-    {
-        id: "123",
-        nom: "Jacques",
-        prenom: "Bergi",
-    },
-    {
-        id: "321",
-        nom: "Xing",
-        prenom: "Wenfeng",
-    },
-    {
-        id: "213",
-        nom: "Patel",
-        prenom: "Mitesh",
-    },
-    {
-        id: "312",
-        nom: "Stebenne",
-        prenom: "Sebastien",
-    }
-]
-
 async function method_get({req, res}){
-    res.send(temp);
+    const contact = await contact_service.select_all(1);
+    res.send(contact);
 }
 
 module.exports = async function(req, res) {

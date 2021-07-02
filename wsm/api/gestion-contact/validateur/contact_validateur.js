@@ -12,13 +12,21 @@ class ContactValidateur {
         }else if (method === "POST") {
             erreur = await this.#valider_post(body);
         }else if(method === "PATCH"){
-            erreur = "bla";
+            erreur = await this.#valider_patch(body);
         }
         else if(method === "DELETE"){
-            erreur = "bla";
+            erreur = await this.#valider_delete(params.id_contact);
         }
 
         return [_.isEmpty(erreur), erreur];
+    }
+
+    async #valider_delete(id){
+        return "";
+    }
+
+    async #valider_patch(id){
+        return "";
     }
 
     async #valider_post(body){

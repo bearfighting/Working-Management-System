@@ -58,6 +58,7 @@ export default function TableauDeContacts() {
                 <SupprimerContact
                     show={modalSupprimerShow.show}
                     contact={modalSupprimerShow.contact}
+                    contacts={contacts}
                     onHide={() => setModalSupprimerShow(defaultModalState)}
                 />
                 <AjouterModifierContact

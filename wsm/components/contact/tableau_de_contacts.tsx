@@ -7,8 +7,8 @@ import AjouterModifierContact from "./ajouter_modifier_contact";
 import SupprimerContact from "./supprimer_contact";
 import DetailContact from "./detail_contact";
 import ImporterContact from "./importer_contact";
-import ExporterContact from "./exporter_contact";
 import "./contact.css";
+import { CSVLink } from "react-csv";
 
 export default function TableauDeContacts() {
 
@@ -71,14 +71,10 @@ export default function TableauDeContacts() {
             <div className="bouton-groupe">
                 <Button className="bouton-ajouter" variant="success" onClick={() => setModalAjouterShow(true)}><BsFillPersonPlusFill className="icon-espacement-avec-texte"/>Ajouter</Button>
                 <Button className="bouton-importer" variant="secondary" onClick={() => setModalImporterShow(true)}><BsFileEarmarkArrowDown className="icon-espacement-avec-texte"/>Importer</Button>
-                <Button className="bouton-exporter" variant="secondary" onClick={() => setModalExporterShow(true)}><BsFileEarmarkArrowUp className="icon-espacement-avec-texte"/>Exporter</Button>
+                <CSVLink data={contacts}><Button className="bouton-exporter" variant="secondary"><BsFileEarmarkArrowUp className="icon-espacement-avec-texte"/>Exporter</Button></CSVLink>
                 <ImporterContact
                     show={modalImporterShow}
                     onHide={() => setModalImporterShow(false)}
-                />
-                <ExporterContact
-                    show={modalExporterShow}
-                    onHide={() => setModalExporterShow(false)}
                 />
             </div>
             <div>

@@ -14,6 +14,12 @@ async function method_get({req, res}){
     }
 
     const contact = await contact_service.select_instance(req.params.id_contact);
+
+    if(!contact){
+        gestion_erreur(res, "errClefNonTrouvee");
+        return; 
+    }
+
     res.send(contact);
 }
 

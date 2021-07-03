@@ -15,6 +15,13 @@ module.exports = async function gestion_erreur(res, erreur){
             res.status(400); 
             message = "Impossible de traiter la requête";
         break;
+        case "errCheminInvalid": 
+            res.status(404); 
+            message = "Ce chemin n'existe pas";
+        break;
+        default: 
+            res.status(404); 
+            message = "Problème serveur, veuillez communiquer avec l'équipe.";
     }
 
     res.send(message);

@@ -17,8 +17,8 @@ class ContactRepo extends Repository {
     };
 
     async get_by_id(id) {
-        const [contact] = await this.#get_condition({ctc_id: id});
-        return new this.modele(contact);
+        const [contact] = await this.#get_from_db({ctc_id: id});
+        return contact;
     }
 
     async get_all(user_id) {
@@ -34,12 +34,39 @@ class ContactRepo extends Repository {
         return resultats.map((contact) => new this.modele(contact));
     }
 
-    async get_by_tableau(tableau_id){
-        const resultats = await this.#get_condition({gtc_id: tableau_id});
-        return resultats.map((contact) => new this.modele(contact));
+    async trouver_si_unique(contact_id, body){
+
+        const { id_tableau, telephone, courriel } = body;
+
+        if (!(telephone || courriel)){
+            return [];
+        }
+
+        const qb = (query_builder) => {
+            query_builder
+            .where("gtc_id", "=", id_tableau).andWhere("ctc_id", "!=", contact_id).andWhere((query_builder) =>{
+                if(telephone && courriel){
+                    query_builder.andWhere("ctc_courriel", "=", courriel).orWhere("ctc_telephone", "=", telephone)
+                }else{
+                    if(telephone){
+                        query_builder.where("ctc_telephone", "=", telephone);
+                    }else{
+                        query_builder.where("ctc_courriel", "=", courriel);
+                    }
+                }
+            });         
+        }
+
+        const contacts = await this.#get_from_db(qb);
+        return contacts;
     }
 
-    async #get_condition(where) {
+    async get_by_tableau(id_tableau){
+        const resultats = await this.#get_from_db({gtc_id: id_tableau});
+        return resultats;
+    }
+
+    async #get_from_db(where) {
         const resultats = await this.trx(this.nom_table).select(this.#champs_reponse).where(where).orderBy("ctc_id");
         return resultats.map((contact) => new this.modele(contact));
     }

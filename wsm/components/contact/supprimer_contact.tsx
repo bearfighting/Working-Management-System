@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useCallback } from "react";
+import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./contact.css";
 
 export default function SupprimerContact(props) {
-    const { contact, onHide } = props;
+    const { contact, contacts, onHide } = props;
 
-    function onSupprimer() {
-        console.log(contact);
-    }
+    const handleDelete = useCallback( async (contactId) => {
+        const {status} = await axios.delete("http://localhost:3000/api/gestion-contact/contact/" + contactId);
+
+        if(status >= 200 && status < 300){
+            const index = contacts.indexOf(contact);
+            contacts.splice(index, 1);
+            onHide();
+        }else{
+            // TODO : Quand c'est pas bon
+        }
+
+    }, [contact, contacts, onHide]);
 
     return (
         <div>
@@ -27,7 +37,7 @@ export default function SupprimerContact(props) {
                     Voulez-vous vraiment supprimer ce contact? Ce processus ne peut pas être annulé.
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="danger" onClick={onSupprimer}>Supprimer</Button>
+                    <Button variant="danger" onClick={() => handleDelete(contact.id)}>Supprimer</Button>
                     <Button variant="outline-primary" onClick={onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>

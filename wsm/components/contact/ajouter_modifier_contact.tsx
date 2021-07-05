@@ -1,18 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./contact.css";
 
 export default function AjouterModifierContact(props) {
-    const { isAjouter, contact, onHide } = props;
+    const { contact, onHide} = props;
+    const { isAjouter, ...reste } = props;
 
-    const [nom, setNom] = useState(isAjouter ? "" : contact.nom);
-    const [prenom, setPrenom] = useState(isAjouter ? "" : contact.pronom);
-    const [courriel, setCourriel] = useState(isAjouter ? "" : contact.courriel);
-    const [adresse, setAdresse] = useState(isAjouter ? "" : contact.adresse);
-    const [telephone, setTelephone] = useState(isAjouter ? "" : contact.telephone);
+    const [nom, setNom] = useState();
+    const [prenom, setPrenom] = useState();
+    const [courriel, setCourriel] = useState();
+    const [adresse, setAdresse] = useState();
+    const [telephone, setTelephone] = useState();
 
+    useEffect(() => {
+        setNom(contact?.nom || "");
+        setPrenom(contact?.prenom || "");
+        setCourriel(contact?.courriel || "");
+        setAdresse(contact?.adresse || "");
+        setTelephone(contact?.telephone || "");
+    }, [contact])
+
+    const handlePatch = useCallback( async (contactId, nouveauContact) => {
+        const {status, data} = await axios.patch("http://localhost:3000/api/gestion-contact/contact/" + contactId, nouveauContact);
+
+        if(status >= 200 && status < 300){
+            contact.nom = data.nom;
+            contact.prenom = data.prenom;
+            contact.courriel = data.courriel;
+            contact.adresse = data.adresse;
+            contact.telephone = data.telephone;
+
+            onHide();
+        }else{
+            // TODO : Quand c'est pas bon
+        }
+
+    }, [contact, onHide]);
+
+    /**
+     * Ya surement moyen de faire mieux
+     */
+    function resetForm(){
+        setNom("");
+        setPrenom("");
+        setCourriel("");
+        setAdresse("");
+        setTelephone("");
+    }
+
+    const handlePost = useCallback( async (nouveauContact) => {
+        const {status, data} = await axios.post("http://localhost:3000/api/gestion-contact/contact", nouveauContact);
+
+        if(status >= 200 && status < 300){
+            contact.push(data);
+            resetForm();
+            onHide();
+        }else{
+            // TODO : Quand c'est pas bon
+        }
+
+    }, [contact, onHide]);
 
     function validerFormulaire() {
         return true;
@@ -23,26 +73,28 @@ export default function AjouterModifierContact(props) {
     }
 
     function onAjouterModifier() {
+
+        const nouveauContact = {
+            // Va falloir changer ça pour l'id du tableau en question
+            id_tableau: 1,
+            nom: nom,
+            prenom: prenom,
+            courriel: courriel,
+            adresse: adresse,
+            telephone: telephone,
+        }
+
         if(isAjouter) {
-            console.log(nom);
-            console.log(prenom);
-            console.log(courriel);
-            console.log(adresse);
-            console.log(telephone);
+            handlePost(nouveauContact);
         } else {
-            console.log(contact.id);
-            console.log(nom);
-            console.log(prenom);
-            console.log(courriel);
-            console.log(adresse);
-            console.log(telephone);
+            handlePatch(contact.id, nouveauContact);
         }
     }
 
     return (
         <div>
             <Modal
-                {...props}
+                { ...reste }
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
                 >
@@ -97,7 +149,7 @@ export default function AjouterModifierContact(props) {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button type="submit" disabled={!validerFormulaire()} onClick={onAjouterModifier}>Ajouter</Button>
+                    <Button type="submit" disabled={!validerFormulaire()} onClick={onAjouterModifier}>{isAjouter ? "Ajouter" : "Modifier"}</Button>
                     <Button variant="outline-primary" onClick={onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>

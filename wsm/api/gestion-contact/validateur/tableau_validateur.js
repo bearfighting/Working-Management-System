@@ -2,6 +2,12 @@ const _ = require("lodash");
 
 class TableauValidateur {
 
+    #tableau_repo;
+
+    constructor(tableau_repo){
+        this.#tableau_repo = tableau_repo
+    }
+
     async valider_requete(req) {
         const {body, method, params} = req;
 
@@ -15,9 +21,24 @@ class TableauValidateur {
     }
 
     async #valider_get_by_id(id_tableau){
+
+        if(await !this.#est_un_nombre(id_tableau)){
+            return "errCheminInvalid"
+        }
+
+        const tableau = this.#tableau_repo.get_by_id(id_tableau);
+
+        if(!tableau){
+            return "errClefNonTrouvee"
+        }
+
         return "";
-        //return "errClefNonTrouvee";
     }
+
+    async #est_un_nombre(contact_id){
+        return /^\d+$/.test(contact_id);
+    }
+
 }
 
 module.exports = TableauValidateur;

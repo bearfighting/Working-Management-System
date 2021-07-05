@@ -42,4 +42,19 @@
   .icon-espacement-sans-texte {
     margin-bottom: 5px;
   }
+
+  .dragNdrop {
+    border: 1px solid #0069D9;
+    text-align: center;
+    padding: 20px;
+    transition: 0.5s;
+    border-radius: 5px;
+  }
+
+  .dragNdrop:hover {
+    background-color: #0069D9;
+    color: white;
+    cursor: pointer;
+  }
+
 }

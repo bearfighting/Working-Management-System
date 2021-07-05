@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./inscription.css";
@@ -7,25 +7,34 @@ interface User {
   nom?: string,
   prenom?: string,
   email: string,
-  password: string,
+  mots_de_passe: string,
 }
 
 export default function Inscription() {
-  const [user, setUser] = useState({ nom: "", prenom: "", email: "", password: "" });
+  const [user, setUser] = useState({ nom: "", prenom: "", email: "", mots_de_passe: "" });
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return user?.email.length > 0 && user?.password.length > 0;
+    return user?.email.length > 0 && user?.mots_de_passe.length > 0 && user?.mots_de_passe === password;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    console.log(user);
+    await fetch("/api/authentification/inscription", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    })
+      .then((result) => {
+        window.location.href = 'http://localhost:3000/';
+      }).catch((e) => alert(e));
   }
 
   return (
     <div className="Inscription">
       <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
+        <Form.Group controlId="username">
           <Form.Label>Nom</Form.Label>
           <Form.Control
             autoFocus
@@ -34,7 +43,7 @@ export default function Inscription() {
             onChange={(e) => setUser({ ...user, nom: e.target.value })}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
+        <Form.Group controlId="username">
           <Form.Label>Prénom</Form.Label>
           <Form.Control
             type="prenom"
@@ -42,7 +51,7 @@ export default function Inscription() {
             onChange={(e) => setUser({ ...user, prenom: e.target.value })}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
+        <Form.Group controlId="email">
           <Form.Label>Courriel</Form.Label>
           <Form.Control
             type="email"
@@ -50,23 +59,23 @@ export default function Inscription() {
             onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
+        <Form.Group controlId="password">
           <Form.Label>Mot de passe</Form.Label>
           <Form.Control
             type="password"
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            value={user.mots_de_passe}
+            onChange={(e) => setUser({ ...user, mots_de_passe: e.target.value })}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
+        <Form.Group controlId="password">
           <Form.Label>Confirmer mot de passe</Form.Label>
           <Form.Control
             type="password"
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button block type="submit" disabled={!validateForm()}>
           Creer compte
         </Button>
       </Form>

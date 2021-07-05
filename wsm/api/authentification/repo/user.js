@@ -16,3 +16,5 @@ class User {
         return await this._db(this._table).where({ email: user.email }).update({ user });
     }
 }
+
+module.exports = User;

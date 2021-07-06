@@ -15,6 +15,9 @@ export default function AjouterModifierContact(props) {
     const [adresse, setAdresse] = useState();
     const [telephone, setTelephone] = useState();
 
+    const [isCourrielValid, setIsCourrielValid] = useState(true);
+    const [isTelephoneValid, setIsTelephoneValid] = useState(true);
+
     useEffect(() => {
         setNom(contact?.nom || "");
         setPrenom(contact?.prenom || "");
@@ -65,7 +68,19 @@ export default function AjouterModifierContact(props) {
     }, [contact, onHide]);
 
     function validerFormulaire() {
-        return true;
+        return isCourrielValid && isTelephoneValid && courriel?.length > 0;
+    }
+
+    function validerCourriel(valeur) {
+        const courrielValeur : String = valeur;
+        const courrielRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        setIsCourrielValid(courrielValeur.length == 0 || courrielValeur.match(courrielRegex)?.length > 0);
+    }
+
+    function validerTelephone(valeur) {
+        const telephoneValeur : String = valeur;
+        const telephoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+        setIsTelephoneValid(telephoneValeur.length == 0 || telephoneValeur.match(telephoneRegex)?.length > 0);
     }
 
     function handleSubmit(event) {
@@ -73,7 +88,6 @@ export default function AjouterModifierContact(props) {
     }
 
     function onAjouterModifier() {
-
         const nouveauContact = {
             // Va falloir changer ça pour l'id du tableau en question
             id_tableau: 1,
@@ -124,11 +138,19 @@ export default function AjouterModifierContact(props) {
                         </Form.Group>
                         <Form.Group controlId="courriel">
                         <Form.Label>Courriel</Form.Label>
-                        <Form.Control
+                        <Form.Control className={isCourrielValid ? "form-valide" : "form-invalide"}
                             type="courriel"
                             value={courriel}
-                            onChange={(e) => setCourriel(e.target.value)}
+                            onChange={(e) => {
+                                setCourriel(e.target.value);
+                                validerCourriel(e.target.value);
+                            }}
                         />
+                        {!isCourrielValid && (
+                            <div className="erreur-form">
+                                Le courriel n'est pas valide!
+                            </div>
+                        )}
                         </Form.Group>
                         <Form.Group controlId="adresse">
                         <Form.Label>Adresse</Form.Label>
@@ -140,11 +162,19 @@ export default function AjouterModifierContact(props) {
                         </Form.Group>
                         <Form.Group controlId="telephone">
                         <Form.Label>Numéro de téléphone</Form.Label>
-                        <Form.Control
+                        <Form.Control className={isTelephoneValid ? "form-valide" : "form-invalide"}
                             type="telephone"
                             value={telephone}
-                            onChange={(e) => setTelephone(e.target.value)}
+                            onChange={(e) => {
+                                setTelephone(e.target.value);
+                                validerTelephone(e.target.value);
+                            }}
                         />
+                        {!isTelephoneValid && (
+                            <div className="erreur-form">
+                                Le téléphone n'est pas valide!
+                            </div>
+                        )}
                         </Form.Group>
                     </Form>
                 </Modal.Body>

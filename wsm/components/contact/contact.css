@@ -44,7 +44,7 @@
   }
 
   .dragNdrop {
-    border: 1px solid #0069D9;
+    border: 1px solid #0069d9;
     text-align: center;
     padding: 20px;
     transition: 0.5s;
@@ -52,9 +52,21 @@
   }
 
   .dragNdrop:hover {
-    background-color: #0069D9;
+    background-color: #0069d9;
     color: white;
     cursor: pointer;
   }
 
+  .erreur-form {
+    margin-top: 5px;
+    color: crimson;
+  }
+
+  .form-invalide {
+    border: 1px solid crimson;
+  }
+
+  .form-valide {
+    border: 1px solid gainsboro;
+  }
 }

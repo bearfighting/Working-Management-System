@@ -8,19 +8,16 @@ import SupprimerContact from "./supprimer_contact";
 import DetailContact from "./detail_contact";
 import ImporterContact from "./importer_contact";
 import "./contact.css";
+import "./../commun/commun.css"
 import { CSVLink } from "react-csv";
 
-export default function TableauDeContacts() {
+export default function TableauDeContacts({outilsId}) {
 
     let listeDeContacts = [{}];
 
-    /** TODO :
-     * Il faudrait donner l'id du tableau associé avec l'utilisateur
-     * Un user peut avoir plus d'un tableau de contact.
-     */
-    useEffect(() => {
+     useEffect(() => {
         const fetchContact = async () => {
-            const response = await axios.get("http://localhost:3000/api/gestion-contact/tableau/1");
+            const response = await axios.get("http://localhost:3000/api/gestion-contact/tableau/" + outilsId);
             setContacts(response.data.contacts);
         };
         fetchContact();
@@ -71,7 +68,7 @@ export default function TableauDeContacts() {
             <div className="bouton-groupe">
                 <Button className="bouton-ajouter" variant="success" onClick={() => setModalAjouterShow(true)}><BsFillPersonPlusFill className="icon-espacement-avec-texte"/>Ajouter</Button>
                 <Button className="bouton-importer" variant="secondary" onClick={() => setModalImporterShow(true)}><BsFileEarmarkArrowDown className="icon-espacement-avec-texte"/>Importer</Button>
-                <CSVLink data={contacts}><Button className="bouton-exporter" variant="secondary"><BsFileEarmarkArrowUp className="icon-espacement-avec-texte"/>Exporter</Button></CSVLink>
+                <CSVLink data={contacts}><Button disabled={contacts.length == 0} className="bouton-exporter" variant="secondary"><BsFileEarmarkArrowUp className="icon-espacement-avec-texte"/>Exporter</Button></CSVLink>
                 <ImporterContact
                     show={modalImporterShow}
                     onHide={() => setModalImporterShow(false)}

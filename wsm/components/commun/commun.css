@@ -1,0 +1,76 @@
+@media all and (min-width: 480px) {
+    
+  .flex-container {
+    display: flex;
+}
+
+  .flex-child {
+      flex: 1;
+  }  
+
+    .bouton-espacement {
+      margin-right: 10px;
+    }
+  
+    .bouton-groupe {
+      display: flex;
+    }
+  
+    .bouton-ajouter {
+      margin-right: auto;
+      margin-bottom: 10px;
+    }
+  
+    .bouton-importer {
+      margin-left: auto;
+      margin-bottom: 10px;
+    }
+  
+    .bouton-exporter {
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .icon-espacement-avec-texte {
+      margin-right: 10px;
+      margin-bottom: 5px;
+    }
+  
+    .icon-espacement-sans-texte {
+      margin-bottom: 5px;
+    }
+  
+    .dragNdrop {
+      border: 1px solid #0069d9;
+      text-align: center;
+      padding: 20px;
+      transition: 0.5s;
+      border-radius: 5px;
+    }
+  
+    .dragNdrop:hover {
+      background-color: #0069d9;
+      color: white;
+      cursor: pointer;
+    }
+  
+    .erreur-form {
+      margin-top: 5px;
+      color: crimson;
+    }
+  
+    .form-invalide {
+      border: 1px solid crimson;
+    }
+  
+    .form-valide {
+      border: 1px solid gainsboro;
+    }
+
+    .modal-header, 
+    .modal-footer {
+      background-color: #F7F7F7;
+    }
+
+  }
+  

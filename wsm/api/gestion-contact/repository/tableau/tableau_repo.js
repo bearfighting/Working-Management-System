@@ -1,4 +1,4 @@
-const Repository = require("../repository");
+const Repository = require("../../../commun/repository");
 
 class TableauRepo extends Repository{
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./contact.css";
+import "./../commun/commun.css"
 
 export default function SupprimerContact(props) {
     const { contact, contacts, onHide } = props;

@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./contact.css";
+import "./../commun/commun.css"
 
 export default function AjouterModifierContact(props) {
     const { contact, onHide} = props;

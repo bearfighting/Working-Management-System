@@ -1,4 +1,4 @@
-import knex from "../../knex_bd";
+import knex from "../knex_bd";
 
 class Repository {
 

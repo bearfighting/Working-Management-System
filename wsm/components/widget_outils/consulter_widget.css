@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC');
 
+.accordion{
+  margin: 10px 0;
+}
+
 #container-widget-contact col{
     margin-top: 5px;
 }
@@ -8,7 +12,7 @@
     width: 100px;
     height: 100px;
     background-color: white;
-    margin: auto;
+    margin: 7px auto;
     border-radius: 20px;
     border: 2px solid #555;
     position: relative;

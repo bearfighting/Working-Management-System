@@ -67,8 +67,7 @@
       border: 1px solid gainsboro;
     }
 
-    .modal-header, 
-    .modal-footer {
+    .modal-header {
       background-color: #F7F7F7;
     }
 

@@ -65,7 +65,7 @@ export default function ConsulterWidget() {
                             <div className="fontAwesome">
                                 <FontAwesomeIcon icon={faPlus} />
                             </div>
-                            <img src={require('../../static/contact_dashed.png')} />
+                            <img src={require('../../static/contactDashed.png')} />
                         </div>
                     </Col>
                 </Row>

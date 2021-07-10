@@ -120,7 +120,7 @@ export default function ModalAjouterWidget(props) {
                         </div>
                     </div>
                     <div className="flex-child">
-                        <h2 style={{textAlign:"center", marginBottom: "25px"}}>Aperçus</h2>
+                        <h2 style={{textAlign:"center", marginBottom: "25px"}}>Aperçu</h2>
                         <div className="widget-container" style={{backgroundColor: `${couleur.background}`}}>
                             <p>{titre}</p>
                             <img src={imageApercus} />

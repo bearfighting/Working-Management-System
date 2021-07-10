@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navi from './components/navi';
-import Accueil from './components/accueil';
+import AccueilPublic from './components/accueil_principal/accueil_public';
 
 export default function App(props) {
   const [connecte, setConnecte] = useState(false);
@@ -20,7 +20,7 @@ export default function App(props) {
         <Navi connecte={connecte} />
       </header>
       <main style={{ height: "90%" }}>
-        <Accueil props={props} />
+        <AccueilPublic props={props} />
       </main>
     </>
   )

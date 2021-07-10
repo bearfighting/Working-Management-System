@@ -1,0 +1,63 @@
+.container .row{
+    margin: 100px auto;
+}
+
+#container-accueil{
+    max-width: 100%;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row-preview div{
+    align-self: center;
+}
+
+.row-preview img{
+    width: 100%;
+    margin: auto;
+    display: block;
+    box-shadow: 0px 0px 10px #555;
+}
+
+.row-inscription{
+    max-width: 1200px;
+}
+
+.row-inscription img{
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+    display: block;
+}
+
+.row-inscription div{
+    padding: 16px;
+    align-self: center;
+}
+
+.row-presentation{
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
+#container-accueil h1{
+    font-size: 2.75rem;
+    line-height: 1.18181818;
+    margin-bottom: 16px;
+}
+
+#container-accueil h2{
+    font-size: 2.25rem;
+    line-height: 1.33333;
+}
+
+#container-accueil p{
+    font-size: 1.25rem;
+    letter-spacing: .3px;
+    line-height: 1.4;
+}
+

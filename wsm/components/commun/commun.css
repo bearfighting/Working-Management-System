@@ -78,5 +78,9 @@
       user-select: none;
     }
 
+    .accordion .card-header:hover {
+      cursor: pointer;
+    }
+
   }
   

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC');
+
+.accordion{
+  margin: 10px 0;
+}
+
+#container-widget-contact col{
+    margin-top: 5px;
+}
+
+.widget-container{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    margin: 7px auto;
+    border-radius: 20px;
+    border: 2px solid #555;
+    position: relative;
+    text-align: center;
+    box-shadow: 3px 3px 1px #555;
+}
+
+.widget-container-ajout{
+  border: 2px dashed black;
+}
+
+.widget-container .fontAwesome{
+    margin: auto;
+    margin-top: 5px;
+    font-size: 25px;
+    color: black;
+}
+
+.widget-container:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #555;
+}
+
+.widget-container p{
+    line-height: 1;
+    height: 50px;
+    margin-top: 5px;
+    color: black;
+    font-family: 'Bowlby One SC', cursive;
+    font-size: 16px;
+    overflow-wrap: break-word;
+}
+
+.widget-container img{
+    width: 50%;
+    position: absolute;
+    left: 25%;
+    bottom: 1px;
+}
+
+
+
+
+
+
+.cd-panel {
+    visibility: visible;
+    transition: visibility 0s 0.6s;
+  }
+  
+  .cd-panel.cd-panel--is-visible {
+    visibility: visible;
+    transition: visibility 0s 0s;
+  }
+
+  .cd-panel--from-right .cd-panel__header {
+    right: 0;
+  }
+  
+  .cd-panel--from-left .cd-panel__header {
+    left: 0;
+  }
+  
+  .cd-panel--is-visible .cd-panel__header {
+    transition: transform 0.3s 0.3s;
+    transform: translateY(0px);
+  }
+  
+  .cd-panel__container {
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    top: 0;
+    transition: transform 0.3s 0.3s;
+    background-color: cadetblue;
+  }
+  
+  .cd-panel--from-right .cd-panel__container {
+    right: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  
+  .cd-panel--from-left .cd-panel__container {
+    left: 0;
+    transform: translate3d(-90%, 0, 0);
+  }
+  
+  .cd-panel--is-visible .cd-panel__container {
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0s;
+  }

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navi from '../components/navi';
-import Contact from '../components/contact/contact';
+import Navi from '../../../components/navi';
+import Contact from '../../../components/contact/contact';
 
 export default function ContactPage(props) {
+
+    const id = props?.url?.params?.id;
+
     const [connecte, setConnecte] = useState(false);
 
     useEffect(() => {
@@ -20,7 +23,7 @@ export default function ContactPage(props) {
                 <Navi connecte={connecte} />
             </header>
             <main style={{ height: "90%" }}>
-                <Contact />
+                <Contact outilsId={id} />
             </main>
         </>
     )

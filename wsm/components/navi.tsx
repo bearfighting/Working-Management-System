@@ -21,7 +21,6 @@ export default function Navi({ connecte }) {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/">Accueil</Nav.Link>
-          <Nav.Link href="/pages/contact">Contact</Nav.Link>
           <Nav.Link href="/pages/tache">Tâche</Nav.Link>
           <Nav.Link href="/pages/budget">Budget</Nav.Link>
         </Nav>

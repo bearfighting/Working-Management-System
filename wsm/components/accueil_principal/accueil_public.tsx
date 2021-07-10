@@ -1,4 +1,4 @@
-import { Container,Row, Col, Button } from "react-bootstrap";
+import { Container,Row, Col } from "react-bootstrap";
 import "./accueil_public.css";
 
 
@@ -11,7 +11,7 @@ export default function AccueilPublic({ props }) {
                 <Col md={6} xs={12}>
                     <div>
                         <h1>L'outil de gestion personnel n° 1 pour votre gestion du temps</h1>
-                        <Button>Créer un compte gratuitement</Button>
+                        <a href="/pages/inscription" className="btn btn-primary">Créer un compte gratuitement</a>
                     </div>
                 </Col>
                 <Col md={6} xs={12}>

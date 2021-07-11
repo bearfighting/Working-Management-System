@@ -4,7 +4,6 @@ import "../contact.css";
 import "../../commun/commun.css"
 
 export default function Contact(test) {
-    console.log
     return (
         <div>
             <h1 className="header">Liste de Contacts</h1>

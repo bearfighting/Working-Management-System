@@ -1,6 +1,9 @@
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../static/logo.png';
+
+import { 
+  baniere, 
+} from "../static"
 
 import Login from './login';
 
@@ -15,14 +18,11 @@ export default function Navi({ connecte }) {
   }
 
   return (
-    <Navbar bg="light" expand="lg">
-      {/* <Navbar.Brand href="/"><img style={{ height: 50, width: 50 }} src={logo} alt="Logo" /></Navbar.Brand> */}
+    <Navbar style={{backgroundColor:"#646ECB"}} expand="lg">
+      {<Navbar.Brand href="/"><img style={{ width: 200 }} src={baniere} alt="Logo" /></Navbar.Brand> }
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/">Accueil</Nav.Link>
-          <Nav.Link href="/pages/tache">Tâche</Nav.Link>
-          <Nav.Link href="/pages/budget">Budget</Nav.Link>
         </Nav>
         {connecte ?
           <Button onClick={handleDeconnecter}>Déconnecter</Button>

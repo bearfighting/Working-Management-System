@@ -1,6 +1,11 @@
 import { Container,Row, Col } from "react-bootstrap";
 import "./accueil_public.css";
-
+import { 
+    logo_front_page, 
+    preview_contact, 
+    tache_logo, 
+    tache_logo_dashed  
+} from "../../static"
 
 export default function AccueilPublic({ props }) {
 
@@ -16,7 +21,7 @@ export default function AccueilPublic({ props }) {
                 </Col>
                 <Col md={6} xs={12}>
                     <div>
-                        <img src={require('../../static/logo2.png')} />        
+                        <img src={logo_front_page} />        
                     </div>
                 </Col>
             </Row>
@@ -33,7 +38,7 @@ export default function AccueilPublic({ props }) {
             <Row className="row-preview">
                 <Col md={8} xs={12}>
                     <div>
-                        <img src={require('../../static/preview_contact.png')} />        
+                        <img src={preview_contact} />        
                     </div>
                 </Col>
                 <Col md={4} xs={12}>
@@ -78,14 +83,14 @@ export default function AccueilPublic({ props }) {
                 </Col>
                 <Col md={8} xs={12}>
                     <div>
-                        <img src={require('../../static/preview_contact.png')} />        
+                        <img src={preview_contact} />        
                     </div>
                 </Col>
             </Row>
             <Row className="row-preview">
                 <Col md={8} xs={12}>
                     <div>
-                        <img src={require('../../static/preview_contact.png')} />        
+                        <img src={preview_contact} />        
                     </div>
                 </Col>
                 <Col md={4} xs={12}>

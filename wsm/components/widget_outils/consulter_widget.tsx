@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Accordion, Card } from "react-bootstrap";
 import axios from "axios";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import "./consulter_widget.css";
 import ModalAjouterWidget from "./modal_ajout_widget";
 import AccordeonWidget from "./accordeon_widget";
@@ -59,13 +57,13 @@ export default function ConsulterWidget() {
             <AccordeonWidget 
                 titre={"Gestion de vos tâches"}
                 listeElements={obtenirListeSelonType("GestionContact")}
-                type="GestionContact"
+                type="GestionTache"
                 setEstModalVisible={setEstModalVisible}
             />
             <AccordeonWidget 
                 titre={"Gestion de vos comptes bancaire"}
                 listeElements={obtenirListeSelonType("GestionContact")}
-                type="GestionContact"
+                type="GestionBanque"
                 setEstModalVisible={setEstModalVisible}
             />
         </Container>

@@ -1,13 +1,16 @@
 @media all and (min-width: 480px) {
     
-  html, body{
-    margin: 0 !important;
-    min-height: 100vh !important;
+  body, html{
+    min-height: 100vh;
+  }
+
+  .flex-container-min-height {
+    display: flex;
+    min-height: 88.9vh;
   }
 
   .flex-container {
     display: flex;
-    min-height: 100vh;
   }
 
   .flex-child {

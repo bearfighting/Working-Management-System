@@ -35,14 +35,23 @@ const obtenirImageSelonType = (type) => {
     }
 }
 
-const defaultColeur = "#d4ebf2";
+const getRandomColor = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
 
-export default function ModalAjouterWidget({listeOutils, type, ...props}) {
+    return color;
+  }
+
+
+export default function ModalAjouterWidget({listeOutils, type, state, ...props}) {
     
-    const { onHide } = props;
+    let defaultCouleur = getRandomColor();
 
     const [titre, setTitre] = useState("");
-    const [couleur, setCouleur] = useState({background: defaultColeur});
+    const [couleur, setCouleur] = useState({background: defaultCouleur});
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -61,12 +70,12 @@ export default function ModalAjouterWidget({listeOutils, type, ...props}) {
         if(status >= 200 && status < 300){
             listeOutils.push(data);
             resetForm();
-            onHide();
+            handleClose();
         }else{
             // TODO : Quand c'est pas bon
         }
 
-    }, [listeOutils, onHide]);
+    }, [listeOutils]);
 
     function onSubmit() {
         const nouvelOutils = {
@@ -81,13 +90,20 @@ export default function ModalAjouterWidget({listeOutils, type, ...props}) {
 
     function resetForm(){
         setTitre("");
-        setCouleur({background: defaultColeur});
+        defaultCouleur = getRandomColor();
+        setCouleur({background: defaultCouleur});
+    }
+
+    function handleClose(){
+        state();
+        resetForm();
     }
 
     return (
         <div>
             <Modal
                 {...props}
+                onHide={handleClose}
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
                 >
@@ -129,7 +145,7 @@ export default function ModalAjouterWidget({listeOutils, type, ...props}) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={onSubmit}>Ajouter</Button>
-                    <Button variant="outline-primary" onClick={onHide}>Close</Button>
+                    <Button variant="outline-primary" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </div>

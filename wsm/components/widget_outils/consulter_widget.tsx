@@ -32,7 +32,7 @@ export default function ConsulterWidget() {
 
     useEffect(() => {
         const fetchOutils = async () => {
-            const response = await axios.get("http://localhost:3000/api/outils");
+            const response = await axios.get("http://localhost:3000/api/outils/1");
             setListeGestionContact(response.data.gestion_contact);
             setListeGestionTache(response.data.gestion_tache);
             setListeGestionBanque(response.data.gestion_banque);
@@ -42,7 +42,7 @@ export default function ConsulterWidget() {
 
     return (
         <>
-        <ModalAjouterWidget 
+        <ModalAjouterWidget
             type={estModalVisible.type}
             listeOutils={obtenirListeSelonType(estModalVisible.type)}
             show={estModalVisible.show}
@@ -50,19 +50,19 @@ export default function ConsulterWidget() {
         />
 
         <Container id="container-widget-contact">
-            <AccordeonWidget 
+            <AccordeonWidget
                 titre={"Gestion de vos contacts"}
                 listeElements={obtenirListeSelonType("GestionContact")}
                 type="GestionContact"
                 setEstModalVisible={setEstModalVisible}
             />
-            <AccordeonWidget 
+            <AccordeonWidget
                 titre={"Gestion de vos tâches"}
                 listeElements={obtenirListeSelonType("GestionContact")}
                 type="GestionContact"
                 setEstModalVisible={setEstModalVisible}
             />
-            <AccordeonWidget 
+            <AccordeonWidget
                 titre={"Gestion de vos comptes bancaire"}
                 listeElements={obtenirListeSelonType("GestionContact")}
                 type="GestionContact"

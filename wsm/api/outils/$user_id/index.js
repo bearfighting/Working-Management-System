@@ -1,9 +1,12 @@
-import gestion_erreur from "../gestion_erreur/erreurs";
+import gestion_erreur from "../../gestion_erreur/erreurs";
 
-const { outils_service } = require("./service");
+const { outils_service } = require("../service");
 
 async function method_get({req, res}){
-    const contact = await outils_service.select_all(1);
+    const user_id = req.params.user_id;
+
+    const contact = await outils_service.select_all(user_id);
+
     res.send(contact);
 }
 
@@ -13,7 +16,7 @@ module.exports = async function(req, res) {
 
     switch(method){
         case "GET": await method_get({req, res});break;
-        default: 
+        default:
             res.status(404);
             res.send();
     }

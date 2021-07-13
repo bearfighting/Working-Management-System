@@ -22,7 +22,7 @@ class ContactService {
     }
 
     async creation_all(body) {
-        const contacts = await this.#contact_repo.ajouter_plusieurs(body);
+        const contacts = await this.#contact_repo.creer_plusieurs(body);
         return contacts;
     }
 

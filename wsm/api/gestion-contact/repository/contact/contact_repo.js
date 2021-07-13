@@ -109,26 +109,21 @@ class ContactRepo extends Repository {
         return [];
     }
 
-    async ajouter_plusieurs(body) {
-        const { data } = body;
-        const { contacts, idsTableau } = data;
+    async creer_plusieurs(body) {
+        const { contacts } = body;
         let liste_erreur = [];
 
         console.log("contacts", contacts);
-        console.log("idsTableau", idsTableau);
 
-        idsTableau.forEach(id => {
-            contacts.forEach(contact => {
-                contact.id_tableau = id;
-                const contact_trouve = await this.trouver_si_unique(-1, contact);
-                console.log("contact_trouve", contact_trouve);
-                if(contact_trouve.length > 0) {
-                    liste_erreur.push(contact);
-                } else {
-                    this.creer(contact);
-                }
-            });
-        });
+        for(const contact of contacts) {
+            const contact_trouve = await this.trouver_si_unique(-1, contact);
+            console.log("contact_trouve", contact_trouve);
+            if(contact_trouve.length > 0) {
+                liste_erreur.push(contact);
+            } else {
+                this.creer(contact);
+            }
+        }
 
         return liste_erreur;
     }

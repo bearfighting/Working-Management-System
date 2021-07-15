@@ -35,6 +35,14 @@ class ContactService {
         return await this.#contact_repo.supprimer(id);
     }
 
+    async epurer_contacts_non_valide(body, liste_erreur) {
+        const { contacts } = body;
+
+        let contact_valide = contacts.filter(x => !liste_erreur.includes(x));
+
+        return contact_valide;
+    }
+
 }
 
 module.exports = ContactService;

@@ -26,6 +26,17 @@ class ContactValidateur {
         return [_.isEmpty(erreur), erreur];
     }
 
+    async valider_requete_multiple(req) {
+
+        const { body } = req;
+
+        let erreur = "";
+
+        erreur = await this.#valider_post_multiple(body);
+
+        return [_.isEmpty(erreur), erreur];
+    }
+
     async #valider_delete(contact_id){
 
         if(await !this.#est_un_nombre(contact_id)){
@@ -75,7 +86,7 @@ class ContactValidateur {
         return "";
     }
 
-    async valider_post_multiple(body) {
+    async #valider_post_multiple(body) {
 
         const { contacts } = body;
 
@@ -88,6 +99,22 @@ class ContactValidateur {
         }
 
         return "";
+    }
+
+    async trouver_contacts_non_valide(body) {
+
+        let liste = [];
+        const { contacts } = body;
+
+        for(const contact of contacts) {
+            const contacts = await this.#contact_repo.trouver_si_unique(-1, contact);
+
+            if(contacts.length > 0) {
+                liste.push(contact);
+            }
+        }
+
+        return liste;
     }
 
     async #valider_get_by_id(contact_id){

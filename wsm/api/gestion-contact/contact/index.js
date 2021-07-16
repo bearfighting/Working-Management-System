@@ -23,7 +23,7 @@ async function method_post({req, res}){
         const contacts_valide = await contact_service.epurer_contacts_non_valide(body, contacts_non_valide);
 
         await contact_service.creation_all(contacts_valide);
-        res.send(liste_erreur);
+        res.send(contacts_valide);
 
     } else {
         // Ajout d'un seul contact

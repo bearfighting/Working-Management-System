@@ -35,10 +35,10 @@ class ContactService {
         return await this.#contact_repo.supprimer(id);
     }
 
-    async epurer_contacts_non_valide(body, liste_erreur) {
+    async epurer_contacts_non_valide(body, contacts_non_valide) {
         const { contacts } = body;
 
-        let contact_valide = contacts.filter(x => !liste_erreur.includes(x));
+        let contact_valide = contacts.filter(x => !contacts_non_valide.includes(x));
 
         return contact_valide;
     }

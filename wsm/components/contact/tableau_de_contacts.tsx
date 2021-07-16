@@ -11,18 +11,21 @@ import "./contact.css";
 import "./../commun/commun.css"
 import { CSVLink } from "react-csv";
 
-export default function TableauDeContacts({outilsId}) {
+export default function TableauDeContacts({outilsId, userId}) {
 
-     useEffect(() => {
+    useEffect(() => {
         const fetchContact = async () => {
             const response = await axios.get("http://localhost:3000/api/gestion-contact/tableau/" + outilsId);
             setContacts(response.data.contacts);
         };
         fetchContact();
 
+    }, []);
+
+    useEffect(() => {
         const fetchTableau = async () => {
-            const response = await axios.get("http://localhost:3000/api/outils/1");
-            setTableaux(response.data.tableaux);
+            const response = await axios.get("http://localhost:3000/api/outils/" + userId);
+            setTableaux(response.data.gestion_contact);
         };
         fetchTableau();
 
@@ -75,7 +78,9 @@ export default function TableauDeContacts({outilsId}) {
                 <CSVLink data={contacts}><Button disabled={contacts.length == 0} className="bouton-exporter" variant="secondary"><BsFileEarmarkArrowUp className="icon-espacement-avec-texte"/>Exporter</Button></CSVLink>
                 <ImporterContact
                     show={modalImporterShow}
+                    contacts={contacts}
                     tableaux={tableaux}
+                    outilsId={outilsId}
                     onHide={() => setModalImporterShow(false)}
                 />
             </div>

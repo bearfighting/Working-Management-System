@@ -12,5 +12,4 @@ module.exports = (req, res) => {
     } else {
         res.sendStatus(403);
     }
-
 }

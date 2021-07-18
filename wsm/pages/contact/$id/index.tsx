@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navi from '../../../components/navi';
 import Contact from '../../../components/contact/contact';
+import SidebarMenu from "../../../components/navigation/side_bar_menu";
 
 export default function ContactPage(props) {
 
@@ -26,7 +27,14 @@ export default function ContactPage(props) {
                 <Navi connecte={connecte} />
             </header>
             <main style={{ height: "90%" }}>
-                <Contact outilsId={outilsId} userId={userId}/>
+                <div className="flex-container-min-height">
+                    <div className="flex-child side-nav-container">
+                        <SidebarMenu />
+                    </div>
+                    <div className="flex-child">
+                        <Contact outilsId={outilsId} userId={userId}/>
+                    </div>
+                </div>
             </main>
         </>
     )

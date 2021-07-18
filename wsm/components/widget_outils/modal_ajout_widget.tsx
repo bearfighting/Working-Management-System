@@ -5,15 +5,16 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { BlockPicker } from 'react-color'
 import "./../commun/commun";
-
-const imgContact = require('../../static/contact.png');
-const imgBanque = require('../../static/contact.png');
-const imgTache = require('../../static/contact.png');
+import { 
+    contact_logo, 
+    tache_logo,
+    banque_logo,
+} from "../../static"
 
 const obtenirTitreSelonType = (type) => {
     switch(type){
         case "GestionContact": return "Ajouter Contact";
-        case "GestionTâche": return "Ajouter Tâche";
+        case "GestionTache": return "Ajouter Tâche";
         case "GestionBanque": return "Ajouter Banque";
     }
 }
@@ -21,29 +22,36 @@ const obtenirTitreSelonType = (type) => {
 const obtenirRouteAPIselonType = (type) => {
     switch(type){
         case "GestionContact": return "http://localhost:3000/api/outils/gestion-contact";
-        case "GestionTâche": return "http://localhost:3000/api/outils/gestion-tache";
+        case "GestionTache": return "http://localhost:3000/api/outils/gestion-tache";
         case "GestionBanque": return "http://localhost:3000/api/outils/gestion-banque";
     }
 }
 
 const obtenirImageSelonType = (type) => {
     switch(type){
-        case "GestionContact": return imgContact;
-        case "GestionTâche": return imgBanque;
-        case "GestionBanque": return imgBanque;
+        case "GestionContact": return contact_logo;
+        case "GestionTache": return tache_logo;
+        case "GestionBanque": return banque_logo;
     }
 }
 
-export default function ModalAjouterWidget(props) {
-    
-    const { onHide, type, listeOutils } = props;
+const getRandomColor = () => {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
 
-    
-    const titreSection = obtenirTitreSelonType(type);
-    const imageApercus = obtenirImageSelonType(type);
+    return color;
+  }
 
-    const [titre, setTitre] = useState();
-    const [couleur, setCouleur] = useState({background: '#fff'});
+
+export default function ModalAjouterWidget({listeOutils, type, state, ...props}) {
+    
+    let defaultCouleur = getRandomColor();
+
+    const [titre, setTitre] = useState("");
+    const [couleur, setCouleur] = useState({background: defaultCouleur});
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -62,12 +70,12 @@ export default function ModalAjouterWidget(props) {
         if(status >= 200 && status < 300){
             listeOutils.push(data);
             resetForm();
-            onHide();
+            handleClose();
         }else{
             // TODO : Quand c'est pas bon
         }
 
-    }, [listeOutils, onHide]);
+    }, [listeOutils]);
 
     function onSubmit() {
         const nouvelOutils = {
@@ -82,19 +90,26 @@ export default function ModalAjouterWidget(props) {
 
     function resetForm(){
         setTitre("");
-        setCouleur({background: '#fff'});
+        defaultCouleur = getRandomColor();
+        setCouleur({background: defaultCouleur});
+    }
+
+    function handleClose(){
+        state();
+        resetForm();
     }
 
     return (
         <div>
             <Modal
                 {...props}
+                onHide={handleClose}
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
                 >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        {titreSection}
+                        {obtenirTitreSelonType(type)}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -123,14 +138,14 @@ export default function ModalAjouterWidget(props) {
                         <h2 style={{textAlign:"center", marginBottom: "25px"}}>Aperçu</h2>
                         <div className="widget-container" style={{backgroundColor: `${couleur.background}`}}>
                             <p>{titre}</p>
-                            <img src={imageApercus} />
+                            <img src={ obtenirImageSelonType(type)} />
                         </div>
                     </div>
                 </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={onSubmit}>Ajouter</Button>
-                    <Button variant="outline-primary" onClick={onHide}>Close</Button>
+                    <Button variant="outline-primary" onClick={handleClose}>Close</Button>
                 </Modal.Footer>
             </Modal>
         </div>

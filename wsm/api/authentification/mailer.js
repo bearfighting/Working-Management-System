@@ -7,6 +7,8 @@ module.exports = (req, res) => {
     const resultat = await user_repo.findUser({ email });
 
     if (resultat) {
+        const { id } = resultat[0];
+
         const transporter = nodemailer.createTransport(smtpTransport({
             service: 'gmail',
             host: 'smtp.gmail.com',
@@ -18,9 +20,9 @@ module.exports = (req, res) => {
 
         const mailOptions = {
             from: 'miaxingyuanyuan@gmail.com', // sender address
-            to: 'florentxingwenfeng@gmail.com', // list of receivers
+            to: email, // list of receivers
             subject: 'test mail', // Subject line
-            html: '<h1>this is a test mail.</h1>'// plain text body
+            html: `<h1>http://localhost:3000/pages/reinitmp/${id}</h1>`// plain text body
         };
 
         transporter.sendMail(mailOptions, function (err, info) {

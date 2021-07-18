@@ -11,6 +11,7 @@ async function method_post({req, res}){
         // Ajout de plusieurs contacts
         const [est_valide, erreur] = await contact_validateur.valider_requete_multiple(req);
 
+        console.log(erreur);
         if(!est_valide){
             gestion_erreur(res, erreur);
             return;
@@ -22,8 +23,8 @@ async function method_post({req, res}){
 
         const contacts_valide = await contact_service.epurer_contacts_non_valide(body, contacts_non_valide);
 
-        await contact_service.creation_all(contacts_valide);
-        res.send(contacts_valide);
+        const contact_ajoutes = await contact_service.creation_all(contacts_valide);
+        res.send(contact_ajoutes);
 
     } else {
         // Ajout d'un seul contact

@@ -23,7 +23,12 @@ class ContactService {
 
     async creation_all(body) {
         const contacts = await this.#contact_repo.creer_plusieurs(body);
-        return contacts;
+        let contacts_ajoutes = []
+        console.log(contacts);
+        for(const contact_id of contacts) {
+            contacts_ajoutes.push(await this.#contact_repo.get_by_id(contact_id));
+        }
+        return contacts_ajoutes;
     }
 
     async modification(body, id){

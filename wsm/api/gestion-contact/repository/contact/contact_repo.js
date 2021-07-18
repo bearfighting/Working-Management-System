@@ -111,12 +111,13 @@ class ContactRepo extends Repository {
 
     async creer_plusieurs(body) {
         const contacts = body;
+        let contact_ids = [];
 
         for(const contact of contacts) {
-            this.creer(contact);
+            contact_ids.push(await this.creer(contact));
         }
 
-        return contacts;
+        return contact_ids;
     }
 }
 

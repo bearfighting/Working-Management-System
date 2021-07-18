@@ -11,7 +11,7 @@ export default function ImporterContact(props) {
     const { contacts, tableaux, outilsId, onHide } = props;
     const [isFichierValid, setIsFichierValid] = useState(true);
     const [contactsAImporter, setContactsAImporter] = useState([{}]);
-    const [tableauxChoisis, setTableauxChoisis] = useState([outilsId]);
+    const [tableauxChoisis, setTableauxChoisis] = useState([outilsId.toString()]);
 
     const onDrop = useCallback((acceptedFiles) => {
         let contactsAImporter = []
@@ -25,22 +25,17 @@ export default function ImporterContact(props) {
             const texte = reader.result.toString();
             const lignes = texte.split("\n");
             for(let i = 0; i < lignes.length; i++) {
+                const ligne_epurer = epurer_ligne(lignes[i]);
+                const data = ligne_epurer.split(",");
+
                 if (i === 0) {
                     // Valider l'entête des colonnes
-                    const estValide = validerFichiers(lignes[i])
+                    const estValide = validerColonnes(data)
                     setIsFichierValid(estValide);
                     if (!estValide) return;
                 } else {
                     // Créer le body de la requête post
-                    const ligne_epurer = epurer_ligne(lignes[i]);
-                    const data = ligne_epurer.split(",");
-                    const contact = {
-                        nom : data[1],
-                        prenom : data[2],
-                        courriel : data[3],
-                        adresse : data[4],
-                        telephone : data[5],
-                    };
+                    const contact = getContact(data);
                     contactsAImporter.push(contact);
                 }
             }
@@ -51,17 +46,35 @@ export default function ImporterContact(props) {
         setContactsAImporter(contactsAImporter);
     }, [])
 
-    function validerFichiers(ligne) {
-        return isFichierValid;
-    }
-
     function epurer_ligne(ligne) {
         for(let i = 0; i < ligne.length; i++) {
-            if(ligne[i] === "\\" || ligne[i] === "\"") {
+            if(ligne[i] === "\\" || ligne[i] === "\"" || ligne[i] === "\'") {
                 ligne = ligne.replace(ligne[i], "");
             }
         }
         return ligne;
+    }
+
+    function validerColonnes(data) {
+        const colonnes = {
+            nom : data[1],
+            prenom : data[2],
+            courriel : data[3],
+            adresse : data[4],
+            telephone : data[5],
+        };
+        return(colonnes.nom === "nom" && colonnes.prenom === "prenom" && colonnes.courriel === "courriel" && colonnes.adresse === "adresse" && colonnes.telephone === "telephone");
+    }
+
+    function getContact(data) {
+        const contact = {
+            nom : data[1],
+            prenom : data[2],
+            courriel : data[3],
+            adresse : data[4],
+            telephone : data[5],
+        };
+        return contact;
     }
 
     const {acceptedFiles, fileRejections, getRootProps, getInputProps} = useDropzone({onDrop, accept: ".csv"});
@@ -82,9 +95,16 @@ export default function ImporterContact(props) {
         { value: tableau.id, label: tableau.titre }
     ));
 
-    function onImporter() {
-        //setTableauxChoisis
+    function onChange(values, { action, removedValue }) {
+        console.log(values);
+        const tableauIds = []
+        for(const value of values) {
+            tableauIds.push(value.value.toString());
+        }
+        setTableauxChoisis(tableauIds);
+    }
 
+    function onImporter() {
         for(const tableauId of tableauxChoisis) {
             for(const contact of contactsAImporter) {
                 contact.id_tableau = tableauId;
@@ -94,12 +114,20 @@ export default function ImporterContact(props) {
     }
 
     const handlePost = useCallback( async (contacts) => {
+        console.log("handlePost");
         const {status, data} = await axios.post("http://localhost:3000/api/gestion-contact/contact", contacts);
 
-        if(status >= 200 && status < 300){
-            contacts.push(data);
+        console.log("data", data);
+        console.log("status", status);
+        if (status >= 200 && status < 300) {
+            console.log(data)
+            for(const contact of data) {
+                //contacts.push(contact);
+            }
             onHide();
-        }else{
+            console.log("Succès", data);
+        } else {
+            console.log("Échec", data);
             // TODO : Quand c'est pas bon
         }
 
@@ -125,7 +153,7 @@ export default function ImporterContact(props) {
                         </div>
 
                         <aside>
-                            {files.length > 0 &&
+                            {isFichierValid && files.length > 0 &&
                             <div className="alert alert-success">
                                 <h4>{files.length == 0 ? "" : files.length == 1 ? "Ficher accepté" : "Fichiers acceptés"}</h4>
                                 <ul>{files}</ul>
@@ -139,16 +167,25 @@ export default function ImporterContact(props) {
                                 <p>{fileRejectionItems.length > 1 ? "Les fichiers doivent" : "Le fichier doit"} être un CSV</p>
                             </div>
                             }
+
+                            {!isFichierValid &&
+                            <div className="alert alert-danger">
+                                <p>{isFichierValid ? "" : "Le nom des colonnes doit avoir le format suivant: nom, prenom, courriel, adresse, telephone."}</p>
+                            </div>
+                            }
+
                         </aside>
                     </section>
                     <div>
                         <Select
+                            isMulti
                             options={options}
+                            onChange={onChange}
                         />
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" onClick={onImporter}>Importer</Button>
+                    <Button variant="primary" disabled={!isFichierValid} onClick={onImporter}>Importer</Button>
                     <Button variant="outline-primary" onClick={onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>

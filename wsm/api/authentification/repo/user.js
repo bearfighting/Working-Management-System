@@ -12,6 +12,10 @@ class User {
         return await this._db(this._table).where({ email }).select();
     }
 
+    async findUserById({ id }) {
+        return await this._db(this._table).where({ id }).select();
+    }
+
     async updateUser({ user }) {
         return await this._db(this._table).where({ email: user.email }).update({ user });
     }

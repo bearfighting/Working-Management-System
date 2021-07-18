@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 
+const user_repo = require("./repo");
+
 module.exports = (req, res) => {
     const { email } = req.body;
 

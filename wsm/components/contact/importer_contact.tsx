@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useDropzone } from 'react-dropzone'
 import Select from 'react-select';
+import ImporterConfirmation from './importer_confirmation';
 import "./contact.css";
 import "./../commun/commun.css"
 
@@ -12,6 +13,7 @@ export default function ImporterContact(props) {
     const [isFichierValid, setIsFichierValid] = useState(true);
     const [contactsAImporter, setContactsAImporter] = useState([{}]);
     const [tableauxChoisis, setTableauxChoisis] = useState([outilsId.toString()]);
+    const [modalConfirmationShow, setModalConfirmationShow] = useState({show: false, contacts: {}})
 
     const onDrop = useCallback((acceptedFiles) => {
         let contactsAImporter = []
@@ -124,6 +126,7 @@ export default function ImporterContact(props) {
             for(const contact of data) {
                 //contacts.push(contact);
             }
+            setModalConfirmationShow({show: true, contacts: contacts})
             onHide();
             console.log("Succès", data);
         } else {
@@ -135,6 +138,13 @@ export default function ImporterContact(props) {
 
     return (
         <div>
+            <>
+                <ImporterConfirmation>
+                    contacts={modalConfirmationShow.contacts}
+                    show={modalConfirmationShow.show}
+                    onHide={() => setModalConfirmationShow({show: false, contacts: {}})}
+                </ImporterConfirmation>
+            </>
             <Modal
                 {...props}
                 aria-labelledby="contained-modal-title-vcenter"

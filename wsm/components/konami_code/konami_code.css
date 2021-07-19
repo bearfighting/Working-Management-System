@@ -1,0 +1,31 @@
+.container-konami-code{
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.konami-logo{
+    position: fixed;
+    width: 30%;
+    top: 15%;
+    left: 32%;
+    transition: 10s linear all;
+}
+
+.is-hidden{
+   display: none;
+   opacity: 0;
+}
+
+.is-active{
+    background-color: rgba(255, 255, 255, 1);
+    transition: background-color 1s ease;
+}
+
+@-webkit-keyframes container-konami-code {  
+    0% { background-color: rgba(255, 255, 255, 0); }
+    100% { background-color: rgba(255, 255, 255, 1); }
+  }

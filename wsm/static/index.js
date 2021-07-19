@@ -6,6 +6,7 @@ module.exports = {
     banque_logo_dashed:     defaultPath + "banque_logo_dashed.png",
     contact_logo:           defaultPath + "contact_logo.png",
     contact_logo_dashed:    defaultPath + "contact_logo_dashed.png",
+    konami_logo:            defaultPath + "konami.png",
     logo_front_page:        defaultPath + "logo2.png",
     logo_pinterest:         defaultPath + "pinterest.png",
     preview_contact:        defaultPath + "preview_contact.png",

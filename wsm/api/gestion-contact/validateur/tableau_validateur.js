@@ -1,6 +1,6 @@
-const _ = require("lodash");
+const Validateur = require("../../commun/validateur");
 
-class TableauValidateur {
+class TableauValidateur extends Validateur {
 
     #tableau_repo;
 
@@ -22,7 +22,7 @@ class TableauValidateur {
 
     async #valider_get_by_id(id_tableau){
 
-        if(await !this.#est_un_nombre(id_tableau)){
+        if(!this.est_un_nombre(id_tableau)){
             return "errCheminInvalid"
         }
 
@@ -33,10 +33,6 @@ class TableauValidateur {
         }
 
         return "";
-    }
-
-    async #est_un_nombre(contact_id){
-        return /^\d+$/.test(contact_id);
     }
 
 }

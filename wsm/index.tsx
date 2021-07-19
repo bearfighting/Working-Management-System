@@ -12,6 +12,7 @@ import {
   faGooglePlusG,
   faTwitter
 } from '@fortawesome/free-brands-svg-icons'
+import KonamiCode from "./components/konami_code/konami_code";
 
 export default function App(props) {
   const [connecte, setConnecte] = useState(false);
@@ -26,6 +27,7 @@ export default function App(props) {
 
   return (
     <>
+      <KonamiCode />
       <header>
         <Navi connecte={connecte} />
       </header>

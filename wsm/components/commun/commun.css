@@ -1,6 +1,6 @@
 @media all and (min-width: 480px) {
-    
-  body, html{
+  body,
+  html {
     min-height: 100vh;
   }
 
@@ -14,14 +14,14 @@
   }
 
   .flex-child {
-      flex: 1;
+    flex: 1;
   }
 
   .side-nav-container {
     max-width: 60px;
   }
 
-  .container-nav{
+  .container-nav {
     max-width: 320px;
     left: 0;
   }
@@ -86,11 +86,11 @@
   }
 
   .modal-header {
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
   }
 
   .accordion {
-    -webkit-user-select: none; /* Chrome/Safari */ 
+    -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
     user-select: none;
@@ -100,5 +100,18 @@
     cursor: pointer;
   }
 
+  .avatar-icon {
+    width: 50px;
+    border-radius: 50%;
+  }
+
+  #dropdown-basic::after {
+    display: none;
+  }
+
+  .center {
+    display: "flex";
+    align-items: "center";
+    justify-content: "center";
+  }
 }
-  

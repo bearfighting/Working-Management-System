@@ -1,9 +1,11 @@
 const _ = require("lodash");
+const Validateur = require("../../commun/validateur");
 
-class ContactValidateur {
+class ContactValidateur extends Validateur {
     #contact_repo;
 
     constructor(contact_repo){
+        super();
         this.#contact_repo = contact_repo;
     }
 
@@ -28,7 +30,7 @@ class ContactValidateur {
 
     async #valider_delete(contact_id){
 
-        if(await !this.#est_un_nombre(contact_id)){
+        if(!this.est_un_nombre(contact_id)){
             return "errCheminInvalid"
         }
 
@@ -43,7 +45,7 @@ class ContactValidateur {
 
     async #valider_patch(contact_id, body){
 
-        if(await !this.#est_un_nombre(contact_id)){
+        if(!this.est_un_nombre(contact_id)){
             return "errCheminInvalid"
         }
 
@@ -77,7 +79,7 @@ class ContactValidateur {
 
     async #valider_get_by_id(contact_id){
 
-        if(await !this.#est_un_nombre(contact_id)){
+        if(!this.est_un_nombre(contact_id)){
             return "errCheminInvalid"
         }
 
@@ -99,10 +101,6 @@ class ContactValidateur {
         }
 
         return true;
-    }
-
-    async #est_un_nombre(contact_id){
-        return /^\d+$/.test(contact_id);
     }
 }
 

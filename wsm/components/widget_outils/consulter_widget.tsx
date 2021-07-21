@@ -64,15 +64,7 @@ export default function ConsulterWidget() {
 
     useEffect(() => {
         const fetchOutils = async () => {
-
-            const data = {
-                nom: "test",
-                prenom: "test",
-                courriel: "test@test.com",         
-            }
-
             const response = await axios.get("http://localhost:3000/api/outils");
-            const tt = await axios.patch("http://localhost:3000/api/profil", data);
             setListeGestionContact(response.data.gestion_contact);
             setListeGestionTache(response.data.gestion_tache);
             setListeGestionBanque(response.data.gestion_banque);
@@ -91,7 +83,7 @@ export default function ConsulterWidget() {
 
         <div className="container-page-widget">
 
-            <Card>
+            <Card className="nos-services">
             <Card.Header><h2>Nos Services</h2></Card.Header>
             <Card.Body>
                 <Row>

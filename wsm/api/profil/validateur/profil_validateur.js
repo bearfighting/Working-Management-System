@@ -12,15 +12,17 @@ class ProfilValidateur extends Validateur {
     async valider_requete(req) {
         const {body, method, user} = req;
 
-        let erreur = "";
+        let erreur = this.valider_user_authentifier(user);
 
-        if (method === "GET") {
-            erreur = await this.#valider_get_by_id(user);
-        }else if(method === "PATCH"){
-            erreur = await this.#valider_patch(body, user);
-        }
-        else if(method === "DELETE"){
-            erreur = await this.#valider_delete(user);
+        if(_.isEmpty(erreur)){
+            if (method === "GET") {
+                erreur = await this.#valider_get_by_id(user);
+            }else if(method === "PATCH"){
+                erreur = await this.#valider_patch(body, user);
+            }
+            else if(method === "DELETE"){
+                erreur = await this.#valider_delete(user);
+            }
         }
 
         return [_.isEmpty(erreur), erreur];

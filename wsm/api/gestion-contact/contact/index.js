@@ -18,7 +18,17 @@ async function method_post({req, res}){
 }
 
 async function method_get({req, res}){
-    const contact = await contact_service.select_all(1);
+
+    const [est_valide, erreur] = await contact_validateur.valider_requete(req);
+
+    if(!est_valide){
+        gestion_erreur(res, erreur);
+        return;
+    }
+
+    const {user} = req;
+
+    const contact = await contact_service.select_all(user.id);
     res.send(contact);
 }
 

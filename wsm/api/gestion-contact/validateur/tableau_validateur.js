@@ -11,12 +11,14 @@ class TableauValidateur extends Validateur {
     }
 
     async valider_requete(req) {
-        const {body, method, params} = req;
+        const {body, method, params, user} = req;
 
-        let erreur = "";
+        let erreur = this.valider_user_authentifier(user);
 
-        if (method === "GET" && params.id_contact) {
-            erreur = await this.#valider_get_by_id(params.id_tableau);
+        if(_.isEmpty(erreur)){
+            if (method === "GET" && params.id_contact) {
+                erreur = await this.#valider_get_by_id(params.id_tableau);
+            }
         }
 
         return [_.isEmpty(erreur), erreur];

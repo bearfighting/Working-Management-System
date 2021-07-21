@@ -42,9 +42,7 @@ async function method_patch({req, res}){
     }
 
     const profil = await profil_service.modification(req);
-
-    console.log(profil);
-
+    
     res.send(profil);
 }
 

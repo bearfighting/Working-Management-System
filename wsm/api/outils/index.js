@@ -13,7 +13,9 @@ async function method_get({req, res}){
         return;
     }*/
 
-    const contact = await outils_service.select_all(1);
+    const {user} = req;
+
+    const contact = await outils_service.select_all(user.id);
     res.send(contact);
 }
 

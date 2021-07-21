@@ -88,3 +88,13 @@ a:link {
 .contact-icon:hover, .tache-icon:hover, .banque-icon:hover{
     color: #646ECB;
 }
+
+.nos-services{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.nos-services .card-header{
+    background-color: white;
+}

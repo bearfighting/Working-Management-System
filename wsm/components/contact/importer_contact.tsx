@@ -4,16 +4,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useDropzone } from 'react-dropzone'
 import Select from 'react-select';
-import ImporterConfirmation from './importer_confirmation';
 import "./contact.css";
 import "./../commun/commun.css"
 
 export default function ImporterContact(props) {
     const { contacts, tableaux, outilsId, onHide } = props;
+
     const [isFichierValid, setIsFichierValid] = useState(true);
     const [contactsAImporter, setContactsAImporter] = useState([{}]);
     const [tableauxChoisis, setTableauxChoisis] = useState([outilsId.toString()]);
-    const [modalConfirmationShow, setModalConfirmationShow] = useState({show: false, contacts: {}})
 
     const onDrop = useCallback((acceptedFiles) => {
         let contactsAImporter = []
@@ -97,8 +96,7 @@ export default function ImporterContact(props) {
         { value: tableau.id, label: tableau.titre }
     ));
 
-    function onChange(values, { action, removedValue }) {
-        console.log(values);
+    function onChange(values) {
         const tableauIds = []
         for(const value of values) {
             tableauIds.push(value.value.toString());
@@ -107,30 +105,32 @@ export default function ImporterContact(props) {
     }
 
     function onImporter() {
-        for(const tableauId of tableauxChoisis) {
-            for(const contact of contactsAImporter) {
-                contact.id_tableau = tableauId;
+        let nouveauxContact = []
+        for(const contact of contactsAImporter) {
+            for(const tableauId of tableauxChoisis) {
+                const nouveauContact = {
+                    nom: contact.nom,
+                    prenom: contact.prenom,
+                    courriel: contact.courriel,
+                    adresse: contact.adresse,
+                    telephone: contact.telephone,
+                    id_tableau: tableauId
+                }
+                nouveauxContact.push(nouveauContact);
             }
         }
-        handlePost({contacts: contactsAImporter});
+        handlePost(nouveauxContact);
     }
 
-    const handlePost = useCallback( async (contacts) => {
-        console.log("handlePost");
-        const {status, data} = await axios.post("http://localhost:3000/api/gestion-contact/contact", contacts);
+    const handlePost = useCallback( async (nouveauxContact) => {
+        const {status, data} = await axios.post("http://localhost:3000/api/gestion-contact/contact", {contacts: nouveauxContact});
 
-        console.log("data", data);
-        console.log("status", status);
         if (status >= 200 && status < 300) {
-            console.log(data)
             for(const contact of data) {
-                //contacts.push(contact);
+                contacts.push(contact);
             }
-            setModalConfirmationShow({show: true, contacts: contacts})
             onHide();
-            console.log("Succès", data);
         } else {
-            console.log("Échec", data);
             // TODO : Quand c'est pas bon
         }
 
@@ -138,13 +138,6 @@ export default function ImporterContact(props) {
 
     return (
         <div>
-            <>
-                <ImporterConfirmation>
-                    contacts={modalConfirmationShow.contacts}
-                    show={modalConfirmationShow.show}
-                    onHide={() => setModalConfirmationShow({show: false, contacts: {}})}
-                </ImporterConfirmation>
-            </>
             <Modal
                 {...props}
                 aria-labelledby="contained-modal-title-vcenter"

@@ -14,6 +14,7 @@ class ContactRepo extends Repository {
         adresse: "ctc_adresse",
         courriel: "ctc_courriel",
         telephone: "ctc_telephone",
+        id_tableau: "gtc_id",
     };
 
     async get_by_id(id) {

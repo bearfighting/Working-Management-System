@@ -92,7 +92,6 @@ class ContactValidateur {
 
         for(const contact of contacts) {
             const est_valide = await this.#est_champ_obligatoire_present(contact);
-            console.log(est_valide, contact);
             if(!est_valide) {
                 return "errRequeteInvalide";
             }
@@ -135,7 +134,6 @@ class ContactValidateur {
     async #est_champ_obligatoire_present(body){
 
         const {nom, prenom, id_tableau} = body;
-        console.log(nom, prenom, id_tableau);
         if(_.isEmpty(nom) || _.isEmpty(prenom) || _.isEmpty(id_tableau)){
             return false;
         }

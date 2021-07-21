@@ -11,7 +11,6 @@ async function method_post({req, res}){
         // Ajout de plusieurs contacts
         const [est_valide, erreur] = await contact_validateur.valider_requete_multiple(req);
 
-        console.log(erreur);
         if(!est_valide){
             gestion_erreur(res, erreur);
             return;

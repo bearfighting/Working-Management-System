@@ -1,5 +1,6 @@
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './commun/commun.css';
 
 import { 
   baniere, 
@@ -19,17 +20,17 @@ export default function Navi({ connecte }) {
 
   return (
     <Navbar style={{backgroundColor:"#646ECB"}} expand="lg">
-      {<Navbar.Brand href="/"><img style={{ width: 200 }} src={baniere} alt="Logo" /></Navbar.Brand> }
+      {<Navbar.Brand href={`${connecte ? "/pages/accueil" : "/"}`}><img style={{ width: 200, boxShadow: "0px 0px 10px #555" }} src={baniere} alt="Logo" /></Navbar.Brand> }
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
         </Nav>
         {connecte ?
-          <Button onClick={handleDeconnecter}>Déconnecter</Button>
+          <Button className="btn button-navi" onClick={handleDeconnecter}>Déconnecter</Button>
           :
           <>
-            <Nav.Link style={{ marginRight: 10 }} href="/pages/inscription" className="btn btn-primary">Inscrire</Nav.Link>
-            <Nav.Link style={{ marginRight: 10 }} href="/pages/login" className="btn btn-primary">Connecter</Nav.Link>
+            <Nav.Link href="/pages/inscription" className="btn button-navi">S'inscrire</Nav.Link>
+            <Nav.Link href="/pages/login" className="btn button-navi">Connecter</Nav.Link>
           </>}
       </Navbar.Collapse>
     </Navbar>

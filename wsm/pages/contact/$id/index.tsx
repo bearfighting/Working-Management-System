@@ -27,7 +27,7 @@ export default function ContactPage(props) {
                 <Navi connecte={connecte} />
             </header>
             <main style={{ height: "90%" }}>
-                <div className="flex-container-min-height">
+                <div className="flex-container">
                     <div className="flex-child side-nav-container">
                         <SidebarMenu />
                     </div>

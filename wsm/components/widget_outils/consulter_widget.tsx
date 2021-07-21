@@ -28,8 +28,6 @@ export default function ConsulterWidget() {
 
     const obtenirListeSelonType = (type) => {
 
-        console.log(listeGestionContact);
-
         switch(type){
             case "GestionContact": return listeGestionContact;
             case "GestionTache": return listeGestionTache;
@@ -85,7 +83,7 @@ export default function ConsulterWidget() {
 
         <div className="container-page-widget">
 
-            <Card>
+            <Card className="nos-services">
             <Card.Header><h2>Nos Services</h2></Card.Header>
             <Card.Body>
                 <Row>

@@ -1,20 +1,24 @@
 const _ = require("lodash");
+const Validateur = require("../../commun/validateur");
 
-class TableauValidateur {
+class TableauValidateur extends Validateur {
 
     #tableau_repo;
 
     constructor(tableau_repo){
+        super();
         this.#tableau_repo = tableau_repo
     }
 
     async valider_requete(req) {
-        const {body, method, params} = req;
+        const {body, method, params, user} = req;
 
-        let erreur = "";
+        let erreur = this.valider_user_authentifier(user);
 
-        if (method === "GET" && params.id_contact) {
-            erreur = await this.#valider_get_by_id(params.id_tableau);
+        if(_.isEmpty(erreur)){
+            if (method === "GET" && params.id_contact) {
+                erreur = await this.#valider_get_by_id(params.id_tableau);
+            }
         }
 
         return [_.isEmpty(erreur), erreur];
@@ -22,7 +26,7 @@ class TableauValidateur {
 
     async #valider_get_by_id(id_tableau){
 
-        if(await !this.#est_un_nombre(id_tableau)){
+        if(!this.est_un_nombre(id_tableau)){
             return "errCheminInvalid"
         }
 
@@ -34,11 +38,6 @@ class TableauValidateur {
 
         return "";
     }
-
-    async #est_un_nombre(contact_id){
-        return /^\d+$/.test(contact_id);
-    }
-
 }
 
 module.exports = TableauValidateur;

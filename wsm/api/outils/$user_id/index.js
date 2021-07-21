@@ -1,12 +1,21 @@
 import gestion_erreur from "../../gestion_erreur/erreurs";
 
-const { outils_service } = require("../service");
+const { outils_validateur } = require("./validateur");
+const { outils_service } = require("./service");
 
 async function method_get({req, res}){
-    const user_id = req.params.user_id;
 
-    const contact = await outils_service.select_all(user_id);
+    // TODO : Plante pour une raison inconnu
+    /*const [est_valide, erreur] = await outils_validateur.valider_requete(req);
 
+    if(!est_valide){
+        gestion_erreur(res, erreur);
+        return;
+    }*/
+
+    const {user} = req;
+
+    const contact = await outils_service.select_all(user.id);
     res.send(contact);
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, } from "react-bootstrap";
+import { Row, Col, } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navi from './components/navi';
 import AccueilPublic from './components/accueil_principal/accueil_public';
@@ -23,6 +23,10 @@ export default function App(props) {
       setConnecte(false);
     }
   }, [props]);
+
+  if (connecte){
+    window.location.href = '/pages/accueil';
+  }
 
   return (
     <>

@@ -19,6 +19,10 @@ module.exports = async function gestion_erreur(res, erreur){
             res.status(404); 
             message = "Ce chemin n'existe pas";
         break;
+        case "errActionNonAutorisee": 
+            res.status(401); 
+            message = "Vous devez être authentifier pour effectuer cette opération";
+        break;
         default: 
             res.status(404); 
             message = "Problème serveur, veuillez communiquer avec l'équipe.";

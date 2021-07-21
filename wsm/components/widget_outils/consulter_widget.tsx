@@ -28,8 +28,6 @@ export default function ConsulterWidget() {
 
     const obtenirListeSelonType = (type) => {
 
-        console.log(listeGestionContact);
-
         switch(type){
             case "GestionContact": return listeGestionContact;
             case "GestionTache": return listeGestionTache;
@@ -66,7 +64,15 @@ export default function ConsulterWidget() {
 
     useEffect(() => {
         const fetchOutils = async () => {
+
+            const data = {
+                nom: "test",
+                prenom: "test",
+                courriel: "test@test.com",         
+            }
+
             const response = await axios.get("http://localhost:3000/api/outils");
+            const tt = await axios.patch("http://localhost:3000/api/profil", data);
             setListeGestionContact(response.data.gestion_contact);
             setListeGestionTache(response.data.gestion_tache);
             setListeGestionBanque(response.data.gestion_banque);

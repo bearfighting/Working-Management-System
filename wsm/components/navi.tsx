@@ -19,7 +19,7 @@ export default function Navi({ connecte }) {
 
   return (
     <Navbar style={{backgroundColor:"#646ECB"}} expand="lg">
-      {<Navbar.Brand href="/"><img style={{ width: 200 }} src={baniere} alt="Logo" /></Navbar.Brand> }
+      {<Navbar.Brand href={`${connecte ? "/pages/accueil" : "/"}`}><img style={{ width: 200 }} src={baniere} alt="Logo" /></Navbar.Brand> }
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

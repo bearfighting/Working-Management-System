@@ -6,6 +6,15 @@ class Validateur {
         return /^\d+$/.test(nombre);
     }
 
+    valider_user_authentifier(user){
+
+        if(_.isNil(user.id)){
+            return "errActionNonAutorisee";
+        }
+
+        return "";
+    }
+
 }
 
 module.exports = Validateur;

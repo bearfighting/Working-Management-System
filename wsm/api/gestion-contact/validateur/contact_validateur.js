@@ -10,21 +10,22 @@ class ContactValidateur extends Validateur {
     }
 
     async valider_requete(req) {
-        const {body, method, params} = req;
+        const {body, method, params, user} = req;
 
-        let erreur = "";
+        let erreur = this.valider_user_authentifier(user);
 
-        if (method === "GET" && params.id_contact) {
-            erreur = await this.#valider_get_by_id(params.id_contact);
-        }else if (method === "POST") {
-            erreur = await this.#valider_post(body);
-        }else if(method === "PATCH"){
-            erreur = await this.#valider_patch(params.id_contact, body);
+        if(_.isEmpty(erreur)){
+            if (method === "GET" && params.id_contact) {
+                erreur = await this.#valider_get_by_id(params.id_contact);
+            }else if (method === "POST") {
+                erreur = await this.#valider_post(body);
+            }else if(method === "PATCH"){
+                erreur = await this.#valider_patch(params.id_contact, body);
+            }
+            else if(method === "DELETE"){
+                erreur = await this.#valider_delete(params.id_contact);
+            }
         }
-        else if(method === "DELETE"){
-            erreur = await this.#valider_delete(params.id_contact);
-        }
-
         return [_.isEmpty(erreur), erreur];
     }
 

@@ -319,10 +319,11 @@
   
 
 .toggleNav{
-    cursor: pointer;
-    width: 100%;
-    background-color: #303DA5;
-    height: 100%;
+  position: fixed;
+  cursor: pointer;
+  width: 60px;
+  background-color: #303DA5;
+  height: 100%;
 }
 
 .side-nav-container-absolute {

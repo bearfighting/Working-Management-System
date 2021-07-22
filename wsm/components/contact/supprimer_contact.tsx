@@ -39,7 +39,7 @@ export default function SupprimerContact(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="danger" onClick={() => handleDelete(contact.id)}>Supprimer</Button>
-                    <Button variant="outline-primary" onClick={onHide}>Close</Button>
+                    <Button variant="outline-primary" onClick={onHide}>Annuler</Button>
                 </Modal.Footer>
             </Modal>
         </div>

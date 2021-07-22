@@ -26,7 +26,7 @@ export default function DetailContact(props) {
                     Numéro de téléphone : {contact.telephone}<br/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="outline-primary" onClick={onHide}>Close</Button>
+                    <Button variant="outline-primary" onClick={onHide}>Fermer</Button>
                 </Modal.Footer>
             </Modal>
         </div>

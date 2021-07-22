@@ -13,14 +13,22 @@ import { CSVLink } from "react-csv";
 
 export default function TableauDeContacts({outilsId}) {
 
-    let listeDeContacts = [{}];
-
-     useEffect(() => {
+    useEffect(() => {
         const fetchContact = async () => {
             const response = await axios.get("http://localhost:3000/api/gestion-contact/tableau/" + outilsId);
             setContacts(response.data.contacts);
         };
         fetchContact();
+
+    }, []);
+
+    useEffect(() => {
+        const fetchTableau = async () => {
+            const response = await axios.get("http://localhost:3000/api/outils");
+            setTableaux(response.data.gestion_contact);
+        };
+        fetchTableau();
+
     }, []);
 
     const defaultModalState = {
@@ -28,16 +36,14 @@ export default function TableauDeContacts({outilsId}) {
         contact: {}
     }
 
-    const [contacts, setContacts] = useState(listeDeContacts);
+    const [contacts, setContacts] = useState([{}]);
+    const [tableaux, setTableaux] = useState([{}]);
     const [modalAjouterShow, setModalAjouterShow] = useState(false);
     const [modalModifierShow, setModalModifierShow] = useState(defaultModalState);
     const [modalSupprimerShow, setModalSupprimerShow] = useState(defaultModalState);
     const [modalDetailShow, setModalDetailShow] = useState(defaultModalState)
     const [modalImporterShow, setModalImporterShow] = useState(false);
-    const [modalExporterShow, setModalExporterShow] = useState(false);
 
-
-    
     return (
         <div className="contact">
             <>
@@ -62,6 +68,7 @@ export default function TableauDeContacts({outilsId}) {
                     show={modalAjouterShow}
                     isAjouter={true}
                     contact={contacts}
+                    tableaux={tableaux}
                     onHide={() => setModalAjouterShow(false)}
                 />
             </>
@@ -71,6 +78,9 @@ export default function TableauDeContacts({outilsId}) {
                 <CSVLink data={contacts}><Button disabled={contacts.length == 0} className="bouton-exporter" variant="secondary"><BsFileEarmarkArrowUp className="icon-espacement-avec-texte"/>Exporter</Button></CSVLink>
                 <ImporterContact
                     show={modalImporterShow}
+                    contacts={contacts}
+                    tableaux={tableaux}
+                    outilsId={outilsId}
                     onHide={() => setModalImporterShow(false)}
                 />
             </div>

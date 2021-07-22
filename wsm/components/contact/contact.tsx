@@ -19,7 +19,7 @@ export default function Contact({outilsId}) {
     return (
         <div>
             <h1 className="header">{`Liste de Contacts : ${gestion_contact ? gestion_contact.titre : ""}`}</h1>
-            <TableauDeContacts outilsId={outilsId}/>
+            <TableauDeContacts outilsId={outilsId} />
         </div>
     )
 }

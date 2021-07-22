@@ -1,24 +1,18 @@
 
-class Contact {
+class Profil {
     constructor(data) {
-        this.id = data.id;
+        this.user_id = data.user_id;
         this.nom = data.nom;
         this.prenom = data.prenom;
         this.courriel = data.courriel;
-        this.adresse = data.adresse;
-        this.telephone = data.telephone;
-        this.id_tableau = data.id_tableau;
     }
 
     format_instance() {
         return {
-            id: this.id,
+            user_id: this.user_id,
             nom: this.nom,
             prenom: this.prenom,
             courriel: this.courriel,
-            adresse: this.adresse,
-            telephone: this.telephone,
-            id_tableau: this.id_tableau
         };
     }
 
@@ -27,4 +21,4 @@ class Contact {
     }
 }
 
-module.exports = Contact;
+module.exports = Profil;

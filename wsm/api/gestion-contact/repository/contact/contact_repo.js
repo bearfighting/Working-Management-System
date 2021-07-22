@@ -14,6 +14,7 @@ class ContactRepo extends Repository {
         adresse: "ctc_adresse",
         courriel: "ctc_courriel",
         telephone: "ctc_telephone",
+        id_tableau: "gtc_id",
     };
 
     async get_by_id(id) {
@@ -54,7 +55,7 @@ class ContactRepo extends Repository {
                         query_builder.where("ctc_courriel", "=", courriel);
                     }
                 }
-            });         
+            });
         }
 
         const contacts = await this.#get_from_db(qb);
@@ -107,6 +108,17 @@ class ContactRepo extends Repository {
     async supprimer(id){
         await this.trx(this.nom_table).delete().where({ctc_id: id});
         return [];
+    }
+
+    async creer_plusieurs(body) {
+        const contacts = body;
+        let contact_ids = [];
+
+        for(const contact of contacts) {
+            contact_ids.push(await this.creer(contact));
+        }
+
+        return contact_ids;
     }
 }
 

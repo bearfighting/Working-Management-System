@@ -5,6 +5,7 @@ exports.up = function (knex) {
     table.string('nom');
     table.string('prenom');
     table.string('email');
+    table.boolean('est_actif');
     table.string('mots_de_passe');
   })
 };

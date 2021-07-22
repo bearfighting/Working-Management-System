@@ -5,7 +5,7 @@ import "./consulter_widget.css";
 import ModalAjouterWidget from "./modal_ajout_widget";
 import AccordeonWidget from "./accordeon_widget";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { 
+import {
     faAddressBook,
     faTasks,
     faCoins
@@ -38,26 +38,26 @@ export default function ConsulterWidget() {
     const setServiceSelonType = (type) => {
 
         switch(type){
-            case "GestionContact": 
+            case "GestionContact":
                 setServiceSelectionner({
                     titre: "Gestion de vos contacts",
                     listeItem : listeGestionContact,
                     type: type
-                }); 
+                });
             break;
             case "GestionTache":
                 setServiceSelectionner({
                     titre: "Gestion de vos tâches",
                     listeItem : listeGestionTache,
                     type: type
-                });     
+                });
             break;
             case "GestionBanque":
                 setServiceSelectionner({
                     titre: "Gestion de vos comptes",
                     listeItem : listeGestionBanque,
                     type: type
-                }); 
+                });
             break;
         }
     }
@@ -74,7 +74,7 @@ export default function ConsulterWidget() {
 
     return (
         <>
-        <ModalAjouterWidget 
+        <ModalAjouterWidget
             type={estModalVisible.type}
             listeOutils={obtenirListeSelonType(estModalVisible.type)}
             show={estModalVisible.show}
@@ -101,7 +101,7 @@ export default function ConsulterWidget() {
             </Card>
 
             {serviceSelectionner.type && (
-                <AccordeonWidget 
+                <AccordeonWidget
                 titre={serviceSelectionner.titre}
                 listeElements={serviceSelectionner.listeItem}
                 type={serviceSelectionner.type}

@@ -8,7 +8,7 @@ class OutilsService {
 
     async select_all(user_id){
         const outils = await this.#outils_repo.get_all(user_id);
-        return outils.format_instance(); 
+        return outils.format_instance();
     }
 }
 

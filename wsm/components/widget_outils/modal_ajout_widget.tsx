@@ -5,8 +5,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { BlockPicker } from 'react-color'
 import "./../commun/commun";
-import { 
-    contact_logo, 
+import {
+    contact_logo,
     tache_logo,
     banque_logo,
 } from "../../static"
@@ -47,7 +47,7 @@ const getRandomColor = () => {
 
 
 export default function ModalAjouterWidget({listeOutils, type, state, ...props}) {
-    
+
     let defaultCouleur = getRandomColor();
 
     const [titre, setTitre] = useState("");
@@ -56,7 +56,7 @@ export default function ModalAjouterWidget({listeOutils, type, state, ...props})
     function handleSubmit(event) {
         event.preventDefault();
     }
-    
+
     function handleChangeComplete(color) {
         setCouleur({ background: color.hex });
     };
@@ -80,7 +80,6 @@ export default function ModalAjouterWidget({listeOutils, type, state, ...props})
     function onSubmit() {
         const nouvelOutils = {
             // Va falloir changer ça pour l'id du tableau en question
-            user_id: 1,
             titre: titre,
             bg_couleur: couleur.background
         }
@@ -128,9 +127,9 @@ export default function ModalAjouterWidget({listeOutils, type, state, ...props})
                     <div className="flex-container">
                     <div className="flex-child">
                         <div style={{margin: "auto", width: "170px"}}>
-                        <BlockPicker  
+                        <BlockPicker
                             color={ couleur.background }
-                            onChangeComplete={ handleChangeComplete } 
+                            onChangeComplete={ handleChangeComplete }
                         />
                         </div>
                     </div>

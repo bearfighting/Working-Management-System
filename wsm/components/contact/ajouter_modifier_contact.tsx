@@ -181,7 +181,7 @@ export default function AjouterModifierContact(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button type="submit" disabled={!validerFormulaire()} onClick={onAjouterModifier}>{isAjouter ? "Ajouter" : "Modifier"}</Button>
-                    <Button variant="outline-primary" onClick={onHide}>Close</Button>
+                    <Button variant="outline-primary" onClick={onHide}>Annuler</Button>
                 </Modal.Footer>
             </Modal>
         </div>

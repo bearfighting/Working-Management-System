@@ -29,6 +29,17 @@ class ContactValidateur extends Validateur {
         return [_.isEmpty(erreur), erreur];
     }
 
+    async valider_requete_multiple(req) {
+
+        const { body } = req;
+
+        let erreur = "";
+
+        erreur = await this.#valider_post_multiple(body);
+
+        return [_.isEmpty(erreur), erreur];
+    }
+
     async #valider_delete(contact_id){
 
         if(!this.est_un_nombre(contact_id)){
@@ -78,6 +89,36 @@ class ContactValidateur extends Validateur {
         return "";
     }
 
+    async #valider_post_multiple(body) {
+
+        const { contacts } = body;
+
+        for(const contact of contacts) {
+            const est_valide = await this.#est_champ_obligatoire_present(contact);
+            if(!est_valide) {
+                return "errRequeteInvalide";
+            }
+        }
+
+        return "";
+    }
+
+    async trouver_contacts_non_valide(body) {
+
+        let liste = [];
+        const { contacts } = body;
+
+        for(const contact of contacts) {
+            const contacts = await this.#contact_repo.trouver_si_unique(-1, contact);
+
+            if(contacts.length > 0) {
+                liste.push(contact);
+            }
+        }
+
+        return liste;
+    }
+
     async #valider_get_by_id(contact_id){
 
         if(!this.est_un_nombre(contact_id)){
@@ -96,7 +137,6 @@ class ContactValidateur extends Validateur {
     async #est_champ_obligatoire_present(body){
 
         const {nom, prenom, id_tableau} = body;
-
         if(_.isEmpty(nom) || _.isEmpty(prenom) || _.isEmpty(id_tableau)){
             return false;
         }

@@ -25,7 +25,7 @@ module.exports = async function(req, res) {
 
     switch(method){
         case "GET": await method_get({req, res});break;
-        default: 
+        default:
             res.status(404);
             res.send();
     }

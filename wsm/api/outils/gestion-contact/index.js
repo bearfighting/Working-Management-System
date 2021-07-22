@@ -12,6 +12,9 @@ async function method_post({req, res}){
         return;
     }
 
+    const { user } = req;
+    req.body.user_id = user.id;
+
     const outil = await gestion_contact_service.creation(req.body);
     res.send(outil);
 }
@@ -22,7 +25,7 @@ module.exports = async function(req, res) {
 
     switch(method){
         case "POST": await method_post({req, res});break;
-        default: 
+        default:
             res.status(404);
             res.send();
     }

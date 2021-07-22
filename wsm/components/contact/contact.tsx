@@ -4,7 +4,7 @@ import TableauDeContacts from "./tableau_de_contacts";
 import "./contact.css";
 import "./../commun/commun.css"
 
-export default function Contact({outilsId, userId}) {
+export default function Contact({outilsId}) {
 
     useEffect(() => {
         const fetchGestionContact = async () => {
@@ -19,7 +19,7 @@ export default function Contact({outilsId, userId}) {
     return (
         <div>
             <h1 className="header">{`Liste de Contacts : ${gestion_contact ? gestion_contact.titre : ""}`}</h1>
-            <TableauDeContacts outilsId={outilsId} userId={userId}/>
+            <TableauDeContacts outilsId={outilsId} />
         </div>
     )
 }

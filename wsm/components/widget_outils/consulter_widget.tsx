@@ -64,7 +64,7 @@ export default function ConsulterWidget() {
 
     useEffect(() => {
         const fetchOutils = async () => {
-            const response = await axios.get("http://localhost:3000/api/outils/1");
+            const response = await axios.get("http://localhost:3000/api/outils");
             setListeGestionContact(response.data.gestion_contact);
             setListeGestionTache(response.data.gestion_tache);
             setListeGestionBanque(response.data.gestion_banque);

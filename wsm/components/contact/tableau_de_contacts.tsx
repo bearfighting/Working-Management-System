@@ -11,7 +11,7 @@ import "./contact.css";
 import "./../commun/commun.css"
 import { CSVLink } from "react-csv";
 
-export default function TableauDeContacts({outilsId, userId}) {
+export default function TableauDeContacts({outilsId}) {
 
     useEffect(() => {
         const fetchContact = async () => {
@@ -24,7 +24,7 @@ export default function TableauDeContacts({outilsId, userId}) {
 
     useEffect(() => {
         const fetchTableau = async () => {
-            const response = await axios.get("http://localhost:3000/api/outils/" + userId);
+            const response = await axios.get("http://localhost:3000/api/outils");
             setTableaux(response.data.gestion_contact);
         };
         fetchTableau();

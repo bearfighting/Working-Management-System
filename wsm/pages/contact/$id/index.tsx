@@ -7,9 +7,7 @@ import SidebarMenu from "../../../components/navigation/side_bar_menu";
 export default function ContactPage(props) {
 
     const outilsId = props?.url?.params?.id;
-    // TO-DO, chercher le userID de la DB
-    //const userId = props?.user?.id;
-    const userId = "1";
+    const userId = props?.user?.id;
 
     const [connecte, setConnecte] = useState(false);
 
@@ -32,7 +30,7 @@ export default function ContactPage(props) {
                         <SidebarMenu />
                     </div>
                     <div className="flex-child">
-                        <Contact outilsId={outilsId} userId={userId}/>
+                        <Contact outilsId={outilsId}/>
                     </div>
                 </div>
             </main>

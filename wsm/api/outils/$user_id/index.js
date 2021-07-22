@@ -1,7 +1,7 @@
 import gestion_erreur from "../../gestion_erreur/erreurs";
 
-const { outils_validateur } = require("./validateur");
-const { outils_service } = require("./service");
+const { outils_validateur } = require("../validateur");
+const { outils_service } = require("../service");
 
 async function method_get({req, res}){
 

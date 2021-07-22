@@ -127,7 +127,9 @@ export default function ImporterContact(props) {
 
         if (status >= 200 && status < 300) {
             for(const contact of data) {
-                contacts.push(contact);
+                if(contact.id_tableau == outilsId) {
+                    contacts.push(contact);
+                }
             }
             onHide();
         } else {

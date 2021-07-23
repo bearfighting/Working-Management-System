@@ -8,6 +8,7 @@ class Contact {
         this.adresse = data.adresse;
         this.telephone = data.telephone;
         this.id_tableau = data.id_tableau;
+        this.profil_icon = data.profil_icon;
     }
 
     format_instance() {
@@ -18,7 +19,8 @@ class Contact {
             courriel: this.courriel,
             adresse: this.adresse,
             telephone: this.telephone,
-            id_tableau: this.id_tableau
+            id_tableau: this.id_tableau,
+            profil_icon: this.profil_icon
         };
     }
 

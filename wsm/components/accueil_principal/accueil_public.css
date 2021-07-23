@@ -2,7 +2,7 @@
     margin: 100px auto;
 }
 
-#container-accueil{
+.container-accueil{
     max-width: 100%;
     padding-right: 50px;
     padding-left: 50px;
@@ -14,11 +14,19 @@
     align-self: center;
 }
 
+.container .row-preview {
+    margin: 150px auto;
+}
+
+.container .row-preview:last-child {
+    margin-bottom: 100px;
+}
+
 .row-preview img{
     width: 100%;
     margin: auto;
     display: block;
-    box-shadow: 0px 0px 10px #555;
+    box-shadow: 0px 0px 5px black;
 }
 
 .row-inscription{
@@ -44,20 +52,56 @@
     margin: auto;
 }
 
-#container-accueil h1{
+.container-accueil h1{
     font-size: 2.75rem;
     line-height: 1.18181818;
     margin-bottom: 16px;
 }
 
-#container-accueil h2{
+.row-work-flow{
+    background-color: #646ECB;
+    padding: 20px 0;
+}
+
+.container-accueil h2, .row-work-flow h2{
     font-size: 2.25rem;
     line-height: 1.33333;
 }
 
-#container-accueil p{
+.container-accueil p, .row-work-flow p{
     font-size: 1.25rem;
     letter-spacing: .3px;
     line-height: 1.4;
 }
 
+.row-work-flow .flex-child {
+    color: white;
+    max-width: 50%;
+    align-self: center;
+    padding: 15px;
+}
+
+.row-work-flow .flex-container{
+    max-width: 850px;
+    margin: auto;
+}
+
+.container-accueil .row-detail{
+    max-width: 1200px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.row-detail h4{
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+}
+
+.row-detail svg{
+    color: #243858;
+    margin-bottom: 10px;
+}
+
+.row-detail p{
+    font-size: 1rem;
+}

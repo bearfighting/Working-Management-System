@@ -19,18 +19,18 @@ export default function Navi({ connecte }) {
   }
 
   return (
-    <Navbar style={{backgroundColor:"#646ECB"}} expand="lg">
-      {<Navbar.Brand href={`${connecte ? "/pages/accueil" : "/"}`}><img style={{ width: 200, boxShadow: "0px 0px 10px #555" }} src={baniere} alt="Logo" /></Navbar.Brand> }
+    <Navbar style={{backgroundColor:"#646ECB", zIndex:"10"}} expand="lg">
+      {<Navbar.Brand href="/"><img style={{ width: 200, boxShadow: "0px 0px 10px #555" }} src={baniere} alt="Logo" /></Navbar.Brand> }
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
         </Nav>
         {connecte ?
-          <Button className="btn button-navi" onClick={handleDeconnecter}>Déconnecter</Button>
+          <Button className="button-navi" onClick={handleDeconnecter}>Déconnecter</Button>
           :
           <>
-            <Nav.Link href="/pages/inscription" className="btn button-navi">S'inscrire</Nav.Link>
-            <Nav.Link href="/pages/login" className="btn button-navi">Connecter</Nav.Link>
+            <Nav.Link href="/pages/inscription" className=" button-navi">S'inscrire</Nav.Link>
+            <Nav.Link href="/pages/login" className="button-navi">Connecter</Nav.Link>
           </>}
       </Navbar.Collapse>
     </Navbar>

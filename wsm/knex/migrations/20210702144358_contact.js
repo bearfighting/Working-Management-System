@@ -8,6 +8,7 @@ exports.up = function (knex) {
     table.string('ctc_courriel');
     table.string('ctc_adresse');
     table.string('ctc_telephone');
+    table.string('ctc_profil_icon');
   })
 };
 

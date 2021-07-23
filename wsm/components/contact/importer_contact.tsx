@@ -67,6 +67,27 @@ export default function ImporterContact(props) {
         return(colonnes.nom === "nom" && colonnes.prenom === "prenom" && colonnes.courriel === "courriel" && colonnes.adresse === "adresse" && colonnes.telephone === "telephone");
     }
 
+    const random_profil_icon = () =>{
+        
+        const number = Math.floor(Math.random() * (13 - 1)) + 1;
+
+        switch(number){
+            case 1: return "male_1";
+            case 2: return "male_2";
+            case 3: return "male_3";
+            case 4: return "male_4";
+            case 5: return "male_5";
+            case 6: return "female_1";
+            case 7: return "female_2";
+            case 8: return "female_3";
+            case 9: return "female_4";
+            case 10: return "female_5";
+            case 11: return "female_6";
+            case 12: return "female_7";
+            default: return "female_1";
+        }
+    }
+
     function getContact(data) {
         const contact = {
             nom : data[1],
@@ -114,7 +135,8 @@ export default function ImporterContact(props) {
                     courriel: contact.courriel,
                     adresse: contact.adresse,
                     telephone: contact.telephone,
-                    id_tableau: tableauId
+                    id_tableau: tableauId,
+                    profil_icon: random_profil_icon(),
                 }
                 nouveauxContact.push(nouveauContact);
             }

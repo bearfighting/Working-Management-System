@@ -15,6 +15,7 @@ class ContactRepo extends Repository {
         courriel: "ctc_courriel",
         telephone: "ctc_telephone",
         id_tableau: "gtc_id",
+        profil_icon: "ctc_profil_icon"
     };
 
     async get_by_id(id) {
@@ -74,7 +75,7 @@ class ContactRepo extends Repository {
 
     async creer(body){
 
-        const { id_tableau, nom, prenom, courriel, adresse, telephone  } = body;
+        const { id_tableau, nom, prenom, courriel, adresse, telephone, profil_icon  } = body;
 
         const data = {
             gtc_id: id_tableau,
@@ -83,6 +84,7 @@ class ContactRepo extends Repository {
             ctc_courriel: courriel,
             ctc_adresse: adresse,
             ctc_telephone: telephone,
+            ctc_profil_icon: profil_icon
         }
 
         const [resultat] = await this.trx(this.nom_table).insert(data).returning("*");

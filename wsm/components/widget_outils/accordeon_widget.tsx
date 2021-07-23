@@ -1,8 +1,9 @@
 import React from "react";
-import { Row, Col, Accordion, Card, Button } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import "./consulter_widget.css";
+import "../commun/commun.css";
 import { 
     contact_logo, 
     contact_logo_dashed, 
@@ -31,7 +32,7 @@ const obtenirDashedImageSelonType = (type) => {
 export default function AccordeonWidget({listeElements, type, setEstModalVisible, titre}) {
 
     return (
-        <Card>
+        <Card className="nos-services">
         <Card.Header><h2 className="header">{titre}</h2></Card.Header>
         <Card.Body>
             <Row>

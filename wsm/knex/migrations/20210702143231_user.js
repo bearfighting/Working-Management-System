@@ -7,6 +7,11 @@ exports.up = function (knex) {
     table.string('email');
     table.boolean('est_actif');
     table.string('mots_de_passe');
+    table.string('avatar');
+    table.string('adresse');
+    table.string('telephone');
+    table.string('langue');
+    table.string('theme');
   })
 };
 

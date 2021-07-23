@@ -29,6 +29,8 @@ async function method_get({req, res}){
 
     const profil = await profil_service.select_instance(req);
 
+    console.log(profil);
+
     res.send(profil);
 }
 
@@ -42,7 +44,7 @@ async function method_patch({req, res}){
     }
 
     const profil = await profil_service.modification(req);
-    
+
     res.send(profil);
 }
 
@@ -54,7 +56,7 @@ module.exports = async function(req, res) {
         case "DELETE": await method_delete({req, res});break;
         case "GET": await method_get({req, res});break;
         case "PATCH": await method_patch({req, res});break;
-        default: 
+        default:
             res.status(404);
             res.send();
     }

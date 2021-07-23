@@ -11,5 +11,7 @@ module.exports = {
     preview_contact:        defaultPath + "preview_contact.png",
     tache_logo:             defaultPath + "tache_logo.png",
     tache_logo_dashed:      defaultPath + "tache_logo_dashed.png",
-    user_icon:              defaultPath + "user_icon.jpeg",
+    user_avatar_1:          defaultPath + "user_avatar_1.jpeg",
+    user_avatar_2:          defaultPath + "user_avatar_2.jpeg",
+    user_avatar_3:          defaultPath + "user_avatar_3.jpeg",
 }

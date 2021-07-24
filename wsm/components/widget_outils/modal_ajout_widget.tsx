@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from "react";
+import React, {useState, useCallback, useEffect} from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -10,6 +10,8 @@ import {
     tache_logo,
     banque_logo,
 } from "../../static"
+
+import user_icon from "../../static/gestion_contact";
 
 const obtenirTitreSelonType = (type) => {
     switch(type){
@@ -28,6 +30,7 @@ const obtenirRouteAPIselonType = (type) => {
 }
 
 const obtenirImageSelonType = (type) => {
+    console.log("ici :" + type);
     switch(type){
         case "GestionContact": return contact_logo;
         case "GestionTache": return tache_logo;
@@ -46,12 +49,64 @@ const getRandomColor = () => {
   }
 
 
+const randomProfilIcon = (number) =>{
+    switch(number){
+        case 1: return "male_1";
+        case 2: return "male_2";
+        case 3: return "male_3";
+        case 4: return "male_4";
+        case 5: return "male_5";
+        case 6: return "female_1";
+        case 7: return "female_2";
+        case 8: return "female_3";
+        case 9: return "female_4";
+        case 10: return "female_5";
+        case 11: return "female_6";
+        case 12: return "female_7";
+        default: return "female_1";
+    }
+}
+
+const randomNumber = () => {
+    return Math.floor(Math.random() * (13 - 1)) + 1;
+}
+
 export default function ModalAjouterWidget({listeOutils, type, state, ...props}) {
 
     let defaultCouleur = getRandomColor();
 
     const [titre, setTitre] = useState("");
     const [couleur, setCouleur] = useState({background: defaultCouleur});
+
+    const [combinaison_icon, setCombinaisonIcon] = useState({});
+
+    function obtenirCombinaisonIcon(){
+
+        const number1 = randomNumber();
+
+        let number2 = number1;
+
+        while(number2 == number1){
+            number2 = randomNumber();
+        }
+
+        let number3 = number1;
+
+        while(number3 == number1 || number3 == number2){
+            number3 = randomNumber();
+        }
+
+        setCombinaisonIcon ({
+            icon_gauche: randomProfilIcon(number1),
+            icon_millieu: randomProfilIcon(number2),
+            icon_droite: randomProfilIcon(number3),
+        })
+
+    }
+
+    useEffect(() => {
+        obtenirCombinaisonIcon();
+      }, []);
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -78,10 +133,20 @@ export default function ModalAjouterWidget({listeOutils, type, state, ...props})
     }, [listeOutils]);
 
     function onSubmit() {
-        const nouvelOutils = {
-            // Va falloir changer ça pour l'id du tableau en question
-            titre: titre,
-            bg_couleur: couleur.background
+
+        let nouvelOutils = {}
+
+        if(type === "GestionContact"){
+            nouvelOutils = {
+                titre: titre,
+                bg_couleur: couleur.background,
+                icon: combinaison_icon,
+            }    
+        }else{
+            nouvelOutils = {
+                titre: titre,
+                bg_couleur: couleur.background
+            }
         }
 
         handlePost(nouvelOutils);
@@ -120,6 +185,7 @@ export default function ModalAjouterWidget({listeOutils, type, state, ...props})
                             type="titre"
                             value={titre}
                             onChange={(e) => setTitre(e.target.value)}
+                            minLength="1"
                             maxLength="22"
                         />
                         </Form.Group>
@@ -133,11 +199,23 @@ export default function ModalAjouterWidget({listeOutils, type, state, ...props})
                         />
                         </div>
                     </div>
-                    <div className="flex-child">
+                    <div className="flex-child" onClick={()=>obtenirCombinaisonIcon()}>
                         <h2 style={{textAlign:"center", marginBottom: "25px"}}>Aperçu</h2>
                         <div className="widget-container" style={{backgroundColor: `${couleur.background}`}}>
-                            <p>{titre}</p>
-                            <img src={ obtenirImageSelonType(type)} />
+                            {type === "GestionContact" && (
+                                <>
+                                <p>{titre}</p>
+                                <img className="icon-gauche" src={user_icon[combinaison_icon.icon_gauche]} />
+                                <img className="icon-milieu" src={user_icon[combinaison_icon.icon_millieu]} />
+                                <img className="icon-droite" src={user_icon[combinaison_icon.icon_droite]} />
+                                </>
+                            )}
+                            {type !== "GestionContact" && (
+                                <>
+                                <p>{titre}</p>
+                                <img className="type-image" src={obtenirImageSelonType(type)} />
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>

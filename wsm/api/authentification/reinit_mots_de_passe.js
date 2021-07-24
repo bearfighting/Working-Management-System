@@ -1,6 +1,6 @@
 const user_repo = require("./repo");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
     const { id, mots_de_passe } = req.body;
 
     const resultat = await user_repo.findUserById({ id });

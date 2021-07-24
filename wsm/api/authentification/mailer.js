@@ -3,9 +3,8 @@ const smtpTransport = require('nodemailer-smtp-transport');
 
 const user_repo = require("./repo");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
     const { email } = req.body;
-
     const resultat = await user_repo.findUser({ email });
 
     if (resultat) {
@@ -23,15 +22,18 @@ module.exports = (req, res) => {
         const mailOptions = {
             from: 'miaxingyuanyuan@gmail.com', // sender address
             to: email, // list of receivers
-            subject: 'test mail', // Subject line
-            html: `<h1>http://localhost:3000/pages/reinitmp/${id}</h1>`// plain text body
+            subject: 'Réinitialiser ton mots de passe du WSM', // Subject line
+            html: `<h1>http://localhost:3000/pages/recup_mots_de_passe/reinit_mots_de_passe/${id}</h1>`// plain text body
         };
 
         transporter.sendMail(mailOptions, function (err, info) {
-            if (err)
+            if (err) {
+                console.log(err);
                 res.sendStatus(404);
-            else
+            }
+            else {
                 res.sendStatus(200);
+            }
         })
     } else {
         res.sendStatus(403);

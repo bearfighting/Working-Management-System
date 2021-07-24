@@ -7,4 +7,8 @@
     margin: 15% auto;
     max-width: 30%;
   }
+
+  .oublie_mots_de_passe {
+    text-align: right;
+  }
 }

@@ -17,7 +17,7 @@ class User {
     }
 
     async updateUser({ user }) {
-        return await this._db(this._table).where({ email: user.email }).update({ user });
+        return await this._db(this._table).where({ email: user.email }).update(user);
     }
 }
 

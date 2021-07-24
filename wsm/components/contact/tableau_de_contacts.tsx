@@ -11,7 +11,16 @@ import "./contact.css";
 import "./../commun/commun.css"
 import { CSVLink } from "react-csv";
 
-export default function TableauDeContacts({outilsId}) {
+import user_icon from "../../static/user_icon";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { 
+    faMobileAlt,
+    faAt,
+    faHouseUser
+  } from '@fortawesome/free-solid-svg-icons'
+
+export default function TableauDeContacts({outilsId, titre}) {
 
     useEffect(() => {
         const fetchContact = async () => {
@@ -72,48 +81,90 @@ export default function TableauDeContacts({outilsId}) {
                     onHide={() => setModalAjouterShow(false)}
                 />
             </>
-            <div className="bouton-groupe">
-                <Button className="bouton-ajouter" variant="success" onClick={() => setModalAjouterShow(true)}><BsFillPersonPlusFill className="icon-espacement-avec-texte"/>Ajouter</Button>
-                <Button className="bouton-importer" variant="secondary" onClick={() => setModalImporterShow(true)}><BsFileEarmarkArrowDown className="icon-espacement-avec-texte"/>Importer</Button>
-                <CSVLink data={contacts}><Button disabled={contacts.length == 0} className="bouton-exporter" variant="secondary"><BsFileEarmarkArrowUp className="icon-espacement-avec-texte"/>Exporter</Button></CSVLink>
-                <ImporterContact
-                    show={modalImporterShow}
-                    contacts={contacts}
-                    tableaux={tableaux}
-                    outilsId={outilsId}
-                    onHide={() => setModalImporterShow(false)}
-                />
-            </div>
-            <div>
-                <Table bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Nom de famille</th>
-                            <th>Prénom</th>
-                            <th>Courriel</th>
-                            <th>Adresse</th>
-                            <th>Numéro de téléphone</th>
-                            <th style={{ width:"13%"}}>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {contacts.map((contact, i) => (
-                            <tr key={i}>
-                                <td>{contact.nom}</td>
-                                <td>{contact.prenom}</td>
-                                <td>{contact.courriel}</td>
-                                <td>{contact.adresse}</td>
-                                <td>{contact.telephone}</td>
-                                <td>
-                                    <Button className="bouton-espacement" variant="outline-primary" onClick={() => setModalDetailShow({show: true, contact: contact})}><BsFileEarmarkText className="icon-espacement-sans-texte"/></Button>
-                                    <Button className="bouton-espacement" variant="outline-primary" onClick={() => setModalModifierShow({show: true, contact: contact})}><BsPencilSquare className="icon-espacement-sans-texte"/></Button>
-                                    <Button className="bouton-espacement" variant="outline-danger" onClick={() => setModalSupprimerShow({show: true, contact: contact})}><BsFillTrashFill className="icon-espacement-sans-texte"/></Button>
-                                </td>
-                            </tr>
+            <section id="team" className="pb-5">
+                <div className="container">
+                    <h5 className="section-title h1">{titre}</h5>
+                    <div className="bouton-groupe">
+                        <Button className="bouton-ajouter" variant="success" onClick={() => setModalAjouterShow(true)}><BsFillPersonPlusFill className="icon-espacement-avec-texte"/>Ajouter</Button>
+                        <Button className="bouton-importer" variant="secondary" onClick={() => setModalImporterShow(true)}><BsFileEarmarkArrowDown className="icon-espacement-avec-texte"/>Importer</Button>
+                        <CSVLink data={contacts}><Button disabled={contacts.length == 0} className="bouton-exporter" variant="secondary"><BsFileEarmarkArrowUp className="icon-espacement-avec-texte"/>Exporter</Button></CSVLink>
+                        <ImporterContact
+                            show={modalImporterShow}
+                            contacts={contacts}
+                            tableaux={tableaux}
+                            outilsId={outilsId}
+                            onHide={() => setModalImporterShow(false)}
+                        />
+                    </div>
+                    <div className="row">
+                        {contacts.map((contact, i) => ( 
+                        <div className="col-sm-12 col-md-6 col-lg-4" key={i}>
+                            <div className="image-flip" >
+                                <div className="mainflip flip-0">
+                                    <div className="frontside">
+                                        <div className="card">
+                                            <div className="card-body text-center">
+                                                <p><img className=" img-fluid" src={user_icon[`${contact.profil_icon}`]} alt="card image" /></p>
+                                                <h4 className="card-title">{contact.nom}<br/>{contact.prenom}</h4>
+                                                {contact.telephone && (
+                                                    <p className="card-text">
+                                                        <FontAwesomeIcon icon={faMobileAlt} />
+                                                        {contact.telephone}
+                                                    </p>
+                                                )}
+                                                {contact.courriel && (
+                                                    <p className="card-text">
+                                                        <FontAwesomeIcon icon={faAt} />
+                                                        {contact.courriel}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/*https://bootsnipp.com/snippets/92xNm */}
+                                    <div className="backside">
+                                        <div className="card">
+                                            <div className="card-body text-center mt-4">
+                                                <h4 className="card-title">{contact.nom}<br/>{contact.prenom}</h4>
+                                                {contact.telephone && (
+                                                    <p className="card-text">
+                                                        <FontAwesomeIcon icon={faMobileAlt} />
+                                                        <a href={`tel:${contact.telephone}`}>{contact.telephone}</a>
+                                                    </p>
+                                                )}
+                                                {contact.courriel && (
+                                                    <p className="card-text">
+                                                        <FontAwesomeIcon icon={faAt} />
+                                                        <a href={`mailto:${contact.courriel}`}>{contact.courriel}</a>
+                                                    </p>
+                                                )}
+                                                {contact.adresse && (
+                                                    <p className="card-text">
+                                                        <FontAwesomeIcon icon={faHouseUser} />
+                                                        {contact.adresse}
+                                                    </p>
+                                                )}
+                                                <ul className="list-inline">
+                                                    <li className="list-inline-item">
+                                                        <Button className="bouton-espacement" variant="outline-primary" onClick={() => setModalDetailShow({show: true, contact: contact})}><BsFileEarmarkText className="icon-espacement-sans-texte"/></Button>
+                                                    </li>
+                                                    <li className="list-inline-item">
+                                                        <Button className="bouton-espacement" variant="outline-primary" onClick={() => setModalModifierShow({show: true, contact: contact})}><BsPencilSquare className="icon-espacement-sans-texte"/></Button>
+                                                    </li>
+                                                    <li className="list-inline-item">
+                                                        <Button className="bouton-espacement" variant="outline-danger" onClick={() => setModalSupprimerShow({show: true, contact: contact})}><BsFillTrashFill className="icon-espacement-sans-texte"/></Button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         ))}
-                    </tbody>
-                </Table>
-            </div>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }

@@ -28,11 +28,14 @@
     height: 100px;
     background-color: white;
     margin: 7px auto;
-    border-radius: 20px;
-    border: 2px solid #555;
+    
+    border-radius: 10px;
     position: relative;
     text-align: center;
-    box-shadow: 3px 3px 1px #555;
+    overflow: hidden;
+
+    box-sizing: border-box;
+    box-shadow: 0 1px 5px 0 black;
 }
 
 .widget-container-ajout{
@@ -64,11 +67,41 @@ a:link {
     overflow-wrap: break-word;
 }
 
-.widget-container img{
+.widget-container .type-image{
     width: 50%;
     position: absolute;
     left: 25%;
     bottom: 1px;
+}
+
+
+.widget-container img{
+    position: absolute;
+    bottom: 0px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.widget-container .icon-gauche{
+    width: 55px;
+    left: -10%;
+    z-index: 1;
+}
+
+.widget-container .icon-milieu{
+    width: 60px;
+    left: 20%;
+    z-index: 3;
+    z-index: 2;
+}
+
+.widget-container .icon-droite{
+    width: 50px;
+    left: 65%;
 }
 
 .service-icon{
@@ -81,7 +114,7 @@ a:link {
 }
 
 .contact-icon, .tache-icon, .banque-icon{
-    color: #212529;
+    color: rgb(60, 60, 60);
     transition: color 0.5s ease;
 }
 
@@ -90,11 +123,16 @@ a:link {
 }
 
 .nos-services{
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    
+    border-radius: 0;
+    box-sizing: border-box;
+    box-shadow: 0 1px 1px 0;
 }
 
 .nos-services .card-header{
-    background-color: white;
+    background-color: rgba(250,250,250);
+}
+
+.nos-services .flex-child{
+    max-width: 150px;
 }

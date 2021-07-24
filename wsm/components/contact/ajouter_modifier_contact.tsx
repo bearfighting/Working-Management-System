@@ -27,6 +27,27 @@ export default function AjouterModifierContact(props) {
         setTelephone(contact?.telephone || "");
     }, [contact])
 
+    const random_profil_icon = () =>{
+        
+        const number = Math.floor(Math.random() * (13 - 1)) + 1;
+
+        switch(number){
+            case 1: return "male_1";
+            case 2: return "male_2";
+            case 3: return "male_3";
+            case 4: return "male_4";
+            case 5: return "male_5";
+            case 6: return "female_1";
+            case 7: return "female_2";
+            case 8: return "female_3";
+            case 9: return "female_4";
+            case 10: return "female_5";
+            case 11: return "female_6";
+            case 12: return "female_7";
+            default: return "female_1";
+        }
+    }
+
     const handlePatch = useCallback( async (contactId, nouveauContact) => {
         const {status, data} = await axios.patch("http://localhost:3000/api/gestion-contact/contact/" + contactId, nouveauContact);
 
@@ -36,6 +57,7 @@ export default function AjouterModifierContact(props) {
             contact.courriel = data.courriel;
             contact.adresse = data.adresse;
             contact.telephone = data.telephone;
+            contact.profil_icon = data.profil_icon;
 
             onHide();
         }else{
@@ -97,6 +119,7 @@ export default function AjouterModifierContact(props) {
             courriel: courriel,
             adresse: adresse,
             telephone: telephone,
+            profil_icon: random_profil_icon(),
         }
 
         if(isAjouter) {
@@ -181,7 +204,7 @@ export default function AjouterModifierContact(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button type="submit" disabled={!validerFormulaire()} onClick={onAjouterModifier}>{isAjouter ? "Ajouter" : "Modifier"}</Button>
-                    <Button variant="outline-primary" onClick={onHide}>Close</Button>
+                    <Button variant="outline-primary" onClick={onHide}>Annuler</Button>
                 </Modal.Footer>
             </Modal>
         </div>

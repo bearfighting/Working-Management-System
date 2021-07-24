@@ -1,11 +1,11 @@
 import ConsulterWidget from "./widget_outils/consulter_widget";
-
+import "./commun/commun.css";
 
 export default function Accueil({ props }) {
     console.log(props);
     return (
         <>
-            <h1 style={{ fontSize: 200, textAlign: "center" }}>Bienvenue {props?.user?.nom}</h1>
+            <h1 className="titre-accueil">WSM Console De Gestion</h1>
             <ConsulterWidget />
         </>
     )

@@ -12,6 +12,9 @@ class GestionContactRepo extends Repository {
         user_id: "user_id",
         titre: "gtc_titre",
         bg_couleur: "gtc_bg_couleur",
+        icon_gauche: "gtc_icon_gauche",
+        icon_millieu: "gtc_icon_millieu",
+        icon_droite: "gtc_icon_droite",        
     };
 
     async get_by_id(id) {
@@ -27,12 +30,15 @@ class GestionContactRepo extends Repository {
 
     async creer(body){
 
-        const { user_id, titre, bg_couleur } = body;
+        const { user_id, titre, bg_couleur, icon } = body;
 
         const data = {
             user_id: user_id,
             gtc_titre: titre,
             gtc_bg_couleur: bg_couleur,
+            gtc_icon_gauche: icon.icon_gauche,
+            gtc_icon_millieu: icon.icon_millieu,
+            gtc_icon_droite: icon.icon_droite,
         }
 
         const [resultat] = await this.trx(this.nom_table).insert(data).returning("*");

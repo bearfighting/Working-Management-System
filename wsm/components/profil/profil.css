@@ -1,10 +1,14 @@
+.menu {
+  margin-right: 1em;
+}
+
 .profil-page {
   width: 85%;
   margin: auto;
 }
 
 .profil-top-spacing {
-  margin-top: 20px;
+  margin-top: 2em;
 }
 
 .rowC {

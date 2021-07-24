@@ -15,7 +15,7 @@ import "../commun/commun.css";
 export default function Profil() {
 
     const [profil, setProfil] = useState({});
-    const [activeItem, setActiveItem] = useState({});
+    const [activeItem, setActiveItem] = useState('informations');
 
     function handleItemClick (e, { name }) {
         console.log(name);
@@ -33,8 +33,8 @@ export default function Profil() {
     }, []);
 
     return (
-        <div className="profil-page rowC">
-            <Menu vertical>
+        <div className="profil-page rowC profil-top-spacing">
+            <Menu vertical className="menu">
                 <Menu.Item>
                     <Menu.Header>Général</Menu.Header>
                     <Menu.Menu>

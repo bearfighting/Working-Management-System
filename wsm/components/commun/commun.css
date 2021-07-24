@@ -126,3 +126,12 @@ html {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 100;
 }
+
+.avatar {
+  width: 50px;
+  border-radius: 50%;
+}
+
+#dropdown-basic::after {
+  display: none;
+}

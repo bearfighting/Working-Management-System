@@ -46,6 +46,7 @@ export default function Login() {
             onChange={(e) => setLogin({ ...login, mots_de_passe: e.target.value })}
           />
         </Form.Group>
+        <p className="oublie_mots_de_passe"><a href="http://localhost:3000/pages/recup_mots_de_passe/mail_address">Oublier le mots de passe ?</a></p>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>

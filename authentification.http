@@ -1,0 +1,22 @@
+###
+@local_api = http://localhost:3000/api
+
+###
+POST {{local_api}}/authentification/inscription HTTP/1.1
+content-type: application/json
+
+{
+  "nom": xing,
+  "prenom": wenfeng,
+  "email": xing@gmail.com,
+  "mots_de_passe": "12345",
+}
+
+###
+POST {{local_api}}/authentification/login HTTP/1.1
+content-type: application/json
+
+{
+    "email":"xing@gmail.com",
+    "mots_de_passe":"12345"
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navbar, Nav, NavDropdown, Image } from 'react-bootstrap';
+import { BsFillPersonFill, BsFillUnlockFill } from "react-icons/bs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './commun/commun.css';
 
@@ -37,16 +38,25 @@ export default function Navi({ connecte }) {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
+                {!connecte && (
+                    <>
+                        <Nav.Link href="/" style={{color:"white"}}>Accueil</Nav.Link>
+                        <Nav.Link href="/" style={{color:"white"}}>Produits</Nav.Link>
+                        <Nav.Link href="/" style={{color:"white"}}>Tarifications</Nav.Link>
+                        <Nav.Link href="/" style={{color:"white"}}>L'équipe</Nav.Link>
+                    </>
+                )}
             </Nav>
             {connecte ?
                 <>
                     <NavDropdown
                         id="dropdown-basic"
                         title={<Image src={profil.avatar} className="avatar" />}
+                        alignRight
                     >
-                        <NavDropdown.Item href="/pages/profil">Profil</NavDropdown.Item>
+                        <NavDropdown.Item href="/pages/profil"><BsFillPersonFill className="icon-espacement-avec-texte"/>Profil</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item onClick={handleDeconnecter}>Déconnexion</NavDropdown.Item>
+                        <NavDropdown.Item onClick={handleDeconnecter}><BsFillUnlockFill className="icon-espacement-avec-texte"/>Déconnexion</NavDropdown.Item>
                     </NavDropdown>
                 </>
             :

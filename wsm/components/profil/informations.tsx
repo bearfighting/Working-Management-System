@@ -142,75 +142,79 @@ export default function Informations(props) {
                     content='Vous pouvez changer vos informations ici!'
                     />
                     <Form className='attached fluid segment' onSubmit={handleSubmit}>
-                    <Form.Group widths='equal'>
-                        <Form.Input
-                        fluid
-                        label='Nom de famille'
-                        placeholder='Nom de famille'
-                        type='text'
-                        value={nom}
-                        onChange={(e) => setNom(e.target.value)}
-                        />
-                        <Form.Input
-                        fluid
-                        label='Prénom'
-                        placeholder='Prénom'
-                        type='text'
-                        value={prenom}
-                        onChange={(e) => setPrenom(e.target.value)}
-                        />
-                    </Form.Group>
-                    <Form.Input
-                        label='Adresse'
-                        placeholder='Adresse'
-                        type='text'
-                        value={adresse}
-                        onChange={(e) => setAdresse(e.target.value)}
-                    />
-                    <Form.Group widths='equal'>
-                        <Form.Input
-                            label='Téléphone'
-                            placeholder='Téléphone'
+                        <Form.Group widths='equal'>
+                            <Form.Input
+                            fluid
+                            label='Nom de famille'
+                            placeholder='Nom de famille'
                             type='text'
-                            value={telephone}
-                            onChange={(e) => {
-                                setTelephone(e.target.value);
-                                validerTelephone(e.target.value);
-                            }}
-                            error={!isTelephoneValide}
-                        />
-                        <Form.Input
-                            label='Courriel'
-                            placeholder='Courriel'
+                            value={nom}
+                            onChange={(e) => setNom(e.target.value)}
+                            />
+                            <Form.Input
+                            fluid
+                            label='Prénom'
+                            placeholder='Prénom'
                             type='text'
-                            value={profil.courriel}
-                            disabled
+                            value={prenom}
+                            onChange={(e) => setPrenom(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Input
+                            label='Adresse'
+                            placeholder='Adresse'
+                            type='text'
+                            value={adresse}
+                            onChange={(e) => setAdresse(e.target.value)}
                         />
-                    </Form.Group>
-                    <Divider></Divider>
-                    <Form.Group widths='equal'>
-                        <Form.Dropdown
-                        fluid
-                        label='Langue'
-                        placeholder='Choisir une langue'
-                        options={optionsLangue}
-                        search
-                        selection
-                        value={langue}
-                        onChange={(e, {value}) => setLangue(value)}
-                        />
-                        <Form.Dropdown
-                        fluid
-                        label='Thème'
-                        placeholder='Choisir un thème'
-                        options={optionsTheme}
-                        search
-                        selection
-                        value={theme}
-                        onChange={(e, {value}) => setTheme(value)}
-                        />
-                    </Form.Group>
-                    <Button color='blue' disabled={!validerFormulaire()} onClick={onModifier}>Modifier</Button>
+                        <Form.Group>
+                            <Form.Input
+                                label='Téléphone'
+                                placeholder='Téléphone'
+                                type='text'
+                                value={telephone}
+                                width={3}
+                                onChange={(e) => {
+                                    setTelephone(e.target.value);
+                                    validerTelephone(e.target.value);
+                                }}
+                                error={!isTelephoneValide}
+                            />
+                            <Form.Input
+                                label='Courriel'
+                                placeholder='Courriel'
+                                type='text'
+                                width={5}
+                                value={profil.courriel}
+                                disabled
+                            />
+                        </Form.Group>
+                        <Divider></Divider>
+                        <Form.Group>
+                            <Form.Dropdown
+                            fluid
+                            label='Langue'
+                            placeholder='Choisir une langue'
+                            options={optionsLangue}
+                            search
+                            selection
+                            width={4}
+                            value={langue}
+                            onChange={(e, {value}) => setLangue(value)}
+                            />
+                            <Form.Dropdown
+                            fluid
+                            label='Thème'
+                            placeholder='Choisir un thème'
+                            options={optionsTheme}
+                            search
+                            width={4}
+                            selection
+                            value={theme}
+                            onChange={(e, {value}) => setTheme(value)}
+                            />
+                        </Form.Group>
+                        <Button color='blue' disabled={!validerFormulaire()} onClick={onModifier}>Modifier</Button>
                     </Form>
                     <Message attached='bottom' warning>
                         <strong>Voulez-vous fermer votre compte?</strong><br/><br/>

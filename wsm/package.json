@@ -39,7 +39,9 @@
     "sass": "^1.17.2",
     "typescript": "^3.7.2",
     "nodemailer": "6.6.3",
-    "nodemailer-smtp-transport": "2.7.4"
+    "nodemailer-smtp-transport": "2.7.4",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3"
   },
   "alias": {
     "react-dom": "@hot-loader/react-dom"

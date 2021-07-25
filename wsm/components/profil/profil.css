@@ -1,0 +1,17 @@
+.menu {
+  margin-right: 1em;
+}
+
+.profil-page {
+  width: 85%;
+  margin: auto;
+}
+
+.profil-top-spacing {
+  margin-top: 2em;
+}
+
+.rowC {
+  display: flex;
+  flex-direction: row;
+}

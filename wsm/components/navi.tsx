@@ -9,19 +9,23 @@ import {
     baniere,
 } from "../static"
 
-export default function Navi({ connecte }) {
+import user_avatar from "../static/user_avatar";
+
+export default function Navi({ connecte = false }) {
 
     const [profil, setProfil] = useState({});
 
     useEffect(() => {
         const fetchProfil = async () => {
             const response = await axios.get("http://localhost:3000/api/profil");
-            console.log("response.data", response.data);
             setProfil(response.data);
         };
-        fetchProfil();
 
-    }, []);
+        if(connecte){
+            fetchProfil();
+        }
+        
+    }, [connecte]);
 
     const handleDeconnecter = async () => {
         await fetch("/api/authentification/deconnecter", {
@@ -40,8 +44,6 @@ export default function Navi({ connecte }) {
             <Nav className="mr-auto">
                 {!connecte && (
                     <>
-                        <Nav.Link href="/" style={{color:"white"}}>Accueil</Nav.Link>
-                        <Nav.Link href="/" style={{color:"white"}}>Produits</Nav.Link>
                         <Nav.Link href="/" style={{color:"white"}}>Tarifications</Nav.Link>
                         <Nav.Link href="/" style={{color:"white"}}>L'équipe</Nav.Link>
                     </>
@@ -51,7 +53,7 @@ export default function Navi({ connecte }) {
                 <>
                     <NavDropdown
                         id="dropdown-basic"
-                        title={<Image src={profil.avatar} className="avatar" />}
+                        title={<Image src={user_avatar[profil.avatar]} className="avatar" />}
                         alignRight
                     >
                         <NavDropdown.Item href="/pages/profil"><BsFillPersonFill className="icon-espacement-avec-texte"/>Profil</NavDropdown.Item>

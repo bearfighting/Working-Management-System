@@ -18,14 +18,12 @@ export default function Profil() {
     const [activeItem, setActiveItem] = useState('informations');
 
     function handleItemClick (e, { name }) {
-        console.log(name);
         setActiveItem(name);
     }
 
     useEffect(() => {
         const fetchProfil = async () => {
             const response = await axios.get("http://localhost:3000/api/profil");
-            console.log("response.data", response.data);
             setProfil(response.data);
         };
         fetchProfil();

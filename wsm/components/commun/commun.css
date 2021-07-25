@@ -135,3 +135,7 @@ html {
 #dropdown-basic::after {
   display: none;
 }
+
+.list-decoration-none {
+  list-style-type: none;
+}

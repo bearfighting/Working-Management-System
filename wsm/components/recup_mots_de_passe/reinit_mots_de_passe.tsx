@@ -9,7 +9,6 @@ interface Reinit_mots_de_passe {
 }
 
 export default function Reinit_mots_de_passe({ url }) {
-    console.log(url?.params?.id);
     const [reinit_mots_de_passe, setReinit_mots_de_passe] = useState({ id: url?.params?.id, mots_de_passe: "" });
     const [mots_de_passe_confirme, setMots_de_passe_confirme] = useState("");
 

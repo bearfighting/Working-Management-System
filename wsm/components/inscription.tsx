@@ -20,7 +20,6 @@ export default function Inscription() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(user);
     await fetch("/api/authentification/inscription", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

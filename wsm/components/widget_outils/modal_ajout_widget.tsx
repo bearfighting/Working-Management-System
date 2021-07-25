@@ -30,7 +30,6 @@ const obtenirRouteAPIselonType = (type) => {
 }
 
 const obtenirImageSelonType = (type) => {
-    console.log("ici :" + type);
     switch(type){
         case "GestionContact": return contact_logo;
         case "GestionTache": return tache_logo;

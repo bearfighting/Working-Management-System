@@ -75,7 +75,7 @@ export default function Inscription() {
           />
         </Form.Group>
         <Button block type="submit" disabled={!validateForm()}>
-          Creer compte
+          Créer Compte
         </Button>
       </Form>
     </div>

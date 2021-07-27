@@ -24,7 +24,7 @@ export default function Navi({ connecte = false }) {
         if(connecte){
             fetchProfil();
         }
-        
+
     }, [connecte]);
 
     const handleDeconnecter = async () => {
@@ -45,7 +45,7 @@ export default function Navi({ connecte = false }) {
                 {!connecte && (
                     <>
                         <Nav.Link href="/" style={{color:"white"}}>Tarifications</Nav.Link>
-                        <Nav.Link href="/" style={{color:"white"}}>L'équipe</Nav.Link>
+                        <Nav.Link href="/" style={{color:"white"}}>Équipe</Nav.Link>
                     </>
                 )}
             </Nav>

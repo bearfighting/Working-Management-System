@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Card }  from 'react-bootstrap';
+import { Button, Container, Divider, Form, Message } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 import "./profil.css";
 import "../commun/commun.css";
 
@@ -9,12 +10,14 @@ export default function Questions(props) {
 
     return (
         <div className="profil-page">
-            <Card.Header>
-                <h3>Questions</h3>
-            </Card.Header>
-            <Card className="p-3">
-                <p>Text</p>
-            </Card>
+            <Container>
+                <Message
+                    attached
+                    header='Questions'
+                    content='Vous allez trouver les questions fréquentes ici!'
+                    />
+
+            </Container>
         </div>
     )
 }

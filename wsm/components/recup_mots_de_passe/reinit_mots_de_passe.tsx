@@ -48,7 +48,7 @@ export default function Reinit_mots_de_passe({ url }) {
                     />
                 </Form.Group>
                 <Button block type="submit" disabled={!validateForm()}>
-                    confirmer
+                    Confirmer
                 </Button>
             </Form>
         </div>

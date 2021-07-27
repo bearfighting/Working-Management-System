@@ -29,8 +29,6 @@ async function method_get({req, res}){
 
     const profil = await profil_service.select_instance(req);
 
-    console.log(profil);
-
     res.send(profil);
 }
 

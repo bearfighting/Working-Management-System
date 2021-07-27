@@ -30,7 +30,7 @@ export default function Login() {
     <div className="Login">
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Courriel</Form.Label>
           <Form.Control
             autoFocus
             type="email"
@@ -39,14 +39,14 @@ export default function Login() {
           />
         </Form.Group>
         <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Mot de passe</Form.Label>
           <Form.Control
             type="password"
             value={login.mots_de_passe}
             onChange={(e) => setLogin({ ...login, mots_de_passe: e.target.value })}
           />
         </Form.Group>
-        <p className="oublie_mots_de_passe"><a href="http://localhost:3000/pages/recup_mots_de_passe/mail_address">Oublier le mots de passe ?</a></p>
+        <p className="oublie_mots_de_passe"><a href="http://localhost:3000/pages/recup_mots_de_passe/mail_address">Avez-vous oublié votre mot de passe?</a></p>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>

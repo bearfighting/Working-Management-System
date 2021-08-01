@@ -1,12 +1,12 @@
 const _ = require("lodash");
 const Validateur = require("../../commun/validateur");
 
-class CarteValidateur extends Validateur {
-    #carte_repo;
+class ColonneValidateur extends Validateur {
+    #colonne_repo;
 
-    constructor(carte_repo){
+    constructor(colonne_repo){
         super();
-        this.#carte_repo = carte_repo;
+        this.#colonne_repo = colonne_repo;
     }
 
     async valider_requete(req) {
@@ -15,15 +15,15 @@ class CarteValidateur extends Validateur {
         let erreur = this.valider_user_authentifier(user);
 
         if(_.isEmpty(erreur)){
-            if (method === "GET" && params.id_carte) {
-                erreur = await this.#valider_get_by_id(params.id_carte);
+            if (method === "GET" && params.id_colonne) {
+                erreur = await this.#valider_get_by_id(params.id_colonne);
             }else if (method === "POST") {
                 erreur = await this.#valider_post(body);
             }else if(method === "PATCH"){
-                erreur = await this.#valider_patch(params.id_carte, body);
+                erreur = await this.#valider_patch(params.id_colonne, body);
             }
             else if(method === "DELETE"){
-                erreur = await this.#valider_delete(params.id_carte);
+                erreur = await this.#valider_delete(params.id_colonne);
             }
         }
         return [_.isEmpty(erreur), erreur];
@@ -38,9 +38,9 @@ class CarteValidateur extends Validateur {
         return "";
     }
 
-    async #valider_patch(carte_id, body){
+    async #valider_patch(colonne_id, body){
 
-        if(!this.est_un_nombre(carte_id)){
+        if(!this.est_un_nombre(colonne_id)){
             return "errCheminInvalid"
         }
 
@@ -51,30 +51,30 @@ class CarteValidateur extends Validateur {
         return "";
     }
 
-    async #valider_delete(carte_id){
+    async #valider_delete(colonne_id){
 
-        if(!this.est_un_nombre(carte_id)){
+        if(!this.est_un_nombre(colonne_id)){
             return "errCheminInvalid"
         }
 
-        const carte = await this.#carte_repo.get_by_id(carte_id);
+        const colonne = await this.#colonne_repo.get_by_id(colonne_id);
 
-        if(!carte){
+        if(!colonne){
             return "errRequeteInvalide"
         }
 
         return "";
     }
 
-    async #valider_get_by_id(carte_id){
+    async #valider_get_by_id(colonne_id){
 
-        if(!this.est_un_nombre(carte_id)){
+        if(!this.est_un_nombre(colonne_id)){
             return "errCheminInvalid"
         }
 
-        const carte = await this.#carte_repo.get_by_id(carte_id);
+        const colonne = await this.#colonne_repo.get_by_id(colonne_id);
 
-        if(!carte){
+        if(!colonne){
             return "errClefNonTrouvee"
         }
 
@@ -83,9 +83,9 @@ class CarteValidateur extends Validateur {
 
     async #est_champ_obligatoire_present(body){
 
-        const { titre, id_colonne, id_tableau } = body;
+        const { titre, id_tableau } = body;
 
-        if(_.isEmpty(titre) || _.isEmpty(id_colonne) ||_.isEmpty(id_tableau)){
+        if(_.isEmpty(titre) ||_.isEmpty(id_tableau)){
             return false;
         }
 
@@ -93,4 +93,4 @@ class CarteValidateur extends Validateur {
     }
 }
 
-module.exports = CarteValidateur;
+module.exports = ColonneValidateur;

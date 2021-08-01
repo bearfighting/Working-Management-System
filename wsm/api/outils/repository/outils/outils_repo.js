@@ -8,12 +8,12 @@ class OutilsRepo extends Repository {
         this.tache_repo = tache_repo;
         this.banque_repo = banque_repo;
     }
-    
+
     async get_all(user_id) {
         let data = [];
         data.gestion_contact = await this.contact_repo.get_all(user_id);
         data.gestion_banque = [];//this.banque_repo.get_all(user_id);
-        data.gestion_tache = [];//this.tache_repo.get_all(user_id);
+        data.gestion_tache = await this.tache_repo.get_all(user_id);
         return new this.modele(data);
     }
 }

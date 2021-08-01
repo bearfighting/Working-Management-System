@@ -5,7 +5,7 @@ class GestionContact {
         this.user_id = data.user_id;
         this.titre = data.titre;
         this.bg_couleur = data.bg_couleur;
-        this.icon_gauche = data.icon_gauche; 
+        this.icon_gauche = data.icon_gauche;
         this.icon_millieu = data.icon_millieu;
         this.icon_droite = data.icon_droite;
     }

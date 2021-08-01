@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navi from '../components/navi';
-import Tache from '../components/tache';
+import Tache from '../components/tache/table';
 
 export default function Contact(props) {
     const [connecte, setConnecte] = useState(false);

@@ -14,7 +14,7 @@ class CarteRepo extends Repository {
         titre: "crt_titre",
         description: "crt_description",
         date_debut: "crt_date_debut",
-        date_echeance: "crt_echeance",
+        date_echeance: "crt_date_echeance",
     };
 
     async get_by_id(id) {
@@ -55,10 +55,11 @@ class CarteRepo extends Repository {
             crt_titre: titre,
             crt_description: description,
             crt_date_debut: date_debut,
-            crt_date_fin: date_echeance,
+            crt_date_echeance: date_echeance,
         }
 
         const [resultat] = await this.trx(this.nom_table).insert(data).returning("*");
+
         return resultat.crt_id;
     }
 
@@ -71,7 +72,7 @@ class CarteRepo extends Repository {
             crt_titre: titre,
             crt_description: description,
             crt_date_debut: date_debut,
-            crt_date_fin: date_echeance,
+            crt_date_echeance: date_echeance,
         }
 
         const [resultat] = await this.trx(this.nom_table).update(data).where({ crt_id: id_carte }).returning("*");

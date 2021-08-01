@@ -1,9 +1,8 @@
 import React from 'react';
-import { Navbar, Container, Nav, NavDropdown, Row, Col, ButtonGroup, Button, ButtonToolbar, Badge, Dropdown } from 'react-bootstrap';
+import { Form, Container, Badge, NavDropdown, Row, Col, ButtonGroup, Button, ButtonToolbar, Badge, Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const tableStyle = {
-  // backgroundColor: "DodgerBlue",
   padding: "5px",
   fontFamily: "Arial",
   height: "100%",
@@ -14,8 +13,9 @@ const colStyle = {
   // padding: "2px",
   boxShadow: "10px 10px 5px #888888",
   borderRadius: "10px",
-  margin: "10px",
+  margin: "2px",
   backgroundColor: "#D3D3D3",
+  border: "0.2px #947783 solid",
   textAlign: 'center' as const
 }
 
@@ -43,7 +43,7 @@ export default function Tache() {
           </Col>
         </Row>
         <Row id="tables" style={tableStyle}>
-          <Col xs={2} style={colStyle}>
+          <Col style={colStyle}>
             <Container style={{ padding: "1px", margin: "1px" }}>
               <Row>
                 <Col xs={3} style={{ padding: "1px" }}>
@@ -71,7 +71,7 @@ export default function Tache() {
               </Row>
             </Container>
           </Col>
-          <Col xs={2} style={colStyle}>
+          <Col style={colStyle}>
             <Container style={{ padding: "1px", margin: "1px" }}>
               <Row>
                 <Col xs={3} style={{ padding: "1px" }}>
@@ -99,7 +99,7 @@ export default function Tache() {
               </Row>
             </Container>
           </Col>
-          <Col xs={2} style={colStyle}>
+          <Col style={colStyle}>
             <Container style={{ padding: "1px", margin: "1px" }}>
               <Row>
                 <Col xs={3} style={{ padding: "1px" }}>
@@ -127,7 +127,7 @@ export default function Tache() {
               </Row>
             </Container>
           </Col>
-          <Col xs={2} style={colStyle}>
+          <Col style={colStyle}>
             <Container style={{ padding: "1px", margin: "1px" }}>
               <Row>
                 <Col xs={3} style={{ padding: "1px" }}>
@@ -151,6 +151,20 @@ export default function Tache() {
                 </Col>
                 <Col style={{ padding: "1px" }}>
                   <Button size="sm" style={{ lineHeight: "0.8" }}>+</Button>
+                </Col>
+              </Row>
+              <Row>
+                <Col style={{ margin: "5px" }}>
+                  <Form>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                      <Form.Control type="password" placeholder="Password" style={{ border: "pink 1px", boxShadow: "0px 2px 1px #555555", backgroundColor: "#F5F5F5" }} />
+                    </Form.Group>
+                  </Form>
+                </Col>
+              </Row>
+              <Row>
+                <Col style={{ padding: "1px" }}>
+                  <Button size="sm" style={{ lineHeight: "0.8" }}>+ Nouvelle</Button>
                 </Col>
               </Row>
             </Container>

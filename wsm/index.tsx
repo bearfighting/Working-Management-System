@@ -9,6 +9,7 @@ import SidebarMenu from "./components/navigation/side_bar_menu";
 export default function App(props) {
   const [connecte, setConnecte] = useState(false);
 
+  console.log(props?.user?.id)
   useEffect(() => {
     if (props?.user?.id) {
       setConnecte(true);
@@ -33,12 +34,12 @@ export default function App(props) {
         (
           <main style={{ height: "90%" }}>
             <div className="flex-container">
-                <div className="flex-child side-nav-container">
-                    <SidebarMenu />
-                </div>
-                <div className="flex-child">
-                    <Accueil props/>
-                </div>
+              <div className="flex-child side-nav-container">
+                <SidebarMenu />
+              </div>
+              <div className="flex-child">
+                <Accueil props />
+              </div>
             </div>
           </main>
         )

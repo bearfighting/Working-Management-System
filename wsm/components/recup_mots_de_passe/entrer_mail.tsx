@@ -22,7 +22,7 @@ export default function Entrer_Mail() {
     <div className="Inscription">
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="username">
-          <Form.Label>Entrer votre addresse du courriel</Form.Label>
+          <Form.Label>Entrer votre adresse courriel</Form.Label>
           <Form.Control
             autoFocus
             type="nom"
@@ -31,7 +31,7 @@ export default function Entrer_Mail() {
           />
         </Form.Group>
         <Button block type="submit" disabled={false}>
-          Envoyer un courriel pour réinitialiser le mots de passe
+          Envoyer votre courriel pour réinitialiser le mot de passe
         </Button>
       </Form>
     </div>

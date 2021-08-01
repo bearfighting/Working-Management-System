@@ -4,7 +4,7 @@ import "./commun/commun.css";
 export default function Accueil({ props }) {
     return (
         <>
-            <h1 className="titre-accueil">WSM Console De Gestion</h1>
+            <h1 className="titre-accueil">WSM Console de Gestion</h1>
             <ConsulterWidget />
         </>
     )

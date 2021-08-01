@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Divider, Form, Message, Label, Popup } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';import "./profil.css";
+import { Button, Container, Form, Message, Popup } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 import "./profil.css";
 import "../commun/commun.css";
 import {

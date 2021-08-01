@@ -14,4 +14,7 @@ module.exports = {
     credit_amex:            defaultPath + "credit_amex.png",
     credit_mastercard:      defaultPath + "credit_mastercard.png",
     credit_visa:            defaultPath + "credit_visa.png",
+    basic:                  defaultPath + "ab_basic.PNG",
+    standard:               defaultPath + "ab_standard.PNG",
+    premium:                defaultPath + "ab_premium.PNG"
 }

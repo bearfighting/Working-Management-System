@@ -83,9 +83,9 @@ class ColonneValidateur extends Validateur {
 
     async #est_champ_obligatoire_present(body){
 
-        const { titre, id_tableau } = body;
+        const { titre, ordre, id_tableau } = body;
 
-        if(_.isEmpty(titre) ||_.isEmpty(id_tableau)){
+        if(_.isEmpty(titre) || _.isEmpty(ordre) ||_.isEmpty(id_tableau)){
             return false;
         }
 

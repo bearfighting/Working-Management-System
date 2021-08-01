@@ -35,7 +35,7 @@ class CarteRepo extends Repository {
         return resultats.map((carte) => new this.modele(carte));
     }
 
-    async get_by_colonne(id_colonne){
+    async get_by_colonne(id_colonne) {
         const resultats = await this.#get_from_db({ col_id: id_colonne });
         return resultats;
     }
@@ -45,7 +45,7 @@ class CarteRepo extends Repository {
         return resultats.map((carte) => new this.modele(carte));
     }
 
-    async creer(body){
+    async creer(body) {
 
         const { id_colonne, id_tableau, titre, description, date_debut, date_echeance  } = body;
 
@@ -62,7 +62,7 @@ class CarteRepo extends Repository {
         return resultat.crt_id;
     }
 
-    async modifier(body, id_carte){
+    async modifier(body, id_carte) {
 
         const { id_colonne, titre, description, date_debut, date_echeance  } = body;
 
@@ -79,7 +79,7 @@ class CarteRepo extends Repository {
     }
 
     async supprimer(id) {
-        await this.trx(this.nom_table).delete().where({crt_id: id});
+        await this.trx(this.nom_table).delete().where({ crt_id: id });
         return [];
     }
 

@@ -4,6 +4,7 @@ exports.up = function (knex) {
     table.integer('gtt_id').unsigned();
     table.foreign('gtt_id').references('gtt_gestion_tache.gtt_id');
     table.string('col_titre');
+    table.integer('col_ordre');
   })
 };
 

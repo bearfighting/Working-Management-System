@@ -11,11 +11,8 @@ import 'semantic-ui-css/semantic.min.css';
 import axios from "axios";
 import "./profil.css";
 import "../commun/commun.css";
-import Themes from "../commun/themes";
 
 export default function Profil() {
-
-    Themes();
 
     const [profil, setProfil] = useState({});
     const [activeItem, setActiveItem] = useState('informations');

@@ -50,7 +50,7 @@ export default function AccordeonWidget({listeElements, type, setEstModalVisible
                                     <img className="icon-droite" src={user_icon[element.icon_droite]} />
                                     </>
                                 )}
-                                {type ==! "GestionContact" && (
+                                {type !== "GestionContact" && (
                                     <>
                                     <p>{element.titre}</p>
                                     <img className="type-image" src={obtenirImageLogoSelonType(type)} />

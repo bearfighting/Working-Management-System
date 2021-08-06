@@ -2,7 +2,7 @@
 .theme-wsm {
   --font-color: #000000;
   --bg-body-color:#f2f3f3;
-  --font-awesome-color: #f2f2f2;
+  --font-awesome-color: rgb(60,60,60);
   /* Bootstrap Card */
   --card-header: rgba(250,250,250);
   --card-body: white;
@@ -27,7 +27,36 @@
   /* Semantic UI */
   --warning-message: #ff9900;
   --disabled-menu-item: rgb(220,220,220);
+}
 
+.theme-scarlet{
+  --font-color: #ffffff;
+  --bg-body-color: #450101;
+  --font-awesome-color: #f2f2f2;
+  /* Bootstrap Card */
+  --card-header: #c70404;
+  --card-body: #eb120e;
+  /* Page Contact */
+  --nom-affichage: white;
+  --icon-contact: white;
+  /* Semantic UI */
+  --warning-message: #430504;
+  --disabled-menu-item: rgb(220,220,220);
+}
+
+.theme-golden-knight{
+  --font-color: #ffffff;
+  --bg-body-color: black;
+  --font-awesome-color: #87704e;
+  /* Bootstrap Card */
+  --card-header: #1d2327;
+  --card-body: #334049;
+  /* Page Contact */
+  --nom-affichage: #87704e;
+  --icon-contact: #87704e;
+  /* Semantic UI */
+  --warning-message: #e31837;
+  --disabled-menu-item: rgb(220,220,220);
 }
 
 body,

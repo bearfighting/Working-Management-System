@@ -38,26 +38,17 @@ export default function Informations(props) {
     ]
 
     const optionsTheme = [
-        { key: 'light', text: 'Follow the Light', value: 'light', label: { empty: true, circular: true } },
+        { key: 'light', text: 'Follow the Light', value: 'default', label: { empty: true, circular: true } },
         { key: 'dark', text: 'Join the Dark Side', value: 'dark', label: { color: 'black', empty: true, circular: true } },
-        { key: 'red', text: 'Scarlet Red', value: 'red', label: { color: 'red', empty: true, circular: true } },
-        { key: 'green', text: 'Minty Green', value: 'green', label: { color: 'green', empty: true, circular: true } },
-        { key: 'blue', text: 'Island Blue', value: 'blue', label: { color: 'blue', empty: true, circular: true } },
-        { key: 'yellow', text: 'Mellow Yellow', value: 'yellow', label: { color: 'yellow', empty: true, circular: true } },
+        { key: 'scarlet', text: 'Scarlet Red', value: 'scarlet', label: { color: 'red', empty: true, circular: true } },
+        { key: 'knights', text: 'Golden Knights', value: 'golden-knight', label: { color: 'yellow', empty: true, circular: true } },
     ]
 
     const handlePatch = useCallback( async (profilMiseAJour) => {
         const {status, data} = await axios.patch("http://localhost:3000/api/profil", profilMiseAJour);
 
         if(status >= 200 && status < 300){
-            profil.nom = data.nom;
-            profil.prenom = data.prenom;
-            profil.courriel = data.courriel;
-            profil.adresse = data.adresse;
-            profil.telephone = data.telephone;
-            profil.langue = data.langue;
-            profil.theme = data.theme;
-
+            window.location.href = 'http://localhost:3000/pages/profil';
         }else{
             // TODO : Quand c'est pas bon
         }
@@ -131,6 +122,10 @@ export default function Informations(props) {
 
     function onFermer() {
         handleDelete();
+    }
+
+    function onChangerTheme(valeur){
+        setTheme(valeur);
     }
 
     return (
@@ -211,7 +206,7 @@ export default function Informations(props) {
                             width={4}
                             selection
                             value={theme}
-                            onChange={(e, {value}) => setTheme(value)}
+                            onChange={(e, {value}) => onChangerTheme(value)}
                             />
                         </Form.Group>
                         <Button color='blue' disabled={!validerFormulaire()} onClick={onModifier}>Modifier</Button>

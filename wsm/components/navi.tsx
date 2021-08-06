@@ -5,6 +5,7 @@ import { BsFillPersonFill, BsFillUnlockFill } from "react-icons/bs";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './commun/commun.css';
 
+
 import {
     baniere,
 } from "../static"
@@ -19,6 +20,8 @@ export default function Navi({ connecte = false }) {
         const fetchProfil = async () => {
             const response = await axios.get("http://localhost:3000/api/profil");
             setProfil(response.data);
+            // Permet de changer le thème
+            document.body.classList.add(response?.data?.theme ? "theme-" + response.data.theme : "theme-default");
         };
 
         if(connecte){

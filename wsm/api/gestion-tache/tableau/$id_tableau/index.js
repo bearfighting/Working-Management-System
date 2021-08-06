@@ -12,9 +12,9 @@ async function method_get({req, res}){
       return;
   }
 
-  const liste_carte = await tableau_service.get_all_cartes(req.params.id_tableau);
+  const tableau = await tableau_service.get_tableau(req.params.id_tableau);
 
-  res.send({ cartes : liste_carte });
+  res.send({ tableau });
 
 }
 

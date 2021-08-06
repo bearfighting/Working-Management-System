@@ -7,5 +7,5 @@ const { carte, colonne, tableau, } = require("../repository");
 module.exports = {
     carte_service : new CarteService(carte),
     colonne_service : new ColonneService(colonne, carte),
-    tableau_service : new TableauService(tableau, colonne),
+    tableau_service : new TableauService(tableau, colonne, carte),
 }

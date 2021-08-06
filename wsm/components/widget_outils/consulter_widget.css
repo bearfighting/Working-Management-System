@@ -62,7 +62,7 @@ a:link {
     line-height: 1;
     height: 50px;
     margin-top: 5px;
-    color: black;
+    color: black !important;
     font-size: 16px;
     overflow-wrap: break-word;
 }
@@ -114,7 +114,7 @@ a:link {
 }
 
 .contact-icon, .tache-icon, .banque-icon{
-    color: rgb(60, 60, 60);
+    color: var(--font-awesome-color);
     transition: color 0.5s ease;
 }
 
@@ -127,10 +127,6 @@ a:link {
     border-radius: 0;
     box-sizing: border-box;
     box-shadow: 0 1px 1px 0;
-}
-
-.nos-services .card-header{
-    background-color: rgba(250,250,250);
 }
 
 .nos-services .flex-child{

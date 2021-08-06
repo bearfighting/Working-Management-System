@@ -148,7 +148,7 @@ section .section-title {
 
 .frontside .card .card-title,
 .backside .card .card-title {
-    color: #303DA5 !important;
+    color: var(--nom-affichage) !important;
     margin-bottom: 20px;
 }
 
@@ -163,7 +163,7 @@ section .section-title {
   font-size: 1.25rem;
   width: 20px !important;
   vertical-align: bottom;
-  color: #243858;
+  color: var(--icon-contact);
 }
 
 .card-text{
@@ -180,7 +180,6 @@ section .section-title {
 }
 
 .bouton-groupe{
-  background-color: white;
   padding: 30px 30px 20px;
   border-radius: 0;
   box-sizing: border-box;

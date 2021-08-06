@@ -1,6 +1,8 @@
+import React, {useEffect} from "react";
 import { Container,Row, Col } from "react-bootstrap";
 import "./accueil_public.css";
 import { 
+    contact_logo_dashed,
     logo_front_page, 
     preview_contact, 
     tache_logo, 
@@ -29,6 +31,7 @@ export default function AccueilPublic({ props }) {
     return (
         <>
         <Container className="container-accueil">
+            
             <Row className="row-inscription">
                 <Col md={6} xs={12}>
                     <div>

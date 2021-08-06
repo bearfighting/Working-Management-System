@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TableauDeContacts from "./tableau_de_contacts";
 import "./contact.css";
-import "./../commun/commun.css"
+import "./../commun/commun.css";
+import Themes from "./../commun/themes";
 
 export default function Contact({outilsId}) {
+
+    Themes();
 
     useEffect(() => {
         const fetchGestionContact = async () => {

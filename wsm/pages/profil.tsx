@@ -6,6 +6,7 @@ import Profil from '../components/profil/profil';
 import SidebarMenu from "../components/navigation/side_bar_menu";
 
 export default function ProfilPage(props) {
+
     const [connecte, setConnecte] = useState(false);
 
     useEffect(() => {

@@ -13,4 +13,5 @@ module.exports = {
     outils_service : new OutilsService(outils),
     gestion_contact_service : new GestionContactService(gestion_contact),
     gestion_tache_service : new GestionTacheService(gestion_tache),
+    gestion_banque_service : new GestionTacheService(gestion_banque),
 }

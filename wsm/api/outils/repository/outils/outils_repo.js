@@ -12,7 +12,7 @@ class OutilsRepo extends Repository {
     async get_all(user_id) {
         let data = [];
         data.gestion_contact = await this.contact_repo.get_all(user_id);
-        data.gestion_banque = [];//this.banque_repo.get_all(user_id);
+        data.gestion_banque = await this.banque_repo.get_all(user_id);
         data.gestion_tache = await this.tache_repo.get_all(user_id);
         return new this.modele(data);
     }

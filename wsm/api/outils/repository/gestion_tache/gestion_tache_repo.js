@@ -12,9 +12,6 @@ class GestionTacheRepo extends Repository {
         user_id: "user_id",
         titre: "gtt_titre",
         bg_couleur: "gtt_bg_couleur",
-        icon_gauche: "gtt_icon_gauche",
-        icon_millieu: "gtt_icon_millieu",
-        icon_droite: "gtt_icon_droite",
     };
 
     async get_by_id(id) {
@@ -36,9 +33,6 @@ class GestionTacheRepo extends Repository {
             user_id: user_id,
             gtt_titre: titre,
             gtt_bg_couleur: bg_couleur,
-            gtt_icon_gauche: icon.icon_gauche,
-            gtt_icon_millieu: icon.icon_millieu,
-            gtt_icon_droite: icon.icon_droite,
         }
 
         const [resultat] = await this.trx(this.nom_table).insert(data).returning("*");

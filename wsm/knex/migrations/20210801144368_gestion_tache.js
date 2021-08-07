@@ -5,9 +5,6 @@ exports.up = function(knex) {
 		table.integer('user_id').unsigned();
 		table.string('gtt_bg_couleur');
 		table.string('gtt_titre');
-		table.string('gtt_icon_droite');
-		table.string('gtt_icon_millieu');
-		table.string('gtt_icon_gauche');
 	})
 };
 

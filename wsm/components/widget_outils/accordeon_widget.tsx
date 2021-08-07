@@ -31,6 +31,14 @@ const obtenirDashedImageSelonType = (type) => {
     }
 }
 
+const obtenirURLSelonType = (type) => {
+    switch(type){
+        case "GestionContact": return "/pages/contact/";
+        case "GestionTache": return "/pages/tache/";
+        case "GestionBanque": return "/pages/banque/";
+    }
+}
+
 export default function AccordeonWidget({listeElements, type, setEstModalVisible, titre}) {
 
     return (
@@ -40,7 +48,7 @@ export default function AccordeonWidget({listeElements, type, setEstModalVisible
             <Row className="flex-container">
                     {listeElements && listeElements.map((element, i) => (
                     <div key={i} className="flex-child">
-                        <a href={`/pages/contact/${element.id}`}>
+                        <a href={`${obtenirURLSelonType(type)}${element.id}`}>
                             <div className="widget-container" style={{backgroundColor: element.bg_couleur}}>
                                 {type === "GestionContact" && (
                                     <>

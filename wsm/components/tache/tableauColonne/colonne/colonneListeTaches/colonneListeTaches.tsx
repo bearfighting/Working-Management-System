@@ -1,14 +1,15 @@
-import { Form, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import TacheModal from '../../tacheModal';
+import Carte from './carte';
 
 export default function ColonneListeTaches() {
+  const ListeTache = [{ nom: "haha" }, { nom: "une tache" }];
+
+
   return (
-    <Row>
-      <Col style={{ margin: "5px" }}>
-        <Form>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Control type="password" placeholder="Password" style={{ border: "pink 1px", boxShadow: "0px 2px 1px #555555", backgroundColor: "#F5F5F5" }} />
-          </Form.Group>
-        </Form>
+    <Row style={{ margin: "5px 0px" }}>
+      <Col>
+        {ListeTache.map((tache) => <Carte nom={tache.nom} />)}
       </Col>
     </Row>
   )

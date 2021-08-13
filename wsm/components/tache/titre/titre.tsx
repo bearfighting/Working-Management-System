@@ -1,3 +1,5 @@
+import React from 'react';
+
 const style = {
     margin: "15px",
     textAlign: "center"

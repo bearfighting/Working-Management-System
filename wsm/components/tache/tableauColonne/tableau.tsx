@@ -9,14 +9,14 @@ const tableStyle = {
 }
 
 interface Colonne {
-  phase: string,
+  titre: string,
   nombre: number
 }
 
 const initColonnes = [
-  { phase: "À faire", nombre: 1 },
-  { phase: "En cours", nombre: 2 },
-  { phase: "Terminé", nombre: 3 },
+  { titre: "À faire", nombre: 1 },
+  { titre: "En cours", nombre: 2 },
+  { titre: "Terminé", nombre: 3 },
 ]
 
 export default function Tableau({ colonnesRepo }) {

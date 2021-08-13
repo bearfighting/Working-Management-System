@@ -24,7 +24,7 @@ export default function Tableau({ colonnesRepo }) {
 
   return (
     <Row id="liste-taches" style={tableStyle}>
-      {colonnes.map((colonne) => <Colonne etat={colonne} />)}
+      {colonnes.map((colonne) => <Colonne colonne={colonne} />)}
     </Row>
   )
 }

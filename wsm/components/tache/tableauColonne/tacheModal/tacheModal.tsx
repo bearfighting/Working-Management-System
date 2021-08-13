@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Modal, InputGroup, Button, FormControl } from 'react-bootstrap';
-export default function NouvelleColonneModal({ show, setShow }) {
-  const [nomColonne, setNomColonne] = useState("");
+
+export default function TacheModal({ show, setShow }) {
+  const [nom, setNom] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleClose = () => {
-    setNomColonne("");
+    setNom("");
+    setDescription("");
     setShow(false);
   }
 
@@ -20,13 +23,23 @@ export default function NouvelleColonneModal({ show, setShow }) {
       </Modal.Header>
       <Modal.Body>
         <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">Nom de colonne</InputGroup.Text>
+          <InputGroup.Text id="basic-addon1">Nom</InputGroup.Text>
           <FormControl
             placeholder="colonne"
             aria-label="Username"
             aria-describedby="basic-addon1"
-            value={nomColonne}
-            onChange={(e) => setNomColonne(e.target.value)}
+            value={nom}
+            onChange={(e) => setNom(e.target.value)}
+          />
+        </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Text id="basic-addon1">Description de tâche</InputGroup.Text>
+          <FormControl
+            placeholder="colonne"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </InputGroup>
       </Modal.Body>

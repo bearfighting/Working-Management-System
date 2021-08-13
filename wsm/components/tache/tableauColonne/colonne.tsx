@@ -10,8 +10,7 @@ const colStyle = {
   textAlign: 'center' as const
 }
 
-export default function Tache({ etat }) {
-  console.log("etat", etat);
+export default function Colonne({ etat }) {
   return (
     <Col style={colStyle}>
       <Container style={{ padding: "1px", margin: "1px" }}>

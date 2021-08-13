@@ -1,5 +1,5 @@
 import { Row } from 'react-bootstrap';
-import Tache from './tache';
+import Colonne from './colonne';
 
 const tableStyle = {
   padding: "5px",
@@ -8,24 +8,23 @@ const tableStyle = {
   minHeight: "90vh"
 }
 
-interface Etat {
+interface Colonne {
   phase: string,
   nombre: number
 }
 
-const initEtats = [
+const initColonnes = [
   { phase: "À faire", nombre: 1 },
   { phase: "En cours", nombre: 2 },
   { phase: "Terminé", nombre: 3 },
-  { phase: "Cachés", nombre: 4 },
 ]
 
-export default function ListTaches() {
-  const Etats = [...initEtats];
+export default function Tableau({ colonnesRepo }) {
+  const colonnes = colonnesRepo?.length > 0 ? colonnesRepo : initColonnes;
 
   return (
     <Row id="liste-taches" style={tableStyle}>
-      {Etats.map((etat) => <Tache etat={etat} />)}
+      {colonnes.map((colonne) => <Colonne etat={colonne} />)}
     </Row>
   )
 }

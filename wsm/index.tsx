@@ -8,8 +8,6 @@ import SidebarMenu from "./components/navigation/side_bar_menu";
 
 export default function App(props) {
   const [connecte, setConnecte] = useState(false);
-
-  console.log(props?.user?.id)
   useEffect(() => {
     if (props?.user?.id) {
       setConnecte(true);

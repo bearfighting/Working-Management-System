@@ -9,7 +9,7 @@ class ColonneRepo extends Repository {
 
     #champs_reponse = {
         id: "col_id",
-        id_tableau: "gtt_id",
+        id_tableau: "col.gtt_id",
         titre: "col_titre",
         ordre: "col_ordre",
     };

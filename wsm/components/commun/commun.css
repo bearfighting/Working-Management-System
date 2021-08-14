@@ -1,17 +1,16 @@
-
 .theme-wsm {
   --font-color: #000000;
-  --bg-body-color:#f2f3f3;
-  --font-awesome-color: rgb(60,60,60);
+  --bg-body-color: #f2f3f3;
+  --font-awesome-color: rgb(60, 60, 60);
   /* Bootstrap Card */
-  --card-header: rgba(250,250,250);
+  --card-header: rgba(250, 250, 250);
   --card-body: white;
   /* Page Contact */
-  --nom-affichage: #303DA5;
+  --nom-affichage: #303da5;
   --icon-contact: #243858;
   /* Semantic UI */
   --warning-message: #ff9900;
-  --disabled-menu-item: rgba(0,0,0,0.70);
+  --disabled-menu-item: rgba(0, 0, 0, 0.7);
 }
 
 .theme-dark {
@@ -26,10 +25,10 @@
   --icon-contact: white;
   /* Semantic UI */
   --warning-message: #ff9900;
-  --disabled-menu-item: rgb(220,220,220);
+  --disabled-menu-item: rgb(220, 220, 220);
 }
 
-.theme-scarlet{
+.theme-scarlet {
   --font-color: #ffffff;
   --bg-body-color: #450101;
   --font-awesome-color: #f2f2f2;
@@ -41,10 +40,10 @@
   --icon-contact: white;
   /* Semantic UI */
   --warning-message: #430504;
-  --disabled-menu-item: rgb(220,220,220);
+  --disabled-menu-item: rgb(220, 220, 220);
 }
 
-.theme-golden-knight{
+.theme-golden-knight {
   --font-color: #ffffff;
   --bg-body-color: black;
   --font-awesome-color: #87704e;
@@ -56,7 +55,37 @@
   --icon-contact: #87704e;
   /* Semantic UI */
   --warning-message: #e31837;
-  --disabled-menu-item: rgb(220,220,220);
+  --disabled-menu-item: rgb(220, 220, 220);
+}
+
+.theme-montreal-canadiens {
+  --font-color: #ffffff;
+  --bg-body-color: #192168;
+  --font-awesome-color: #192168;
+  /* Bootstrap Card */
+  --card-header: #af1e2d;
+  --card-body: #af1e2d;
+  /* Page Contact */
+  --nom-affichage: #192168;
+  --icon-contact: #192168;
+  /* Semantic UI */
+  --warning-message: #e31837;
+  --disabled-menu-item: rgb(220, 220, 220);
+}
+
+.theme-pastel {
+  --font-color: black;
+  --bg-body-color: #b4f8c8;
+  --font-awesome-color: #fbe7c6;
+  /* Bootstrap Card */
+  --card-header: #a0e7e5;
+  --card-body: #ffaebc;
+  /* Page Contact */
+  --nom-affichage: #a0e7e5;
+  --icon-contact: #b4f8c8;
+  /* Semantic UI */
+  --warning-message: #e31837;
+  --disabled-menu-item: rgba(0, 0, 0, 0.7);
 }
 
 body,
@@ -65,19 +94,24 @@ html {
   background-color: var(--bg-body-color) !important;
 }
 
-body p, 
-h1, h2, h3, h4, h5, h6,
-.ui.checkbox label, 
-.ui.checkbox+label,
-.ui.form .field>label,
+body p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+.ui.checkbox label,
+.ui.checkbox + label,
+.ui.form .field > label,
 .ui.message .header,
 .ui .segment,
-.ui.cards>.card>.content>.header,
-.ui.card>.content>.description,
-.ui.card>.content>.header+.description {
+.ui.cards > .card > .content > .header,
+.ui.card > .content > .description,
+.ui.card > .content > .header + .description {
   color: var(--font-color) !important;
 }
-
 
 .flex-container-min-height {
   display: flex;
@@ -216,23 +250,26 @@ h1, h2, h3, h4, h5, h6,
   list-style-type: none;
 }
 
-.card-header{
+.card-header {
   background-color: var(--card-header);
 }
 
-.card-body{
+.card-body {
   background-color: var(--card-body);
 }
 
-.modal-content{
+.modal-content {
   color: var(--font-color);
 }
 
-.modal-header, .ui.message{
+.modal-header,
+.ui.message {
   background-color: var(--card-header) !important;
 }
 
-.modal-body, .modal-footer, .ui.segment{
+.modal-body,
+.modal-footer,
+.ui.segment {
   background-color: var(--card-body) !important;
 }
 
@@ -244,19 +281,26 @@ h1, h2, h3, h4, h5, h6,
   color: var(--warning-message) !important;
 }
 
-.ui.vertical.menu{
+.ui.vertical.menu {
   background-color: var(--card-header) !important;
 }
 
-.ui.vertical.menu .item, .ui .card{
+.ui.vertical.menu .item,
+.ui .card {
   background-color: var(--card-body) !important;
 }
 
-.ui.vertical.menu .item .header, .ui.vertical.menu .item .menu .active.item{
+.ui.vertical.menu .item .header,
+.ui.vertical.menu .item .menu .active.item {
   color: var(--font-color) !important;
 }
 
 .ui.vertical.menu .menu .item,
-.ui.card .meta, .ui.cards>.card .meta{
+.ui.card .meta,
+.ui.cards > .card .meta {
   color: var(--disabled-menu-item) !important;
+}
+
+.ui.link.list .item {
+  color: var(--font-color) !important;
 }

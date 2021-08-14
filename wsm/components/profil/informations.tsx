@@ -42,6 +42,8 @@ export default function Informations(props) {
         { key: 'dark', text: 'Join the Dark Side', value: 'dark', label: { color: 'black', empty: true, circular: true } },
         { key: 'scarlet', text: 'Scarlet Red', value: 'scarlet', label: { color: 'red', empty: true, circular: true } },
         { key: 'knights', text: 'Golden Knights', value: 'golden-knight', label: { color: 'yellow', empty: true, circular: true } },
+        { key: 'canadiens', text: 'Canadiens de Montréal', value: 'montreal-canadiens', label: { color: 'blue', empty: true, circular: true } },
+        { key: 'pastel', text: 'Pastel', value: 'pastel', label: { color: 'pink', empty: true, circular: true } },
     ]
 
     const handlePatch = useCallback( async (profilMiseAJour) => {

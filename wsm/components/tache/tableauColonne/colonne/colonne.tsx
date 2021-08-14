@@ -17,13 +17,14 @@ const colStyle = {
 }
 
 export default function Colonne({ colonne }) {
+  console.log("colonneTache1", colonne);
   const [show, setShow] = useState(false);
 
   return (
     <Col style={colStyle}>
       <Container style={{ padding: "1px", margin: "1px" }}>
         <ColonneNav colonne={colonne} setShow={setShow} />
-        <ColonneListeTaches />
+        <ColonneListeTaches id={colonne.col_id} />
         <ColonneNouvelleTache setShow={setShow} />
         <TacheModal show={show} setShow={setShow} />
       </Container>

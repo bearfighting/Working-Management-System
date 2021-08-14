@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 
 export default function PageTache({ tacheId }) {
   const [titre, setTitre] = useState("");
-  const [colonneTache, setColonneTache] = useState([]);
 
   useEffect(() => {
     const fetchTache = async () => {
@@ -18,22 +17,13 @@ export default function PageTache({ tacheId }) {
     fetchTache();
   }, []);
 
-  useEffect(() => {
-    const fetchColonnes = async () => {
-      const response = await fetch("/api/tache/colonne/" + tacheId).then(resp => { return resp.json() });
-      setColonneTache(response);
-    }
-
-    fetchColonnes();
-  }, []);
-
   return (
     <>
       <Container>
         <Titre description={titre} />
         <OperationBar />
         <hr></hr>
-        <Tableau colonnesRepo={colonneTache} />
+        <Tableau id={tacheId} />
       </Container>
     </>
   )

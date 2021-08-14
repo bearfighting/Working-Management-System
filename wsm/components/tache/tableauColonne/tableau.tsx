@@ -1,5 +1,6 @@
 import { Row } from 'react-bootstrap';
 import Colonne from './colonne';
+import { useEffect, useState } from 'react';
 
 const tableStyle = {
   padding: "5px",
@@ -19,12 +20,20 @@ const initColonnes = [
   { titre: "Terminé", nombre: 3 },
 ]
 
-export default function Tableau({ colonnesRepo }) {
-  const colonnes = colonnesRepo?.length > 0 ? colonnesRepo : initColonnes;
+export default function Tableau({ id }) {
+  const [colonneTache, setColonneTache] = useState([]);
+
+  useEffect(() => {
+    const fetchColonnes = async () => {
+      const response = await fetch("/api/tache/colonne/" + id).then(resp => resp.json());
+      setColonneTache(response.resultat);
+    }
+    fetchColonnes();
+  }, []);
 
   return (
     <Row id="liste-taches" style={tableStyle}>
-      {colonnes.map((colonne) => <Colonne colonne={colonne} />)}
+      {colonneTache.map((colonne) => <Colonne colonne={colonne} />)}
     </Row>
   )
 }

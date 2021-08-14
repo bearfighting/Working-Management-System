@@ -2,14 +2,25 @@ import { Row, Col } from 'react-bootstrap';
 import TacheModal from '../../tacheModal';
 import Carte from './carte';
 
-export default function ColonneListeTaches() {
-  const ListeTache = [{ nom: "haha" }, { nom: "une tache" }];
+import { useEffect, useState } from 'react';
 
+export default function ColonneListeTaches({ id }) {
+  const [listeCarte, setlisteCarte] = useState([]);
+
+  useEffect(() => {
+    const fetchColonnes = async () => {
+      const { resultat } = await fetch("/api/tache/carte/col-id/" + id).then(resp => resp.json());
+      setlisteCarte(resultat);
+    }
+    fetchColonnes();
+  }, []);
+  const ListeTache = [{ nom: "haha" }, { nom: "une tache" }];
+  console.log("cartes", listeCarte);
 
   return (
     <Row style={{ margin: "5px 0px" }}>
       <Col>
-        {ListeTache.map((tache) => <Carte nom={tache.nom} />)}
+        {listeCarte.map((carte) => <Carte nom={carte.crt_titre} />)}
       </Col>
     </Row>
   )

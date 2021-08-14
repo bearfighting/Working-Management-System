@@ -9,7 +9,7 @@ class CarteRepo extends Repository {
 
     #champs_reponse = {
         id: "crt_id",
-        id_tableau: "gtt_id",
+        id_tableau: "crt.gtt_id",
         id_colonne: "col_id",
         titre: "crt_titre",
         description: "crt_description",

@@ -39,3 +39,6 @@
 
 - "netstat -ano|findstr "PID :3000""
 - "taskkill /pid [pid] /f"
+
+### Réinitialiser la bd
+- "knex migrate:rollback && knex migrate:latest && knex seed:run"

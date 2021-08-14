@@ -14,7 +14,7 @@ class TableauRepo extends Repository {
     };
 
     async get_by_id(id_tableau) {
-        const [tableau] = await this.#get_from_db({ gtt_id: id_tableau });
+        const [tableau] = await this.trx(this.nom_table).select().where({ gtt_id: id_tableau });
         return tableau;
     }
 

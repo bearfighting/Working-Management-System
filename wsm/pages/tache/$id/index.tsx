@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navi from '../components/navi';
-import Tache from '../components/tache/table';
+import Navi from '../../../components/navi';
+import PageTache from '../../../components/tache/page_tache';
 
 export default function Contact(props) {
     const [connecte, setConnecte] = useState(false);
@@ -19,7 +19,7 @@ export default function Contact(props) {
                 <Navi connecte={connecte} />
             </header>
             <main style={{ height: "90%" }}>
-                <Tache />
+                <PageTache tacheId={props?.url?.params?.id} />
             </main>
         </>
     )

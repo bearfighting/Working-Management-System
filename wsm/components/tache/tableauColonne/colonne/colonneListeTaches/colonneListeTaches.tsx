@@ -9,11 +9,11 @@ export default function ColonneListeTaches({ id }) {
 
   useEffect(() => {
     const fetchColonnes = async () => {
-      const { resultat } = await fetch("/api/tache/carte/col-id/" + id).then(resp => resp.json());
+      const { resultat } = await fetch("/api/tache/carte/" + id).then(resp => resp.json());
       setlisteCarte(resultat);
     }
     fetchColonnes();
-  }, []);
+  }, [id]);
   const ListeTache = [{ nom: "haha" }, { nom: "une tache" }];
 
   return (

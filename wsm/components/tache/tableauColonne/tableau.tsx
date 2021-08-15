@@ -15,18 +15,20 @@ interface Colonne {
 }
 
 const initColonnes = [
-  { titre: "À faire", nombre: 1 },
-  { titre: "En cours", nombre: 2 },
-  { titre: "Terminé", nombre: 3 },
+  { col_titre: "À faire", nombre: 0 },
+  { col_titre: "En cours", nombre: 0 },
+  { col_titre: "Terminé", nombre: 0 },
 ]
 
 export default function Tableau({ id }) {
-  const [colonneTache, setColonneTache] = useState([]);
+  const [colonneTache, setColonneTache] = useState(initColonnes);
 
   useEffect(() => {
     const fetchColonnes = async () => {
       const response = await fetch("/api/tache/colonne/" + id).then(resp => resp.json());
-      setColonneTache(response.resultat);
+      if (response.resultat.length > 0) {
+        setColonneTache(response.resultat);
+      }
     }
     fetchColonnes();
   }, []);

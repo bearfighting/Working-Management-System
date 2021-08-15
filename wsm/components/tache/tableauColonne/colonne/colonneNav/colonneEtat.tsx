@@ -7,7 +7,7 @@ export default function ColonneEtat({ colonne }) {
         <Badge bg="secondary">{colonne.col_titre}</Badge>
       </Col>
       <Col xs={3}>
-        <Badge bg="secondary" style={{ padding: "1px" }}>{colonne.nombre}</Badge>
+        <Badge bg="secondary" style={{ padding: "1px" }}>{colonne.nombre || 0}</Badge>
       </Col>
     </>
   )

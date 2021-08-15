@@ -41,7 +41,6 @@ export default function PageTache({ tacheId }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(colonne)
     }).then(res => {
-      console.log("réussi à ajouter la colonne");
       setColonneTache([...colonneTache, colonne]);
     })
       .catch(err => alert("échec à ajouter la colonne"));

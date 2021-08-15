@@ -12,7 +12,6 @@ export default function TacheModal({ handleAjouterCarte, show, setShow }) {
   }
 
   const handleSave = () => {
-    console.log("etat", titre, description);
     handleAjouterCarte({ crt_titre: titre, crt_description: description });
     handleClose();
   }

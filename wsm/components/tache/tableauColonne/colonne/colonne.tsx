@@ -26,14 +26,13 @@ export default function Colonne({ handledeleteColonne, colonne }) {
 
   const handleAjouterCarte = ({ crt_titre, crt_description }) => {
     setNouvelleCarte({ ...nouvelleCarte, crt_titre, crt_description });
-    console.log("colonne carte", nouvelleCarte);
   }
 
   return (
     <Col style={colStyle}>
       <Container style={{ padding: "1px", margin: "1px" }}>
         <ColonneNav handledeleteColonne={handledeleteColonne} colonne={colonne} setShow={setShow} />
-        <ColonneListeCarte nouvelleCarte={nouvelleCarte} col_id={colonne.col_id} gtt_id={colonne.gtt_id} />
+        <ColonneListeCarte nouvelleCarte={nouvelleCarte} col_id={colonne.col_id} />
         <ColonneNouvelleTache setShow={setShow} />
         <TacheModal handleAjouterCarte={handleAjouterCarte} show={show} setShow={setShow} />
       </Container>

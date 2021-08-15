@@ -17,13 +17,11 @@ export default function ColonneListeCarte({ nouvelleCarte, col_id }) {
 
   useEffect(() => {
     const ajouterCarte = async (carte) => {
-      console.log("nouvelle Carte12", carte);
       await fetch("/api/tache/carte/ajout", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ carte })
       }).then(res => {
-        console.log("réussi à ajouter la colonne");
         setlisteCarte([...listeCarte, carte]);
       }).catch(err => console.log(`échec à ajouter la colonne ${err}`));
       // setlisteCarte([...listeCarte, carte]);
@@ -33,23 +31,6 @@ export default function ColonneListeCarte({ nouvelleCarte, col_id }) {
       ajouterCarte(nouvelleCarte);
     }
   }, [nouvelleCarte]);
-
-  // const handleAjouterCarte = ({ crt_titre, crt_description }) => {
-  //   let carte = {
-  //     gtt_id: colonne.gtt_id,
-  //     col_id: colonne.col_id,
-  //   }
-
-  //   fetch("/api/tache/carte/ajout", {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify(carte)
-  //   }).then(res => {
-  //     console.log("réussi à ajouter la colonne");
-  //     setColonneActuelle([...colonneActuelle, carte]);
-  //   })
-  //     .catch(err => alert("échec à ajouter la colonne"));
-  // }
 
   return (
     <Row style={{ margin: "5px 0px" }}>

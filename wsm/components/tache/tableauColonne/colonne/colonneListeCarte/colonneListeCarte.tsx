@@ -24,10 +24,8 @@ export default function ColonneListeCarte({ nouvelleCarte, col_id }) {
       }).then(res => {
         setlisteCarte([...listeCarte, carte]);
       }).catch(err => console.log(`échec à ajouter la colonne ${err}`));
-      // setlisteCarte([...listeCarte, carte]);
     }
     if (nouvelleCarte.crt_titre !== "" && nouvelleCarte.crt_description !== "") {
-      console.log("nouvelle Carte1", nouvelleCarte);
       ajouterCarte(nouvelleCarte);
     }
   }, [nouvelleCarte]);

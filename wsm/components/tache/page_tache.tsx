@@ -36,10 +36,17 @@ export default function PageTache({ tacheId }) {
       col_ordre: (colonneTache.length + 1),
       col_titre
     };
+    fetch("/api/tache/colonne/ajout", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(colonne)
+    }).then(res => console.log("réussi à ajouter la colonne"))
+      .catch(err => console.error("échec à ajouter la colonne", err))
     setColonneTache([...colonneTache, colonne]);
   }
 
   const handledeleteColonne = (col_titre) => {
+
     setColonneTache(colonneTache.filter(colonne => colonne.col_titre !== col_titre))
   }
 

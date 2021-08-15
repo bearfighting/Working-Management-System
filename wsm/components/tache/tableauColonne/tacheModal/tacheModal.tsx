@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { Modal, InputGroup, Button, FormControl } from 'react-bootstrap';
 
-export default function TacheModal({ show, setShow }) {
-  const [nom, setNom] = useState("");
+export default function TacheModal({ handleAjouterCarte, show, setShow }) {
+  const [titre, settitre] = useState("");
   const [description, setDescription] = useState("");
 
   const handleClose = () => {
-    setNom("");
+    settitre("");
     setDescription("");
     setShow(false);
   }
 
   const handleSave = () => {
-
+    console.log("etat", titre, description);
+    handleAjouterCarte({ crt_titre: titre, crt_description: description });
     handleClose();
   }
 
@@ -28,8 +29,8 @@ export default function TacheModal({ show, setShow }) {
             placeholder="colonne"
             aria-label="Username"
             aria-describedby="basic-addon1"
-            value={nom}
-            onChange={(e) => setNom(e.target.value)}
+            value={titre}
+            onChange={(e) => settitre(e.target.value)}
           />
         </InputGroup>
         <InputGroup className="mb-3">

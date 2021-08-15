@@ -44,7 +44,7 @@ export default function PageTache({ tacheId }) {
       console.log("réussi à ajouter la colonne");
       setColonneTache([...colonneTache, colonne]);
     })
-      .catch(err => alert("échec à ajouter la colonne", err));
+      .catch(err => alert("échec à ajouter la colonne"));
   }
 
   const handledeleteColonne = (col_titre) => {

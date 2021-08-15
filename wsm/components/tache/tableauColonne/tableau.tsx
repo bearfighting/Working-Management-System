@@ -20,22 +20,10 @@ const initColonnes = [
   { col_titre: "Terminé", nombre: 0 },
 ]
 
-export default function Tableau({ id }) {
-  const [colonneTache, setColonneTache] = useState(initColonnes);
-
-  useEffect(() => {
-    const fetchColonnes = async () => {
-      const response = await fetch("/api/tache/colonne/" + id).then(resp => resp.json());
-      if (response.resultat.length > 0) {
-        setColonneTache(response.resultat);
-      }
-    }
-    fetchColonnes();
-  }, []);
-
+export default function Tableau({ handledeleteColonne, colonneTache }) {
   return (
     <Row id="liste-taches" style={tableStyle}>
-      {colonneTache.map((colonne) => <Colonne colonne={colonne} />)}
+      {colonneTache.map((colonne) => <Colonne handledeleteColonne={handledeleteColonne} colonne={colonne} />)}
     </Row>
   )
 }

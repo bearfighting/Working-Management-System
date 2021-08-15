@@ -16,13 +16,13 @@ const colStyle = {
   textAlign: 'center' as const
 }
 
-export default function Colonne({ colonne }) {
+export default function Colonne({ handledeleteColonne, colonne }) {
   const [show, setShow] = useState(false);
 
   return (
     <Col style={colStyle}>
       <Container style={{ padding: "1px", margin: "1px" }}>
-        <ColonneNav colonne={colonne} setShow={setShow} />
+        <ColonneNav handledeleteColonne={handledeleteColonne} colonne={colonne} setShow={setShow} />
         <ColonneListeTaches id={colonne.col_id} />
         <ColonneNouvelleTache setShow={setShow} />
         <TacheModal show={show} setShow={setShow} />

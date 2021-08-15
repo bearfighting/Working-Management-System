@@ -6,6 +6,17 @@ import OperationBar from './operationBar';
 import Tableau from './tableauColonne';
 import { useEffect, useState } from 'react';
 
+interface Colonne {
+  titre: string,
+  nombre: number
+}
+
+const initColonnes = [
+  { col_titre: "À faire", col_ordre: 1, gtt_id: 0 },
+  { col_titre: "En cours", col_ordre: 2, gtt_id: 0 },
+  { col_titre: "Terminé", col_ordre: 3, gtt_id: 0 },
+]
+
 export default function PageTache({ tacheId }) {
   const [titre, setTitre] = useState("");
 
@@ -17,13 +28,39 @@ export default function PageTache({ tacheId }) {
     fetchTache();
   }, []);
 
+  const [colonneTache, setColonneTache] = useState(initColonnes);
+
+  const handleJouterColonne = (col_titre) => {
+    let colonne = {
+      gtt_id: colonneTache?.[0].gtt_id === 0 ? tacheId : colonneTache?.[0].gtt_id,
+      col_ordre: (colonneTache.length + 1),
+      col_titre
+    };
+    setColonneTache([...colonneTache, colonne]);
+  }
+
+  const handledeleteColonne = (col_titre) => {
+    console.log("col_titre", col_titre);
+    setColonneTache(colonneTache.filter(colonne => colonne.col_titre !== col_titre))
+  }
+
+  useEffect(() => {
+    const fetchColonnes = async () => {
+      const response = await fetch("/api/tache/colonne/" + tacheId).then(resp => resp.json());
+      if (response.resultat.length > 0) {
+        setColonneTache(response.resultat);
+      }
+    }
+    fetchColonnes();
+  }, []);
+
   return (
     <>
       <Container>
         <Titre description={titre} />
-        <OperationBar />
+        <OperationBar handleJouterColonne={handleJouterColonne} />
         <hr></hr>
-        <Tableau id={tacheId} />
+        <Tableau handledeleteColonne={handledeleteColonne} colonneTache={colonneTache} />
       </Container>
     </>
   )

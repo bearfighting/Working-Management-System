@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, InputGroup, Button, FormControl } from 'react-bootstrap';
-export default function NouvelleColonneModal({ show, setShow }) {
+export default function NouvelleColonneModal({ handleJouterColonne, show, setShow }) {
   const [nomColonne, setNomColonne] = useState("");
 
   const handleClose = () => {
@@ -9,7 +9,8 @@ export default function NouvelleColonneModal({ show, setShow }) {
   }
 
   const handleSave = () => {
-
+    console.log("handlesave");
+    handleJouterColonne(nomColonne);
     handleClose();
   }
 

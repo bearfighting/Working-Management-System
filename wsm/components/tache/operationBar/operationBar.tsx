@@ -1,16 +1,16 @@
 import React from 'react';
-import { Row, Col, Navbar, Container, Button, Form, FormControl } from 'react-bootstrap';
+import { Row, Col, Navbar, Container } from 'react-bootstrap';
 
 import NouvelleColonne from './nouvelleColonne';
 import SearchTache from './SearchTache';
 
-export default function OperationBar() {
+export default function OperationBar({ handleJouterColonne }) {
   return (
     <Row style={{ margin: "10px" }}>
       <Col>
         <Navbar>
           <Container>
-            <NouvelleColonne />
+            <NouvelleColonne handleJouterColonne={handleJouterColonne} />
             <Navbar.Toggle />
             <SearchTache />
           </Container>

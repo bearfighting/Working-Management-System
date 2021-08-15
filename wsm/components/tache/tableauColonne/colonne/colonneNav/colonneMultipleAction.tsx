@@ -1,10 +1,7 @@
 import { Col, Dropdown } from 'react-bootstrap';
 
 export default function ColonneMultipleAction({ handledeleteColonne, col_titre }) {
-
-  console.log("col_titre", col_titre);
   const handleClick = () => {
-    console.log("col_titre", col_titre);
     handledeleteColonne(col_titre);
   }
 

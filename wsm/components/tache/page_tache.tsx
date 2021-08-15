@@ -40,7 +40,6 @@ export default function PageTache({ tacheId }) {
   }
 
   const handledeleteColonne = (col_titre) => {
-    console.log("col_titre", col_titre);
     setColonneTache(colonneTache.filter(colonne => colonne.col_titre !== col_titre))
   }
 

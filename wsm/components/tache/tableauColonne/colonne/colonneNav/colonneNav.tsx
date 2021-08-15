@@ -5,7 +5,6 @@ import ColonneMultipleAction from './colonneMultipleAction';
 import NavNouvelleTache from './navNouvellTache';
 
 export default function ColonneNav({ handledeleteColonne, colonne, setShow }) {
-  console.log("colonne", colonne);
   return (
     <Row>
       <ColonneEtat colonne={colonne} />

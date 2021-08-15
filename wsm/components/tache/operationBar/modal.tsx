@@ -9,7 +9,6 @@ export default function NouvelleColonneModal({ handleJouterColonne, show, setSho
   }
 
   const handleSave = () => {
-    console.log("handlesave");
     handleJouterColonne(nomColonne);
     handleClose();
   }

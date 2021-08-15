@@ -4,11 +4,11 @@ import ColonneEtat from './colonneEtat';
 import ColonneMultipleAction from './colonneMultipleAction';
 import NavNouvelleTache from './navNouvellTache';
 
-export default function ColonneNav({ colonne, setShow }) {
+export default function ColonneNav({ handledeleteColonne, colonne, setShow }) {
   return (
     <Row>
       <ColonneEtat colonne={colonne} />
-      <ColonneMultipleAction />
+      <ColonneMultipleAction col_titre={colonne.col_titre} handledeleteColonne={handledeleteColonne} />
       <NavNouvelleTache setShow={setShow} />
     </Row>
   )

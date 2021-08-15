@@ -19,6 +19,10 @@ class Colonne {
     async updateColonne({ colonne, col_id }) {
         return await this._db(this._table).where({ col_id }).update(colonne);
     }
+
+    async deleteColonneByColTitre({ col_titre }) {
+        return await this._db(this._table).where({ col_titre }).delete();
+    }
 }
 
 module.exports = Colonne;

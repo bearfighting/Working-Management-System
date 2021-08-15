@@ -1,6 +1,10 @@
 import { Col, Dropdown } from 'react-bootstrap';
 
-export default function ColonneMultipleAction() {
+export default function ColonneMultipleAction({ handledeleteColonne, col_titre }) {
+  const handleClick = () => {
+    handledeleteColonne(col_titre);
+  }
+
   return (
     <Col xs={3} style={{ padding: "1px" }}>
       <Dropdown style={{ height: "50%" }}>
@@ -9,7 +13,7 @@ export default function ColonneMultipleAction() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Supprimer</Dropdown.Item>
+          <Dropdown.Item href="#/action-1" onClick={handleClick}>Supprimer</Dropdown.Item>
           <Dropdown.Item href="#/action-2">Déplacer à droite</Dropdown.Item>
           <Dropdown.Item href="#/action-3">Déplacer à gauche</Dropdown.Item>
         </Dropdown.Menu>

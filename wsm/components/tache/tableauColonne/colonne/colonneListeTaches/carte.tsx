@@ -1,7 +1,6 @@
 import { Row, Col, Button, Badge } from 'react-bootstrap';
 
 export default function Carte({ nom }) {
-  console.log("nom", nom);
   return (
     <Row style={{ margin: "1rem 0px", fontSize: "1rem", border: "solid pink 1px", borderRadius: "10px", backgroundColor: "#FFFFFF", fontColor: "#000000" }}>
       <Col xs={7}>

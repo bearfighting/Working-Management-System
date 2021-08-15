@@ -17,7 +17,6 @@ const colStyle = {
 }
 
 export default function Colonne({ colonne }) {
-  console.log("colonneTache1", colonne);
   const [show, setShow] = useState(false);
 
   return (

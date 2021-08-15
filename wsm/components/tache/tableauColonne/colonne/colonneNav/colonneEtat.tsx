@@ -1,7 +1,6 @@
 import { Col, Badge } from 'react-bootstrap';
 
 export default function ColonneEtat({ colonne }) {
-  console.log("colonne is ", colonne)
   return (
     <>
       <Col xs={3} style={{ padding: "1px" }}>

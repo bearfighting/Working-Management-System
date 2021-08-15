@@ -15,7 +15,6 @@ export default function ColonneListeTaches({ id }) {
     fetchColonnes();
   }, []);
   const ListeTache = [{ nom: "haha" }, { nom: "une tache" }];
-  console.log("cartes", listeCarte);
 
   return (
     <Row style={{ margin: "5px 0px" }}>

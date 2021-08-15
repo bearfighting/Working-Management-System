@@ -40,12 +40,20 @@ export default function PageTache({ tacheId }) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(colonne)
-    }).then(res => console.log("réussi à ajouter la colonne"))
-      .catch(err => console.error("échec à ajouter la colonne", err))
-    setColonneTache([...colonneTache, colonne]);
+    }).then(res => {
+      console.log("réussi à ajouter la colonne");
+      setColonneTache([...colonneTache, colonne]);
+    })
+      .catch(err => alert("échec à ajouter la colonne", err));
   }
 
   const handledeleteColonne = (col_titre) => {
+    fetch("/api/tache/colonne/suppression", {
+      method: 'delete',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ col_titre })
+    }).then(res => console.log("réussi à supprimer la colonne"))
+      .catch(err => console.error("échec à supprimer la colonne", err));
 
     setColonneTache(colonneTache.filter(colonne => colonne.col_titre !== col_titre))
   }

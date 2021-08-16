@@ -30,10 +30,15 @@ export default function ColonneListeCarte({ nouvelleCarte, col_id }) {
     }
   }, [nouvelleCarte]);
 
+  const handledeleteCarte = (crt_titre) => {
+    let nouvelleListeCarte = listeCarte.filter(carte => carte.crt_titre !== crt_titre);
+    setlisteCarte(nouvelleListeCarte);
+  }
+
   return (
     <Row style={{ margin: "5px 0px" }}>
       <Col>
-        {listeCarte.map((carte) => <Carte nom={carte.crt_titre} />)}
+        {listeCarte.map((carte) => <Carte handledeleteCarte={handledeleteCarte} crt_titre={carte.crt_titre} />)}
       </Col>
     </Row>
   )

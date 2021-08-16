@@ -19,7 +19,7 @@ export default function TacheModal({ handleAjouterCarte, show, setShow }) {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Nouvelle Colonne</Modal.Title>
+        <Modal.Title>Nouvelle Carte</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <InputGroup className="mb-3">

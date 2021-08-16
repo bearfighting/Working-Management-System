@@ -19,6 +19,10 @@ class Carte {
     async updateColonne({ colonne, crt_id }) {
         return await this._db(this._table).where({ crt_id }).update(colonne);
     }
+
+    async deleteCarteByCrtTitre({ crt_titre }) {
+        return await this._db(this._table).where({ crt_titre }).delete();
+    }
 }
 
 module.exports = Carte;

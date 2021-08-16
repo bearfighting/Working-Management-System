@@ -31,10 +31,21 @@ export default function ColonneListeCarte({ nouvelleCarte, col_id }) {
   }, [nouvelleCarte]);
 
   const handledeleteCarte = (crt_titre) => {
-    let nouvelleListeCarte = listeCarte.filter(carte => carte.crt_titre !== crt_titre);
-    setlisteCarte(nouvelleListeCarte);
-  }
+    const deleteCarte = async (crt_titre) => {
+      await fetch("/api/tache/carte/suppression", {
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ crt_titre })
+      }).then(res => {
+        let nouvelleListeCarte = listeCarte.filter(carte => carte.crt_titre !== crt_titre);
+        setlisteCarte(nouvelleListeCarte);
+      }).catch(err => console.log(`échec à ajouter la colonne ${err}`));
+      // let nouvelleListeCarte = listeCarte.filter(carte => carte.crt_titre !== crt_titre);
+      // setlisteCarte(nouvelleListeCarte);
+    }
 
+    deleteCarte(crt_titre);
+  }
   return (
     <Row style={{ margin: "5px 0px" }}>
       <Col>

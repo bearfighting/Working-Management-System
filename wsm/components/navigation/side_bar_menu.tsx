@@ -42,7 +42,7 @@ export default function SidebarMenu() {
                         <div className="cd-panel__content flex-child container-nav">
 
                         { listeGestionContact && listeGestionContact.length > 0 && (
-                            <div className="header-side-nav"><h2>Liste de contact</h2></div>
+                            <div className="header-side-nav"><h2>Gestion Contact</h2></div>
                         )}
 
                         {listeGestionContact && listeGestionContact.map((item, i) => (
@@ -54,7 +54,7 @@ export default function SidebarMenu() {
                         ))}
 
                         { listeGestionTache && listeGestionTache.length > 0 && (
-                            <div className="header-side-nav"><h2>CONTACT</h2></div>
+                            <div className="header-side-nav"><h2>Gestion Tâche</h2></div>
                         )}
 
                         {listeGestionTache && listeGestionTache.map((item, i) => (
@@ -66,7 +66,7 @@ export default function SidebarMenu() {
                         ))}
 
                         { listeGestionBanque && listeGestionBanque.length > 0 && (
-                            <div className="header-side-nav"><h2>CONTACT</h2></div>
+                            <div className="header-side-nav"><h2>Gestion Budget</h2></div>
                         )}
 
                         {listeGestionBanque && listeGestionBanque.map((item, i) => (
@@ -85,7 +85,7 @@ export default function SidebarMenu() {
                                 <div className="arrow-left-top"></div>
                                 <div className="arrow-left-bottom"></div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
 

@@ -8,11 +8,10 @@ import TacheModal from '../tacheModal';
 
 const colStyle = {
   minWidth: "220px",
-  boxShadow: "10px 10px 5px #888888",
-  borderRadius: "10px",
-  margin: "2px",
-  backgroundColor: "#FFF0F5",
-  border: "0.2px #947783 solid",
+  borderRadius: "5px",
+  margin: "5px",
+  backgroundColor: "#ebecf0",
+  borderBottom: "0.2px #a9a9a9 solid",
   textAlign: 'center' as const
 }
 

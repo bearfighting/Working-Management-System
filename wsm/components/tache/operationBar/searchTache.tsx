@@ -8,7 +8,7 @@ export default function SearchTache() {
       <Form className="d-flex">
         <FormControl
           type="search"
-          placeholder="Search"
+          placeholder="Rechercher une carte..."
           className="mr-2"
           aria-label="Search"
         />

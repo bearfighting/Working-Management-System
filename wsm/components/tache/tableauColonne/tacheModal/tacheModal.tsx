@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, InputGroup, Button, FormControl } from 'react-bootstrap';
+import { Modal, InputGroup, Button, Form, FormControl } from 'react-bootstrap';
 
 export default function TacheModal({ handleAjouterCarte, show, setShow }) {
   const [titre, settitre] = useState("");
@@ -19,33 +19,33 @@ export default function TacheModal({ handleAjouterCarte, show, setShow }) {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Nouvelle Carte</Modal.Title>
+        <Modal.Title>Ajouter une nouvelle carte</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">Nom</InputGroup.Text>
-          <FormControl
-            placeholder="colonne"
+        <Form.Group className="mb-3">
+          <Form.Label>Titre de la carte</Form.Label>
+          <Form.Control
+            placeholder="Titre"
             aria-label="Username"
             aria-describedby="basic-addon1"
             value={titre}
             onChange={(e) => settitre(e.target.value)}
           />
-        </InputGroup>
-        <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">Description de tâche</InputGroup.Text>
-          <FormControl
-            placeholder="colonne"
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label id="basic-addon1">Description de la tâche</Form.Label>
+          <Form.Control
+            placeholder="Description"
             aria-label="Username"
             aria-describedby="basic-addon1"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-        </InputGroup>
+        </Form.Group>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          fermer
+          Fermer
         </Button>
         <Button variant="primary" onClick={handleSave}>
           Enregistrer

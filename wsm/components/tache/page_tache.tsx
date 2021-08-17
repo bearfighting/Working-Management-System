@@ -30,7 +30,7 @@ export default function PageTache({ tacheId }) {
 
   const [colonneTache, setColonneTache] = useState(initColonnes);
 
-  const handleJouterColonne = (col_titre) => {
+  const handleAjouterColonne = (col_titre) => {
     let colonne = {
       gtt_id: colonneTache?.[0].gtt_id === 0 ? tacheId : colonneTache?.[0].gtt_id,
       col_ordre: (colonneTache.length + 1),
@@ -71,7 +71,7 @@ export default function PageTache({ tacheId }) {
     <>
       <Container>
         <Titre description={titre} />
-        <OperationBar handleJouterColonne={handleJouterColonne} />
+        <OperationBar handleAjouterColonne={handleAjouterColonne} />
         <hr></hr>
         <Tableau handledeleteColonne={handledeleteColonne} colonneTache={colonneTache} />
       </Container>

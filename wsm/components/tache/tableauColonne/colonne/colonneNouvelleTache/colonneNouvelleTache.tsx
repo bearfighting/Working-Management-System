@@ -9,7 +9,7 @@ export default function ColonneNouvelleTache({ setShow }) {
   return (
     <Row>
       <Col style={{ padding: "1px" }}>
-        <Button size="sm" style={{ lineHeight: "0.8" }} onClick={handleOnClick}>+ Nouvelle</Button>
+        <Button size="sm" style={{ lineHeight: "0.8" }} onClick={handleOnClick}>+ Ajouter une carte</Button>
       </Col>
     </Row>
   )

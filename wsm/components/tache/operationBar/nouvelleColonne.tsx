@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import NouvelleColonneModal from './modal';
 
-export default function NouvelleColonne({ handleJouterColonne }) {
+export default function NouvelleColonne({ handleAjouterColonne }) {
   const [show, setShow] = useState(false);
 
   const handleClick = () => {
@@ -11,8 +11,8 @@ export default function NouvelleColonne({ handleJouterColonne }) {
 
   return (
     <>
-      <Navbar.Brand ><Button variant="info" onClick={handleClick}>Nouvelle colonne</Button></Navbar.Brand>
-      <NouvelleColonneModal handleJouterColonne={handleJouterColonne} show={show} setShow={setShow} />
+      <Navbar.Brand ><Button variant="info" onClick={handleClick}>+ Ajouter une colonne</Button></Navbar.Brand>
+      <NouvelleColonneModal handleAjouterColonne={handleAjouterColonne} show={show} setShow={setShow} />
     </>
   );
 }

@@ -1,4 +1,20 @@
-# INM_5151
+# Projet de session
+
+## Description
+
+UQAM
+
+Cours : INM5151 - PROJET D'ANALYSE ET DE MODELISATION
+
+Groupe : 30
+
+## Auteurs
+
+- MITESHBAI PATEL : PATM10119006
+- WENFENG XING : XINW08058402
+- SÉBASTIEN RICHER STÉBENNE : RICS21109001
+
+## Mise en place du projet
 
 ## Pour démarrer l'application en développement
 
@@ -23,7 +39,7 @@
 
 - "knex migrate:latest"
 
-### détruire les tables
+### Détruire les tables
 
 - "knex migrate:rollback --all"
 
@@ -41,4 +57,5 @@
 - "taskkill /pid [pid] /f"
 
 ### Réinitialiser la bd
+
 - "knex migrate:rollback && knex migrate:latest && knex seed:run"
